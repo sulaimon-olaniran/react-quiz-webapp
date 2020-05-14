@@ -39,3 +39,17 @@
 hr {
     width: 100%;
 }
+
+@media(min-width : 500px) and (orientation: landscape) {
+.navlink-con {
+    overflow: scroll;
+    }
+}
+
+@media(min-width : 968px){
+    .navlink-con{
+        width: 40vw;
+        overflow: hidden;
+    }
+
+}

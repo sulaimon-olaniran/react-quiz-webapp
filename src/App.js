@@ -1,9 +1,10 @@
 import React from 'react';
 import NavBar from './components/navbar/NavBar'
-import { BrowserRouter as Router, Route, Swtich } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './styles/Styles.scss'
 import AppContextProvider from './contexts/AppContext';
 import NavContent from './components/navbar/NavContent';
+import HomePage from './components/homepage/Homepage';
 
 function App() {
   return (
@@ -12,6 +13,13 @@ function App() {
         <div className="App">
           <NavContent />
           <NavBar />
+
+          <div className="page-section">
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+            </Switch>
+          </div>
+
         </div>
       </Router>
     </AppContextProvider>

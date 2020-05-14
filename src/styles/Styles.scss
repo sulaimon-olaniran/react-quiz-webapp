@@ -1,2 +1,9 @@
 @import './Universal';
-@import '../components/navbar/NavBar'
+@import '../components/navbar/NavBar';
+@import '../components/homepage/HomePage.scss';
+
+.page-section {
+    margin-top: 5rem;
+    min-height: 90vh;
+    width: 100%;
+}

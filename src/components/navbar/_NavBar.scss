@@ -1,10 +1,11 @@
 nav {
     display: flex;
     position: fixed;
+    top: 0;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 10vh;
+    height: 5rem;
 }
 .lightTheme {
     background-color: $greyLight;
