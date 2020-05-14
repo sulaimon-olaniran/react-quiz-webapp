@@ -1,0 +1,16 @@
+.back-drop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.dropDark {
+    background:rgba(199, 197, 197, 0.5); ;
+}
+
+.dropLight {
+    background: rgba(48, 47, 47, 0.5);
+}
