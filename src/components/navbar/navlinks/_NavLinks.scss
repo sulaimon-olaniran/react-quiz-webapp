@@ -14,6 +14,19 @@
     transition: transform 0.35s ease-out;
 }
 
+.app-logo {
+    width: 100%;
+    height: 5rem;
+}
+
+.app-logo img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+
 .navlink-con.open{
     transform: translateX(0%);
   }

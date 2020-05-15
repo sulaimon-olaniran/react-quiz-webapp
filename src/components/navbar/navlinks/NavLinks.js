@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import jamb_logo from '../jamb_logo.png'
+import app_logo from '../app_logo.png'
 import { AppContext } from '../../../contexts/AppContext'
 import Button from '@material-ui/core/Button'
 import HomeSharpIcon from '@material-ui/icons/HomeSharp'
@@ -8,7 +9,6 @@ import InfoSharpIcon from '@material-ui/icons/InfoSharp'
 import ContactSupportSharpIcon from '@material-ui/icons/ContactSupportSharp'
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports'
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
-import Grow from '@material-ui/core/Grow'
 import Zoom from '@material-ui/core/Zoom'
 
 
@@ -22,7 +22,7 @@ function NavLinks() {
   return (
     <div className={linkClass} >
        <Zoom in={menuLink}>
-        <Button onClick={closeMenu} color="inherit"><h1 >OS-QUIZ</h1></Button>
+        <Button onClick={closeMenu} color="inherit"><div className="app-logo"><img src={app_logo} alt="Logo" /> </div></Button>
       </Zoom>
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '100ms' : '0ms' }}>

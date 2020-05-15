@@ -15,3 +15,13 @@ $greyLight : rgb(223, 221, 221);
 // text colors
 $textDark : rgb(75, 73, 73);
 $textLight : rgb(228, 228, 228);
+
+
+.lightTheme {
+    background-color: $greyLight;
+    color: $textDark;
+}
+.darkTheme {
+    background-color: $greyDark;
+    color: $textLight;
+}
