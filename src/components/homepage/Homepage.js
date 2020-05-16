@@ -10,7 +10,7 @@ const HomePage = () => {
 
             <div className="first-section" >
                 <div className="title-con">
-                    <p>Get ready to become a Genius</p>
+                    <p>become a Genius</p>
                 </div>
             </div>
              <DemoSection />

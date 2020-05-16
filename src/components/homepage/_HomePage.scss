@@ -6,8 +6,8 @@
   align-items: center;
   .first-section{
     width: 100%;
-    height: 45vh;
-    background-image: url('./assets/home.jpg');
+    height: 90vh;
+    background-image: url('./assets/homep.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -22,13 +22,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;
+  background-color: rgba(0,0,0,0.5);
   margin-top: 10px;
   border-radius: 80px;
   box-shadow: 2px 2px 2px 3px rgb(247, 95, 95);
   
   p{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: capitalize;
     animation: Color 4s linear infinite;
   }
 }
