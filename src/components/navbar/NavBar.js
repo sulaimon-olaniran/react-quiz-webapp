@@ -8,7 +8,7 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import { makeStyles } from '@material-ui/core/styles'
 import { AppContext } from '../../contexts/AppContext'
-import logo_head from './logo_head.png'
+import logo_head from './assets/logo_head.png'
 
 
 

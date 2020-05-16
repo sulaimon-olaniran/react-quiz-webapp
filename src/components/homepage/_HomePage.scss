@@ -1,0 +1,63 @@
+.home-container {
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .first-section{
+    width: 100%;
+    height: 45vh;
+    background-image: url('./assets/home.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+}
+.title-con{
+  width: 20rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  margin-top: 10px;
+  border-radius: 80px;
+  box-shadow: 2px 2px 2px 3px rgb(247, 95, 95);
+  
+  p{
+    font-size: 1.2rem;
+    animation: Color 4s linear infinite;
+  }
+}
+
+@keyframes Color{
+  0%{
+    color:#A0D468;
+  }
+  
+  20%{
+    color:#4FC1E9;
+  }
+  
+  40%{
+    color:#FFCE54;
+  }
+  
+  60%{
+    color:#FC6E51;
+  }
+  
+  80%{
+    color:#ED5565;
+  }
+  
+  100%{
+    color:#AC92EC;
+  }
+}
+
+@import './sections/demo/DemoSection';
+@import './sections/league/LeagueSection'

@@ -1,21 +1,21 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../contexts/AppContext'
-
+import DemoSection from './sections/demo/DemoSection'
+import LeagueSection from './sections/league/LeagueSection'
 
 const HomePage = () => {
     const { themeClass } = useContext(AppContext)
-    return ( 
+    return (
         <div className={`home-container ${themeClass}`}>
-            <section className="first-section">
-                <h3 className="welcome-note">Welcome to OS-Quiz</h3>
 
-                <div className="wrapper">
-                    <h1>Get Smart or die trying</h1>
+            <div className="first-section" >
+                <div className="title-con">
+                    <p>Get ready to become a Genius</p>
                 </div>
-                
-            </section>
+            </div>
+             <DemoSection />
+             <LeagueSection />
 
-            
         </div>
 
     )

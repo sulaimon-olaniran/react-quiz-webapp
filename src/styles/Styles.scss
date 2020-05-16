@@ -1,9 +1,9 @@
 @import './Universal';
 @import '../components/navbar/NavBar';
-@import '../components/homepage/HomePage.scss';
+@import '../components/homepage/HomePage';
 
 .page-section {
-    margin-top: 5rem;
+    margin-top: 10vh;
     min-height: 90vh;
     width: 100%;
 
