@@ -3,6 +3,9 @@
     padding: 0;
     margin: 0;
 }
+html, body, .app {
+    min-height: 100%;
+}
 
 a {
     text-decoration: none;
@@ -24,6 +27,15 @@ $textLight : rgb(228, 228, 228);
 .darkTheme {
     background-color: $greyDark;
     color: $textLight;
+}
+.darkBlueTheme {
+  background-color: #262626;
+  color: $textLight
+}
+
+.lightBlueTheme{
+    background-color:#A8A8A8;
+    color: $textDark
 }
 
 h1{

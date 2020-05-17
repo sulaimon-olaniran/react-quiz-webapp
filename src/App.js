@@ -5,6 +5,7 @@ import './styles/Styles.scss'
 import AppContextProvider from './contexts/AppContext';
 import NavContent from './components/navbar/NavContent';
 import HomePage from './components/homepage/Homepage';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
               <Route exact path="/" component={HomePage} />
             </Switch>
           </div>
-
+          <Footer />
         </div>
       </Router>
     </AppContextProvider>

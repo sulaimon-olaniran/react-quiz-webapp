@@ -11,6 +11,7 @@ const AppContextProvider = ({children}) => {
     }
 
     const themeClass = darkTheme ? "darkTheme" : "lightTheme"
+    const blueThemeClass = darkTheme ? "darkBlueTheme" : "lightBlueTheme"
 
     const closeMenu = () => {
         setMenuLink(false)
@@ -23,7 +24,7 @@ const AppContextProvider = ({children}) => {
 
     return (
         <AppContext.Provider value={{
-            toggleTheme:toggleTheme, darkTheme, themeClass,  
+            toggleTheme:toggleTheme, darkTheme, themeClass, blueThemeClass,  
             closeMenu:closeMenu, toggleMenu:toggleMenu, menuLink
         }}>
             {children}
