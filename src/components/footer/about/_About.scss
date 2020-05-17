@@ -1,0 +1,19 @@
+.about-container{
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .about-text {
+        width: 90%;
+        display: flex;
+        justify-items: center;
+    }
+
+    h1{
+        border-bottom: 1px solid salmon;
+        padding-bottom: 3px;
+    }
+}

@@ -3,10 +3,14 @@
     padding: 0;
     margin: 0;
 }
-html, body, .app {
+html, body, .App {
     min-height: 100%;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
-
+.App{
+    background-color: yellow;
+    margin: 0;
+}
 a {
     text-decoration: none;
 }
@@ -39,6 +43,9 @@ $textLight : rgb(228, 228, 228);
 }
 
 h1{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 500;
-  }
+}
+button{
+    display: block !important;
+}
