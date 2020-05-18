@@ -12,3 +12,8 @@
     width: 100%;
 
 }
+@media(min-width : 500px) and (orientation: landscape) {
+    .page-section{
+        margin-top: 12vh;
+    }
+}

@@ -1,11 +1,11 @@
 .post-jamb-section {
-    height: 55vh;
+    height: 25rem;
     width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    margin: 10px 0px 25px 0;
+    margin: 10px 0 0  0;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
     .post-jamb-image{
         width: 70%;
@@ -16,4 +16,10 @@
         }
     }
 
+}
+
+@media(min-width : 500px) and (orientation: landscape) {
+    .post-jamb-section{
+        width: 45%;
+    }
 }

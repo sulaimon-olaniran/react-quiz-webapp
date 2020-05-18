@@ -44,5 +44,11 @@ nav {
     flex-direction: column;
 }
 
+@media(min-width : 500px) and (orientation: landscape) {
+    nav {
+        height: 12vh;
+    }
+}
+
 @import './backdrop/BackDrop';
 @import './navlinks/NavLinks'

@@ -1,5 +1,5 @@
 .demo-section {
-    height: 55vh;
+    height: 25rem;
     width: 95%;
     display: flex;
     flex-direction: column;
@@ -16,4 +16,10 @@
         }
     }
 
+}
+
+@media(min-width : 500px) and (orientation: landscape) {
+    .demo-section{
+        width: 45%;
+    }
 }

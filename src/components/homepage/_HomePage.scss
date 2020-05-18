@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  .first-section{
+  .main-section{
     width: 100%;
     height: 90vh;
     background-image: url('./assets/homep.png');
@@ -14,6 +14,15 @@
     display: flex;
     justify-content: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .sub-sections {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 60vh;
   }
 }
 .title-con{
@@ -58,6 +67,20 @@
   
   100%{
     color:#AC92EC;
+  }
+}
+
+
+@media(min-width : 500px) and (orientation: landscape) {
+  .home-container{
+    .main-section{
+      background-image: url('./assets/home.png');
+    }
+    .sub-sections{
+      flex-direction: row;
+      margin: 0;
+      justify-content: space-around;
+    }
   }
 }
 

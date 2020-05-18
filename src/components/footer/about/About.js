@@ -9,11 +9,11 @@ const About = () => {
                 <p>
                     This project was built to help people have learn while they
                     having fun, and also prepare them for exams and have wide 
-                    ideas of ..........
+                    ideas of .......
                 </p>
 
             </div>
-             <Button color="inherit" size="large" variant="outlined">Read More .....</Button>
+             <Button color="secondary" size="large" variant="outlined">Learn More ...</Button>
         </div>
     )
 }

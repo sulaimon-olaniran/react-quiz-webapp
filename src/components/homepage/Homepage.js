@@ -13,15 +13,18 @@ const HomePage = () => {
     const [checked, setChecked] = React.useState(true)
     return (
         <div className={`home-container ${themeClass}`}>
-                <div className="first-section" >
+
+                <div className="main-section" >
                     <div className="title-con">
                         <p>become a Genius</p>
                     </div>
                 </div>
+            <div className="sub-sections" > 
             <DemoSection />
             <LeagueSection />
             <JambSection />
             <PostJambSection />
+            </div>
 
         </div>
 

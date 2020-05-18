@@ -1,11 +1,11 @@
 .league-section {
-    height: 55vh;
+    height: 25rem;
     width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    margin: 10px;
+    margin-top: 10px;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
     margin-top: 10px;
     .league-image{
@@ -17,4 +17,13 @@
         }
     }
     
+}
+
+@media(min-width : 500px) and (orientation: landscape) {
+    .league-section{
+        width: 45%;
+        p{
+            padding: 0px 7px;
+        }
+    }
 }

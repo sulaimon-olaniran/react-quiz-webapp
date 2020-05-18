@@ -11,7 +11,7 @@ const LeagueSection = () => (
     </div>
     <p>Do you have what it takes to top the league?</p>
     <div>
-      <Button color="inherit" size="large" variant="outlined">JOIN THE LEAGUE</Button> 
+      <Button color="inherit" size="large" variant="outlined">JOIN THE LEAGUE</Button>
     </div>
   </div>
 
