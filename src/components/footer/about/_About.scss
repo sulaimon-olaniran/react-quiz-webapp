@@ -1,5 +1,5 @@
 .about-container{
-    width: 100%;
+    width: 80%;
     height: 15rem;
     display: flex;
     flex-direction: column;
@@ -7,9 +7,10 @@
     justify-content: space-around;
 
     .about-text {
-        width: 90%;
+        width: 100%;
         display: flex;
         justify-items: center;
+        align-items: center;
     }
 
     h1{
@@ -19,5 +20,12 @@
     }
     p{
         color: rgb(240, 226, 215);
+    }
+}
+
+
+@media(min-width : 768px){
+    .about-container{
+        width: 50vw;
     }
 }

@@ -6,6 +6,7 @@ import Backdrop from '@material-ui/core/Backdrop'
 import { makeStyles } from '@material-ui/core/styles'
 import FormikEmailForm from './EmailForm'
 import Zoom from '@material-ui/core/Zoom'
+import EmailIcon from '@material-ui/icons/Email';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -19,8 +20,8 @@ const ContactEmail = () => {
     const classes = useStyles()
     const { emailModal, openEmailModal, closeEmailModal } = useContext(AppContext)
     return (
-        <div>
-            <Button onClick={openEmailModal} color="secondary" variant="outlined" >Email Us</Button>
+        <div className="email-button" >
+            <Button onClick={openEmailModal} color="secondary" variant="outlined" ><EmailIcon color="inherit" /></Button>
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
