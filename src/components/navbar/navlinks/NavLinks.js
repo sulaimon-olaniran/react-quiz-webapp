@@ -25,6 +25,8 @@ function NavLinks() {
         <Button onClick={closeMenu} color="inherit"><div className="app-logo"><img src={app_logo} alt="Logo" /> </div></Button>
       </Zoom>
 
+      <hr />
+
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '100ms' : '0ms' }}>
         <NavLink to="#" className="button-link" >
           <HomeSharpIcon /><Button color="inherit" size="medium" >Home</Button>
@@ -43,7 +45,7 @@ function NavLinks() {
         </NavLink>
       </Zoom>
 
-      <hr className="divider" style={{ backgroundColor: "inherit" }} />
+      <hr className="divider"  />
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '700ms' : '0ms' }}>
         <NavLink to="#" className="button-link">
