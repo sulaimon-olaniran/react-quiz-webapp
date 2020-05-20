@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-import jamb_logo from '../assets/jamb_logo.png'
 import app_logo from '../assets/app_logo.png'
 import { AppContext } from '../../../contexts/AppContext'
 import Button from '@material-ui/core/Button'
@@ -27,19 +26,19 @@ function NavLinks() {
 
       <hr />
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '100ms' : '0ms' }}>
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '200ms' : '0ms' }}>
         <NavLink to="#" className="button-link" >
           <HomeSharpIcon /><Button color="inherit" size="medium" >Home</Button>
         </NavLink>
       </Zoom>
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '300ms' : '0ms' }}>
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '400ms' : '0ms' }}>
         <NavLink to="#" className="button-link">
           <InfoSharpIcon /><Button color="inherit" size="medium">About</Button>
         </NavLink>
       </Zoom>
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '500ms' : '0ms' }}>
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '600ms' : '0ms' }}>
         <NavLink to="#" className="button-link">
           <ContactSupportSharpIcon /><Button color="inherit" size="medium">Contact</Button>
         </NavLink>
@@ -47,27 +46,15 @@ function NavLinks() {
 
       <hr className="divider"  />
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '700ms' : '0ms' }}>
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '800ms' : '0ms' }}>
         <NavLink to="#" className="button-link">
           <SportsEsportsIcon /><Button color="inherit" size="medium">Quiz Demo</Button>
         </NavLink>
       </Zoom>
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '900ms' : '0ms' }}>
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '1000ms' : '0ms' }}>
         <NavLink to="#" className="button-link">
           <WbIncandescentIcon /><Button color="inherit" size="medium">Quiz League</Button>
-        </NavLink>
-      </Zoom>
-
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '1100ms' : '0ms' }}>
-        <NavLink to="#" className="button-link">
-          <img src={jamb_logo} alt="jamb" width="20px" height="20px" /><Button color="inherit" size="medium">JAMB PQ</Button>
-        </NavLink>
-      </Zoom>
-
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '1300ms' : '0ms' }}>
-        <NavLink to="#" className="button-link">
-          <img src={jamb_logo} alt="jamb" width="20px" height="20px" /><Button color="inherit" size="medium">Post JAMB</Button>
         </NavLink>
       </Zoom>
 

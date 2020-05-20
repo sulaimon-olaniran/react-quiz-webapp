@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../contexts/AppContext'
-import DemoSection from './sections/demo/DemoSection'
-import LeagueSection from './sections/league/LeagueSection'
-import JambSection from './sections/jamb/JambSection'
-import PostJambSection from './sections/postjamb/PostJambSection'
+import DemoSection from './sections/first_section/FirstSection'
+import LeagueSection from './sections/second_section/SecondSection'
+import JambSection from './sections/third_section/ThirdSection'
+import PostJambSection from './sections/forth_section/ForthSection'
 //import Slide from '@material-ui/core/Slide'
 //import Zoom from '@material-ui/core/Zoom'
 
