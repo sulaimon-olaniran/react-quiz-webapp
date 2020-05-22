@@ -1,0 +1,14 @@
+.question-container{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+    align-items: center;
+    justify-content: center;
+    
+    h3{
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+}

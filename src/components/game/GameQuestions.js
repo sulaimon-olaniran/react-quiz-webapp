@@ -25,7 +25,7 @@ const GameQuestions = () => {
             id : 3
         },
         {
-            question : "How many days can be in a year ?",
+            question : "How many days can be in a year or found in a leap year ?",
             options : ["300", "303", "345", "354", "330", "150"],
             answers : ["365", "365", "366"],
             id : 4
@@ -39,8 +39,8 @@ const GameQuestions = () => {
         x === -100 * (questions.length - 1) ? setX(0) : setX(x - 100);
     }
     return (
-        <div className={`game-contaner ${themeClass}`} >
-            <ReactCardCarousel autoplay={ true } autoplay_speed={ 2500 }  >
+        <div className={`game-container ${themeClass}`} >
+            <ReactCardCarousel autoplay={ true } autoplay_speed={ 2500 } >
             {
                 questions && questions.map( question => {
                     return (
@@ -48,7 +48,7 @@ const GameQuestions = () => {
                        // style={{ transform: `translateX(${x}%)` }}
                         >
                           <EachQuestion questions={question} />
-                          <h1>{question.id}</h1>
+                          
                         </div>
                     )
                 })

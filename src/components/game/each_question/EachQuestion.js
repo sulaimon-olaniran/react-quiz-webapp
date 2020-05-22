@@ -7,6 +7,7 @@ const EachQuestion = ({ questions }) => {
     return (
         <div>
             <Question question = {question}  />
+
             <Options options={options} answers={answers} />
         </div>
     )

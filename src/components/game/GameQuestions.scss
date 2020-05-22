@@ -1,29 +1,22 @@
-.game-contaner{
+.game-container{
     min-height: 90vh;
     width: 100%;
     display: flex;
-    overflow: hidden ;
+    flex: 1;
+    //overflow: hidden ;
     align-items: center;
-    justify-content: center;
+    position: relative;
 
     .each-question-container{
-      height: 80vh;
-      width: 350px;
+      height: 85vh;
+      width: 90vw;
       text-align: center;
       background: #52C0F5;
       color: #FFF;
       font-size: 12px;
-      text-transform: uppercase;
-      border-radius: 10px;
+      text-transform: uppercase; 
     }
 
-        /*
-        height: 90vh;
-        min-width: 100%;
-        background-image: url('./assets/preview16.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        transition: 0.9s ;
-    }*/
 }
+
+@import './each_question/EachQuestion.scss'
