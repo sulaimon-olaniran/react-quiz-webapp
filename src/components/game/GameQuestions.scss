@@ -1,0 +1,29 @@
+.game-contaner{
+    min-height: 90vh;
+    width: 100%;
+    display: flex;
+    overflow: hidden ;
+    align-items: center;
+    justify-content: center;
+
+    .each-question-container{
+      height: 80vh;
+      width: 350px;
+      text-align: center;
+      background: #52C0F5;
+      color: #FFF;
+      font-size: 12px;
+      text-transform: uppercase;
+      border-radius: 10px;
+    }
+
+        /*
+        height: 90vh;
+        min-width: 100%;
+        background-image: url('./assets/preview16.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: 0.9s ;
+    }*/
+}
