@@ -1,4 +1,5 @@
 import React from 'react'
+import EachOption from './each_option/EachOption'
 
 const Options = ({ options, answers }) => {
     const randomAnswer = answers[Math.floor(Math.random() * answers.length)]
@@ -23,8 +24,16 @@ const Options = ({ options, answers }) => {
 
     console.log(randomFinalOptions)
     return (
-        <div>
-
+        <div className="options-container" >
+          {
+              randomFinalOptions && randomFinalOptions.map((option, index) => {
+                  return(
+                      <React.Fragment key={index} >
+                         <EachOption option={option} />
+                      </React.Fragment>
+                  )
+              })
+          }
         </div>
     )
 }

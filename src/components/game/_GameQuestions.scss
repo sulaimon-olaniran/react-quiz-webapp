@@ -1,0 +1,58 @@
+.game-container{
+    min-height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    position: relative;
+
+    .timer-container {
+      width: 90%;
+      height: 10vh;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: inherit;
+      position: absolute;
+      top: 4%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .each-question-container{
+      min-height: 60vh;
+      width: 90vw;
+      background: #52C0F5;
+      color: #FFF;
+      text-transform: uppercase; 
+     
+    }
+
+    .lifeline-container {
+      width: 90%;
+      height: 10vh;
+      background: inherit;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      position: absolute;
+      bottom: 4%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      div{
+        width: 30%;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgb(248, 204, 211);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+      }
+    }
+
+}
+
+@import './each_question/EachQuestion';
+@import './timer/Timer'
