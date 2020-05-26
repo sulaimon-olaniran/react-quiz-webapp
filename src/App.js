@@ -7,25 +7,32 @@ import NavContent from './components/navbar/NavContent';
 import HomePage from './components/homepage/Homepage';
 import Footer from './components/footer/Footer';
 import GameQuestions from './components/game/GameQuestions';
+import GameContextProvider from './contexts/GameContext';
 
 function App() {
   return (
+    
     <AppContextProvider>
+      <GameContextProvider >
       <Router>
         <div className="App">
+       
           <NavContent />
           <NavBar />
+         
 
           <div className="page-section">
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/game" component={GameQuestions} />
+              <Route exact path="/game" component={GameQuestions} />  
             </Switch>
           </div>
           <Footer />
         </div>
       </Router>
-    </AppContextProvider>
+      </GameContextProvider>
+      </AppContextProvider>
+      
   )
 }
 

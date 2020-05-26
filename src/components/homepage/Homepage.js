@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button'
 
 const HomePage = () => {
     const { themeClass } = useContext(AppContext)
+    console.log("home page")
     return (
         <div className={`home-container ${themeClass}`}>
 

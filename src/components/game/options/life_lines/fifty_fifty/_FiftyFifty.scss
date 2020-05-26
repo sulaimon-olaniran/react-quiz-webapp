@@ -1,14 +1,21 @@
-.each-option-container {
-    width: 90%;
-    height: 4rem;
+.fifty-container{
+    width: 30%;
+    height: 70%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
     background-color: inherit;
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
     p{
+        color: wheat;
         font-size: 0.9rem;
+        img{
+            width: 15px;
+            height: 15px;
+        }
     }
-}
+
+  }

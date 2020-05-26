@@ -1,0 +1,23 @@
+.options-container{
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: inherit;
+
+    .life-lines-container{
+        width: 90%;
+        height: 10vh;
+        background: inherit;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        
+    }
+}
+@import './each_option/EachOption';
+@import './life_lines/fifty_fifty/FiftyFifty';
+@import './life_lines/hints/Hints'

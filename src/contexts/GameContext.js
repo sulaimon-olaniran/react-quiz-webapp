@@ -1,31 +1,22 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState } from 'react'
 
 export const GameContext = createContext()
 
-const GameContextProvider = ({ children }) => {
-
-    const timeFormat = (time) => {
-        let seconds = time % 60;
-        let minutes = Math.floor(time / 60);
-        minutes = minutes.toString().length === 1 ? "0" + minutes : minutes;
-        seconds = seconds.toString().length === 1 ? "0" + seconds : seconds;
-        return minutes + ':' + seconds;
-    }
+const GameContextProvider = ({children}) => {
+    const [ removedIndex, setRemovedIndex] = useState([])
+    const [ usedFifty, setUsedFiftyFifty ] = useState(false)
+    const [ coins, setCoins ] = useState(100)
 
     
-
     return (
-        <GameContext.Provider
-            value={{
-
-
-
-            }}
-        >
+        <GameContext.Provider value={{ removedIndex, setRemovedIndex,
+            usedFifty, setUsedFiftyFifty, coins, setCoins
+        }}>
             {children}
         </GameContext.Provider>
     )
-
 }
+
+
 
 export default GameContextProvider

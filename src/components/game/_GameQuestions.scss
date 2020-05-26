@@ -5,54 +5,30 @@
     flex-direction: column;
     flex: 1;
     align-items: center;
+    justify-content: center;
     position: relative;
-
-    .timer-container {
-      width: 90%;
-      height: 10vh;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background: inherit;
-      position: absolute;
-      top: 4%;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+    video {
+      min-width: 100%;
+      min-height: 90vh;
+      z-index: 1;
     }
-
-    .each-question-container{
-      min-height: 60vh;
-      width: 90vw;
-      background: #52C0F5;
-      color: #FFF;
-      text-transform: uppercase; 
-     
-    }
-
-    .lifeline-container {
-      width: 90%;
-      height: 10vh;
-      background: inherit;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    .quiz{
       position: absolute;
-      bottom: 4%;
+      z-index: 2;
+      height: 80vh;
+      width: 90%;
       display: flex;
-      justify-content: space-around;
+      flex-direction: column;
       align-items: center;
-      div{
-        width: 30%;
-        height: 70%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        background-color: rgb(248, 204, 211);
-        border-radius: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-      }
+      justify-content: space-around;
+      background: inherit;
+      border-radius: 20px;
+      padding: 10px 0;
     }
 
 }
 
-@import './each_question/EachQuestion';
-@import './timer/Timer'
+@import './options/Options';
+@import './question/Question';
+@import './game_details/GameDetails'

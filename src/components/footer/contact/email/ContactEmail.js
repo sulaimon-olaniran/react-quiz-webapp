@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
-import { AppContext } from '../../../../contexts/AppContext'
 import Backdrop from '@material-ui/core/Backdrop'
 import { makeStyles } from '@material-ui/core/styles'
 import FormikEmailForm from './EmailForm'
@@ -18,7 +17,15 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactEmail = () => {
     const classes = useStyles()
-    const { emailModal, openEmailModal, closeEmailModal } = useContext(AppContext)
+    const [ emailModal, setEmailModal] = useState(false)
+    
+    const openEmailModal = () => {
+        setEmailModal(true)
+    }
+    const closeEmailModal = () => {
+        setEmailModal(false)
+    }
+
     return (
         <div className="email-button" >
             <Button onClick={openEmailModal} color="secondary" variant="outlined" ><EmailIcon color="inherit" /></Button>
