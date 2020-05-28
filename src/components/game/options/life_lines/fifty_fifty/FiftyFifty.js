@@ -1,15 +1,19 @@
-import React, { useContext } from 'react'
-//import StarsIcon from '@material-ui/icons/Stars'
+import React, { useContext, useRef } from 'react'
 import { GameContext } from '../../../../../contexts/GameContext'
 import coin_icon from './assets/coin_icon.png'
+import success from './assets/success.wav'
+import error from './assets/error.wav'
 
 const FiftyFifty = ({ answer }) => {
-     const { usedFifty, setUsedFiftyFifty, coins, setCoins } = useContext(GameContext)
+     const { usedFifty, setUsedFiftyFifty, coins, setCoins, usedHint } = useContext(GameContext)
+     const successRef = useRef()
+     const errorRef = useRef()
 
     const handleFiftyFifty = () =>{
-        if ( usedFifty === false && coins >= 30 ){
+        if ( usedFifty === false && usedHint === false && coins >= 30 ){
 
             const options = Array.from(document.activeElement.querySelectorAll('.each-option-container'))
+            console.log(options)
             const randomIndexes = []
             let answerIndex
             let count = 0
@@ -39,20 +43,27 @@ const FiftyFifty = ({ answer }) => {
 
             }while(count < 2)
 
-           options.length > 2 && options.forEach((option, index) => {
+           options.length  && options.forEach((option, index) => {
                 if(randomIndexes.includes(index)){
                     option.style.visibility = "hidden"
                 }
             })
+            successRef.current.play()
             setUsedFiftyFifty(true)
             setCoins(prev => prev - 30)
 
+        }else{
+            errorRef.current.play()
         }
-      console.log("Hello from 50/50")
+      
     }
 
     return (
     <div onClick={handleFiftyFifty} className="fifty-container" >
+        <React.Fragment>
+            <audio src={success} ref={successRef}></audio>
+            <audio src={error} ref={errorRef}></audio>
+        </React.Fragment>
         <p>50 : 50</p>
         <p>30 <img src={coin_icon} alt="coin" /></p>
     </div>

@@ -52,10 +52,13 @@ const GameQuestions = () => {
     }
 
     const nextQuestion = () => {
-        setQuestion(prev => prev + 1)
+        if (question < 3) {
+            setQuestion(prev => prev + 1)
+        }
         // console.log("clicked")
         showQuestions()
     }
+    const questionLength = questions.length
 
     return (
         <div className={`game-container`} style={{ background: getRandomColor() }} >
@@ -64,7 +67,7 @@ const GameQuestions = () => {
             <div className="quiz" >
                 <GameDetails />
 
-                <Question question={questions[question].question} />
+                <Question question={questions[question].question} numOfQuestions={questionLength} questionNum={question} />
 
                 <Options options={questions[question].options} answers={questions[question].answers} nextQuestion={nextQuestion} />
 
@@ -74,7 +77,7 @@ const GameQuestions = () => {
 
 }
 
-export default React.memo(GameQuestions) 
+export default React.memo(GameQuestions)
 
 //<a target="_blank" href="https://icons8.com/icons/set/coins--v1">Doodle icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 

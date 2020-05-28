@@ -32,9 +32,9 @@ const Options = ({ options, answers, nextQuestion }) => {
             {
                 randomFinalOptions && randomFinalOptions.map((option, index) => {
                     return (
-                        <div className="each-option-container" key={index} >
+                        <React.Fragment key={index} >
                             <EachOption option={option} answer={randomAnswer} nextQuestion={nextQuestion} />
-                        </div>
+                        </React.Fragment>
 
                     )
                 })

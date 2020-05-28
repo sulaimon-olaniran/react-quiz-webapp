@@ -1,16 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
+import { GameContext } from '../../../../contexts/GameContext'
 
 
 const Timer = () => {
-    const gameTime = 300
+    const [dashArray, setDashArray] = useState(null)
+    //const [timeLeft, setTimeLeft] = useState(gameTime)
+    const { timer, setTimer } = useContext(GameContext)
+
+    const gameTime = 120
     const warningTime = 10
     const dangerTime = 5
 
-    const [dashArray, setDashArray] = useState(null)
-    const [timeLeft, setTimeLeft] = useState(gameTime)
-
-    const dashRef = useRef(timeLeft)
-    const fraction = timeLeft / gameTime //* 283).toFixed(0) 
+    const dashRef = useRef(timer)
+    const fraction = timer / gameTime 
 
     const finalFraction = fraction - (1 / gameTime) * (1 - fraction)
 
@@ -26,19 +28,19 @@ const Timer = () => {
         return `${minutes}:${seconds}`;
     }
      
-     const colorWheel = timeLeft <= dangerTime ? "red" : timeLeft <= warningTime ? "orange" : "green"
+     const colorWheel = timer <= dangerTime ? "red" : timer <= warningTime ? "orange" : "green"
     
 
 
     useEffect(() => {
         const timeInterval = setInterval(() => {
-            setTimeLeft(prev => prev - 1)
+            setTimer(prev => prev - 1)
             setDashArray(dashRef.current)
             
         }, 1000);
-        timeLeft === 0 && clearInterval(timeInterval)
+        timer === 0 && clearInterval(timeInterval)
         return () => clearInterval(timeInterval);
-    }, [timeLeft]);
+    }, [timer, setTimer]);
 
     return (
         <div className="base-timer">
@@ -57,7 +59,7 @@ const Timer = () => {
                 </g>
             </svg>
             <span id="base-timer-label" className="base-timer__label">
-                {formatTime(timeLeft)}
+                {formatTime(timer)}
             </span>
         </div>
     )
