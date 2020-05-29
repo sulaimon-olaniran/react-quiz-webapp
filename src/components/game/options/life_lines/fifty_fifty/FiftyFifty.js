@@ -5,12 +5,12 @@ import success from './assets/success.wav'
 import error from './assets/error.wav'
 
 const FiftyFifty = ({ answer }) => {
-     const { usedFifty, setUsedFiftyFifty, coins, setCoins, usedHint } = useContext(GameContext)
+     const { usedFiftyFifty, setUsedFiftyFifty, coins, setCoins, usedHint } = useContext(GameContext)
      const successRef = useRef()
      const errorRef = useRef()
 
     const handleFiftyFifty = () =>{
-        if ( usedFifty === false && usedHint === false && coins >= 30 ){
+        if ( usedFiftyFifty === false && usedHint === false && coins >= 30 ){
 
             const options = Array.from(document.activeElement.querySelectorAll('.each-option-container'))
             console.log(options)

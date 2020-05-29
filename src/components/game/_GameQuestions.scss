@@ -6,7 +6,7 @@
     flex: 1;
     align-items: center;
     justify-content: center;
-    position: relative;
+    //position: relative;
     
     video {
       min-width: 100%;
@@ -29,6 +29,41 @@
 
 }
 
+@media(max-width : 800px) and (orientation: landscape) {
+  .game-container{
+    min-height: 50rem;
+    
+    video {
+      min-height: 50rem;
+    }
+    .quiz{
+      //position: absolute;
+      height: 40rem;
+      width: 80%;
+    }
+
+}
+
+}
+
+@media(min-width : 760px){
+  .game-container{
+   .quiz{
+     width: 80%;
+   }
+  }
+}
+
+@media(min-width : 1200px){ 
+  .game-container{
+    .quiz{
+      width: 70%;
+    }
+   }
+
+}
+
 @import './options/Options';
 @import './question/Question';
-@import './game_details/GameDetails'
+@import './game_details/GameDetails';
+@import './game_stats/GameStats'

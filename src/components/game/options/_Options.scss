@@ -18,6 +18,30 @@
         
     }
 }
+
+@media(max-width : 800px) and (orientation: landscape) {
+    .options-container{
+        .life-lines-container{
+            height: 5rem;
+        }
+    }
+}
+@media(min-width : 760px){
+    .options-container{
+        height: 35rem;
+        width: 80%;
+    }
+}
+
+@media(min-width : 960px){
+  .options-container{
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
+}
+
+
 @import './each_option/EachOption';
 @import './life_lines/fifty_fifty/FiftyFifty';
 @import './life_lines/hints/Hints'

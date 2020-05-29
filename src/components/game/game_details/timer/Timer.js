@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import { GameContext } from '../../../../contexts/GameContext'
+import {  withRouter } from 'react-router-dom'
 
 
-const Timer = () => {
+const Timer = ({history }) => {
     const [dashArray, setDashArray] = useState(null)
     //const [timeLeft, setTimeLeft] = useState(gameTime)
-    const { timer, setTimer } = useContext(GameContext)
+    const { timer, setTimer, endGamePlay } = useContext(GameContext)
+   
+    
 
     const gameTime = 120
     const warningTime = 10
@@ -30,17 +33,23 @@ const Timer = () => {
      
      const colorWheel = timer <= dangerTime ? "red" : timer <= warningTime ? "orange" : "green"
     
-
-
     useEffect(() => {
         const timeInterval = setInterval(() => {
             setTimer(prev => prev - 1)
             setDashArray(dashRef.current)
             
         }, 1000);
-        timer === 0 && clearInterval(timeInterval)
+        if ( timer === 0){
+            endGamePlay()
+            clearInterval(timeInterval)
+            //history.push("/game/stats")
+
+        }
         return () => clearInterval(timeInterval);
-    }, [timer, setTimer]);
+    }, [timer, setTimer, endGamePlay, history ]);
+
+   
+    
 
     return (
         <div className="base-timer">
@@ -65,4 +74,4 @@ const Timer = () => {
     )
 }
 
-export default Timer
+export default withRouter(Timer)

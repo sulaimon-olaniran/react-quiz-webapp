@@ -11,7 +11,7 @@ const Hints = ({ answer }) => {
     const errorRef = useRef()
 
     const handleHint = () => {
-        if (coins >= 20 && usedFiftyFifty === false) {
+        if ( coins >= 20 && usedFiftyFifty === false ) {
             const options = Array.from(document.activeElement.querySelectorAll('.each-option-container'))
             let answerIndex
 

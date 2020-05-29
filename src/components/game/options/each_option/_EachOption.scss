@@ -20,3 +20,14 @@
     }
     
 }
+
+@media(min-width : 960px){
+    .each-option-container{
+        width: 45%;
+        height: 4.5rem;
+
+        p{
+            font-size: 1.1rem;
+        }
+    }
+}
