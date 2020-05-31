@@ -1,0 +1,201 @@
+.instructions-container{
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .page-title{
+        width: 100%;
+        height: 7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        h3{
+            font-size: 1.2rem;
+            padding-bottom: 3px;
+            border-bottom: 2px solid salmon;
+        }
+        h4{
+            font-size: 1rem;
+        }
+
+    }
+
+    .instructions-info-container{
+        width: 90%;
+        height: 75rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border: 1px solid sandybrown;
+        margin-bottom: 2rem;
+     
+        .question-info-container{
+            list-style: none;
+            width: 95%;
+            height: 8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+     
+            li{
+                font-size: 0.9rem;
+            }
+        }
+        
+        .question-image-container{
+         width: 90%;
+         height: 12rem;
+     
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .alert-info-container{
+            list-style: none;
+            height: 16rem;
+            width: 95%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            li{
+                font-size: 0.9rem;
+            }
+
+            .alert-details{
+              width: 100%;
+              height: 15rem;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              h3{
+                  font-size: 1rem;
+              }
+            }
+        }
+
+        .coins-info-container{
+            list-style: none;
+            height: 8rem;
+            width: 95%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            li{
+                font-size: 0.9rem;
+            }
+            img{
+                margin-top: 1rem;
+            }
+        }
+
+        .lifelines-info-container{
+            width: 100%;
+            height: 20rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            ul{
+                list-style: none;
+                height: 10rem;
+                li{
+                    font-size: 0.9rem;
+                }
+
+                img{
+                    margin-top: 1.5rem;
+                }
+            }
+        }
+
+
+
+    .instructions-buttons-container{
+        width: 100%;
+        height: 4vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 1rem 0;
+    }
+
+
+    }
+}
+
+@media(max-width : 800px) and (orientation: landscape) {
+    .instructions-container{
+       
+        .instructions-info-container{
+            width: 80%;
+            height: 85rem;
+
+            .question-image-container{
+                height: 22rem;
+            }
+
+        }
+    }
+
+}
+
+@media(min-width : 760px){ 
+    .instructions-container{
+        .instructions-info-container{
+            width: 80%;
+            height: 85rem;
+
+            .question-image-container{
+                height: 22rem;
+            }
+        }
+        
+    }
+
+}
+
+@media(min-width : 1000px){ 
+    .instructions-container{
+        .instructions-info-container{
+            width: 75%;
+            height: 95rem;
+
+            .question-image-container{
+                height: 28rem;
+            }
+            .instructions-buttons-container{
+                width: 80%;
+            }
+        }
+        
+    }
+
+}
+
+
+
+@media(min-width : 1200px){ 
+    .instructions-container{
+        .instructions-info-container{
+            width: 70%;
+            height: 100rem;
+
+            .question-image-container{
+                height: 33rem;
+            }
+        }
+        
+    }
+
+}
+
+

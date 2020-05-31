@@ -42,10 +42,10 @@ const StatsDetails = () => {
             <PieChart />
 
             <div className="details-outline-container" >
-
-                <div className="remark-container">
-                    <h3 style={{ color: color }} >{message}</h3>
+                <div className="score-container">
+                    <h3 style={{ color: color }}>Player's Score - {percentage}%</h3>
                 </div>
+
 
                 <ul className="summary-container"  >
 
@@ -58,15 +58,16 @@ const StatsDetails = () => {
 
                 </ul>
 
-                <div className="score-container">
-                    <h3 style={{ color: color }}>Player's Score - {percentage}%</h3>
+                <div className="remark-container">
+                    <h3 style={{ color: color }} >{message}</h3>
                 </div>
+
 
             </div>
 
             <div className="buttons-container">
-                <Button color="secondary"  variant="contained" >Play Again</Button>
-                <Button color="primary"  variant="contained" >Home Page</Button>
+                <Button color="secondary" variant="contained" >Play Again</Button>
+                <Button color="primary" variant="contained" >Home Page</Button>
             </div>
 
 

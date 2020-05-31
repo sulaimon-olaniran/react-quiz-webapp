@@ -11,21 +11,21 @@ const GameQuestions = () => {
 
     const [questions] = useState([
         {
-            question: "Who is don Luchese ?",
-            options: ["Mafia", "Mafia Boss", "American", "American Gangsta", "Citizen", "Lah Lah"],
-            answers: ["Nobody", "No One", "Unknown"],
+            question: "What Alphabet comes after letter A ?",
+            options: ["Letter Z", "Letter Q", "Letter S", "Letter V", "Letter D", "Letter M"],
+            answers: ["Letter B", "Letter B", "Letter B"],
             id: 1
         },
         {
-            question: "Who is Jimmy Falcone ?",
-            options: ["Don Luchese", "Don Cabone Boss", "Don Cabone", "King Lucifer", "Blah Blah"],
-            answers: ["Cheech Uncle", "Jimbo", "Pete's Dad"],
+            question: "How many weeks makes a month ?",
+            options: ["3 weeks", "2 weeks", "9 weeks", "1 week", "7 weeks"],
+            answers: ["4 weeks", "Four weeks", "Four"],
             id: 2
         },
         {
-            question: 'Who is Don Sly ?',
-            options: ["Notorious Gangsta", "Tupac Shakur", "Eminem", "Mommy's Boy", "Gang Leader", "Poet"],
-            answers: ["Rapper", "Programmer", "Transporter"],
+            question: 'An apple is ______ ?',
+            options: ["A Cheese", "A biscuit", "A vegetable", "An Orange ", "A drug", "A state"],
+            answers: ["A fruit", "A green fruit", "A fruit"],
             id: 3
         },
         {

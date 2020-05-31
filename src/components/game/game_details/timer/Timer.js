@@ -42,7 +42,7 @@ const Timer = ({history }) => {
         if ( timer === 0){
             endGamePlay()
             clearInterval(timeInterval)
-            //history.push("/game/stats")
+            history.push("/game/stats")
 
         }
         return () => clearInterval(timeInterval);

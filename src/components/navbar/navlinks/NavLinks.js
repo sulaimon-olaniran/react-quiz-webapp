@@ -8,6 +8,7 @@ import InfoSharpIcon from '@material-ui/icons/InfoSharp'
 import ContactSupportSharpIcon from '@material-ui/icons/ContactSupportSharp'
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports'
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
+import InfoIcon from '@material-ui/icons/Info';
 import Zoom from '@material-ui/core/Zoom'
 
 
@@ -55,6 +56,12 @@ function NavLinks() {
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '1000ms' : '0ms' }}>
         <NavLink to="#" className="button-link">
           <WbIncandescentIcon /><Button color="inherit" size="medium">Quiz League</Button>
+        </NavLink>
+      </Zoom>
+
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '1200ms' : '0ms' }}>
+        <NavLink exact to="/game/instructions" className="button-link">
+          <InfoIcon /><Button color="inherit" size="medium">Instructions</Button>
         </NavLink>
       </Zoom>
 
