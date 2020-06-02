@@ -11,6 +11,7 @@ import GameContextProvider from './contexts/GameContext'
 import GameStats from './components/game/game_stats/GameStats'
 import DeviceOrientation, { Orientation } from 'react-screen-orientation'
 import Instructions from './components/instructions/Instructions'
+import ProfilePage from './components/profile/ProfilePage'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                 <Route exact path="/game" component={GameQuestions} />
                 <Route exact path="/game/stats" component={GameStats} />
                 <Route exact path="/game/instructions" component={Instructions} />
+                <Route exact path="/profile" component={ProfilePage} />
               </Switch>
             </div>
             <Footer />

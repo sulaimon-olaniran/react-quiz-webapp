@@ -24,12 +24,6 @@ const AppContextProvider = ({children}) => {
         setMenuLink(prev => !prev)
     }
 
-
-    // Toggle Email Modals
-    
-
-
-
     return (
         <AppContext.Provider value={{
             toggleTheme:toggleTheme, darkTheme, themeClass, blueThemeClass,  

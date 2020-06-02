@@ -1,0 +1,10 @@
+.profile-page-container {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@import './sections/picture/ProfilePicture';
+@import './sections//info/information';
+@import './sections/details/PlayerDetails'
