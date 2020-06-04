@@ -24,7 +24,7 @@ const NavBar = () => {
     const [anchorElTwo, setAnchorElTwo] = useState(null)
     const { toggleTheme, darkTheme, themeClass, toggleMenu } = useContext(AppContext)
 
-    const loggedIn = true;
+    const loggedIn = false;
 
     const handleClickOffline = (event) => {
         setAnchorEl(event.currentTarget)
@@ -86,8 +86,8 @@ const NavBar = () => {
                     onClose={handleClose}
                     classes={{ paper: styles.paper }}
                 >
-                    <MenuItem onClick={handleClose} >Sign In</MenuItem>
-                    <MenuItem onClick={handleClose} >Sign Up</MenuItem>
+                   <NavLink to="/signin"> <MenuItem onClick={handleClose} >Sign In</MenuItem></NavLink>
+                    <NavLink to="/signup"><MenuItem onClick={handleClose} >Sign Up</MenuItem></NavLink>
                 </Menu>
 
                 <Menu
@@ -110,6 +110,7 @@ const NavBar = () => {
         </nav>
     )
 }
+
 
 
 export default NavBar

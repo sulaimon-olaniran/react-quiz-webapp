@@ -6,7 +6,7 @@ import ScrollAnimation from 'react-animate-on-scroll'
 
 //style for each-section-container can be found in homepage.scss
 
-const DemoSection = () => (
+const FirstSection = () => (
   <div className="each-section-container">
     <ScrollAnimation
       animateIn='bounceInLeft'
@@ -33,4 +33,4 @@ const DemoSection = () => (
 
 )
 
-export default DemoSection
+export default FirstSection

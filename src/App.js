@@ -12,6 +12,9 @@ import GameStats from './components/game/game_stats/GameStats'
 import DeviceOrientation, { Orientation } from 'react-screen-orientation'
 import Instructions from './components/instructions/Instructions'
 import ProfilePage from './components/profile/ProfilePage'
+import FormikSignUpPage from './components/auth/sign_up/SignUp'
+import FormikSignInPage from './components/auth/sign_in/SignIn'
+import AboutPage from './components/about/AboutPage'
 
 function App() {
   return (
@@ -31,9 +34,13 @@ function App() {
               <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/game" component={GameQuestions} />
-                <Route exact path="/game/stats" component={GameStats} />
                 <Route exact path="/game/instructions" component={Instructions} />
+                <Route exact path="/about" component={AboutPage} />
+                <Route exact path="/game/stats" component={GameStats} />
                 <Route exact path="/profile" component={ProfilePage} />
+                <Route exact path="/signup" component={FormikSignUpPage}  />
+                <Route exact path="/signin" component={FormikSignInPage} />
+
               </Switch>
             </div>
             <Footer />

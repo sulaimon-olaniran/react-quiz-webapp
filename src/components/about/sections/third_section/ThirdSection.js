@@ -4,7 +4,7 @@ import React from 'react'
 import trophy from './assets/trophy.png'
 import ScrollAnimation from 'react-animate-on-scroll'
 
-const JambSection = () => (
+const ThirdSection = () => (
     <div className="each-section-container">
         <ScrollAnimation
             animateIn='bounceInLeft'
@@ -28,4 +28,4 @@ const JambSection = () => (
 
 )
 
-export default JambSection
+export default ThirdSection

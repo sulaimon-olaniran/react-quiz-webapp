@@ -4,7 +4,7 @@ import brain from './assets/brain.png'
 import ScrollAnimation from 'react-animate-on-scroll'
 
 
-const LeagueSection = () => (
+const SecondSection = () => (
 
   <div className="each-section-container">
 
@@ -29,4 +29,4 @@ const LeagueSection = () => (
   </div>
 )
 
-export default LeagueSection
+export default SecondSection

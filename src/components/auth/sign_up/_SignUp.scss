@@ -1,0 +1,59 @@
+.sign-up-container{
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+   .form-container{
+       height: 32rem;
+       width: 80%;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-around;
+       border: 1px solid rgb(236, 233, 230);
+       border-radius: 25px;
+       background-color: white;
+       box-shadow: 0 4px 8px 0 rgb(138, 134, 134), 0 6px 20px 0 rgb(153, 150, 150);
+
+       h3{
+           margin: 0;
+       }
+
+        .signup-image-container{
+            width: 6rem;
+            height: 6rem;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+
+        form{
+            width: 80%;
+            height: 20rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            color: inherit;
+
+            .MuiInputLabel-outlined{
+                z-index: 0 !important;
+            }
+
+            .MuiInputBase-input{
+                color: inherit !important;
+            }
+            .MuiFormControl-root{
+                min-width: 100% !important;
+            }
+        }
+       
+    }
+}

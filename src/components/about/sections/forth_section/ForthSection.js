@@ -4,7 +4,7 @@ import React from 'react'
 import cash_reward from './assets/cash_reward.png'
 import ScrollAnimation from 'react-animate-on-scroll'
 
-const PostJambSection = () => (
+const ForthSection = () => (
     <div className="each-section-container">
         <ScrollAnimation
              animateIn='bounceInRight'
@@ -28,4 +28,4 @@ const PostJambSection = () => (
 
 )
 
-export default PostJambSection
+export default ForthSection

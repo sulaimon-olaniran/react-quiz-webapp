@@ -1,0 +1,45 @@
+.about-page-container{
+    width: 100%;
+    min-height: 90vh;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.each-section-container{
+    width: 95%;
+  }
+
+  
+@media(min-width : 500px) and (orientation: landscape) {
+    .each-section-container{
+      width: 45%;
+    }
+  }
+  
+  @media(min-width : 768px){
+    .each-section-container{
+      width: 70%;
+    }
+  }
+  
+  
+  @media(min-width : 968px){
+    
+    
+  }
+  
+  @media(min-width : 1200px){    
+    .each-section-container{
+      width: 45%;
+    }
+  }
+
+
+@import './sections/first_section/FirstSection';
+@import './sections/second_section/SecondSection';
+@import './sections/third_section/ThirdSection';
+@import './sections/forth_section/ForthSection';
+@import './sections/summary/Summary';
+@import './sections/about_me/AboutMe';
