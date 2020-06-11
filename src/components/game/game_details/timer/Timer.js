@@ -7,7 +7,6 @@ const Timer = ({history }) => {
     const [dashArray, setDashArray] = useState(null)
     //const [timeLeft, setTimeLeft] = useState(gameTime)
     const { timer, setTimer, endGamePlay } = useContext(GameContext)
-   
     
 
     const gameTime = 120

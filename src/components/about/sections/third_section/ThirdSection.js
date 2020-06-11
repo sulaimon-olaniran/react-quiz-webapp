@@ -12,10 +12,10 @@ const ThirdSection = () => (
             offset={150}
         >
 
-            <div className="jamb-section">
+            <div className="about-section-container">
                 <h1>Become a Champion</h1>
-                <div className="jamb-image">
-                    <img src={trophy} alt="JAMB" />
+                <div className="third-section-image">
+                    <img src={trophy} alt="Trophies" />
                 </div>
                 <p>
                     Become the best, beat other genius competitors

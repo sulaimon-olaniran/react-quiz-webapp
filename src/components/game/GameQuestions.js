@@ -1,40 +1,12 @@
-import React, { useState } from 'react'
-//import { GameContext } from '../../contexts/GameContext'
+import React, { useContext } from 'react'
 import graphicOne from './assets/graphicOne.mp4'
 import Options from './options/Options'
 import Question from './question/Question'
 import GameDetails from './game_details/GameDetails'
-//import { AppContext } from '../../contexts/AppContext'
+import { QuestionContext } from '../../contexts/QuestionsContext'
 
 const GameQuestions = () => {
-    const [question, setQuestion] = useState(0)
-
-    const [questions] = useState([
-        {
-            question: "What Alphabet comes after letter A ?",
-            options: ["Letter Z", "Letter Q", "Letter S", "Letter V", "Letter D", "Letter M"],
-            answers: ["Letter B", "Letter B", "Letter B"],
-            id: 1
-        },
-        {
-            question: "How many weeks makes a month ?",
-            options: ["3 weeks", "2 weeks", "9 weeks", "1 week", "7 weeks"],
-            answers: ["4 weeks", "Four weeks", "Four"],
-            id: 2
-        },
-        {
-            question: 'An apple is ______ ?',
-            options: ["A Cheese", "A biscuit", "A vegetable", "An Orange ", "A drug", "A state"],
-            answers: ["A fruit", "A green fruit", "A fruit"],
-            id: 3
-        },
-        {
-            question: "How many days can be in a year or found in a leap year ?",
-            options: ["300", "303", "345", "354", "330", "150"],
-            answers: ["365", "365", "366"],
-            id: 4
-        }
-    ])
+    const { questions } = useContext(QuestionContext)
 
     const getRandomColor = () => {
         const letters = '0123456789ABCDEF';
@@ -44,34 +16,18 @@ const GameQuestions = () => {
         }
         return color;
     }
-    const showQuestions = () => {
-        const options = Array.from(document.activeElement.querySelectorAll('.each-option-container'))
-        options.forEach((option, index) => {
-            option.style.visibility = "visible"
-        })
-    }
-
-    const nextQuestion = () => {
-        if (question < 3) {
-            setQuestion(prev => prev + 1)
-        }
-        // console.log("clicked")
-        showQuestions()
-    }
-    const questionLength = questions.length
-
-    return (
+   
+   return (
         <div className={`game-container`} style={{ background: getRandomColor() }} >
             <video src={graphicOne} loop muted autoPlay></video>
 
+           { questions &&
             <div className="quiz" >
                 <GameDetails />
+                <Question  />
+                <Options  />
 
-                <Question question={questions[question].question} numOfQuestions={questionLength} questionNum={question} />
-
-                <Options options={questions[question].options} answers={questions[question].answers} nextQuestion={nextQuestion} />
-
-            </div>
+            </div>}
         </div>
     )
 

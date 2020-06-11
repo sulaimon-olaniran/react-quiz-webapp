@@ -13,33 +13,30 @@ const GameContextProvider = (props) => {
     const [answeredWrong, setAnsweredWrong] = useState(0)
     const [timer, setTimer] = useState(20)
 
-    const playerScore = answeredRight * 4
-    const total = answeredWrong + answeredRight
 
     const endGamePlay = () => {
 
-        const playerStats = {
+        /*const playerStats = {
             score: playerScore,
             right: answeredRight,
             wrong: answeredWrong,
             attempt: total,
             usedCoins: 100 - coins
-        }
-        console.log(playerStats)
+        }*/
+        // console.log(playerStats)
     }
 
-
-    return (
-        <GameContext.Provider value={{
-            removedIndex, setRemovedIndex, rightAnswer, endGamePlay,
-            setRightAnswer, usedFiftyFifty, setUsedFiftyFifty, answeredWrong, setAnsweredWrong, usedHint, timer,
-            coins, setCoins, wrongAnswer, setWrongAnswer, answeredRight, setAnsweredRight, setUsedHint, setTimer
-        }}>
-            {props.children}
-        </GameContext.Provider>
-    )
+        return (
+            <GameContext.Provider value={{
+                removedIndex, setRemovedIndex, rightAnswer, endGamePlay,
+                setRightAnswer, usedFiftyFifty, setUsedFiftyFifty, answeredWrong, setAnsweredWrong, usedHint, timer,
+                coins, setCoins, wrongAnswer, setWrongAnswer, answeredRight, setAnsweredRight, setUsedHint, setTimer,
+            }}>
+                {props.children}
+            </GameContext.Provider>
+        )
+    
 }
-
 
 
 export default GameContextProvider

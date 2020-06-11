@@ -60,3 +60,50 @@
        
     }
 }
+
+
+@media(min-width : 760px){
+    .signin-container{
+        .form-container{
+            height: 35rem;
+            width: 70%;
+
+            .signin-image-container{
+                height: 8rem;
+                width: 8rem;
+            }
+
+            form{
+                height: 25rem;
+            }
+        }
+    }
+}
+
+
+@media(min-width : 960px){
+    .signin-container{
+        .form-container{
+            width: 60%;
+            height: 40rem;
+
+            form{
+                height: 25rem;
+            }
+        }
+    }
+}
+
+
+@media(min-width : 1200px){
+    .signin-container{
+        .form-container{
+            width: 40%;
+            height: 30rem;
+
+            form{
+                height: 25rem;
+            }
+        }
+    }
+}

@@ -3,21 +3,20 @@ import React from 'react'
 //import post_utme from './assets/post_utme.jpeg'
 //import cash_reward from './assets/cash_reward.png'
 import ScrollAnimation from 'react-animate-on-scroll'
-import olami from './assets/olami.png'
-//import summary from "./assets/summary.png"
+import summary from "./assets/summary.png"
 
-const AboutMeSection = () => (
+const FirstSection = () => (
     <div className="each-section-container">
         <ScrollAnimation
-             animateIn='bounceInRight'
-             animateOut='bounceOutRight'
+             animateIn='bounceInLeft'
+             animateOut='bounceOutLeft'
             offset={150}
         >
 
-            <div className="about-me-section">
-                <h1>About Me</h1>
-                <div className="about-me-image">
-                    <img src={olami} alt="Oladipupo" />
+            <div className="about-section-container">
+                <h1>What is OS-Quiz</h1>
+                <div className="first-section-image">
+                    <img src={summary} alt="JAMB" />
                 </div>
                 <p>
                     OS-Quiz was built to help people
@@ -31,4 +30,4 @@ const AboutMeSection = () => (
 
 )
 
-export default AboutMeSection
+export default FirstSection

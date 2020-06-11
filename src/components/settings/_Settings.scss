@@ -1,0 +1,13 @@
+.settings-container{
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+@import './profile/Profile';
+@import './images/display/DisplayImage';
+@import './images/assets/ImageUpload'

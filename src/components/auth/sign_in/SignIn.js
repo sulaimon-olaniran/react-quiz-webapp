@@ -3,35 +3,49 @@ import { NavLink } from 'react-router-dom'
 import { withFormik, Field, Form } from 'formik'
 import { AppContext } from '../../../contexts/AppContext'
 import albert_einstein from './assets/albert_einstein.png'
-//import albert_einstein from '../sign_up/assets/albert_einstein.png'
+import { SignInYupValidation } from '../assets/Validation'
 import TextField from '@material-ui/core/TextField'
 import MyPasswordField from '../assets/MyPassword'
 import Button from '@material-ui/core/Button'
+import { auth } from '../../../firebase/Firebase'
+import Loader from '../../loader/Loader'
 
-const SignInPage = ({ setFieldValue }) => {
+const SignInPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, status }) => {
     const { themeClass } = useContext(AppContext)
+    const message= "Logging User In"
+    if (status) return <Loader loading={isSubmitting} message={message} />
+    else {
+        return (
+            <div className={`signin-container ${themeClass}`} >
+                <div className="form-container" >
+                    <h3>Welcome Home Genius</h3>
 
-    return (
-        <div className={`signin-container ${themeClass}`} >
-            <div className="form-container" >
-                <h3>Welcome Home Genius</h3>
+                    <div className="signin-image-container"  >
+                        <img src={albert_einstein} alt="Albert" />
 
-                <div className="signin-image-container"  >
-                    <img src={albert_einstein} alt="Albert" />
+                    </div>
 
+                    <Form autoComplete="off">
+                        <Field as={TextField} type="email" name="email" label="Email"
+                            error={touched.email && errors.email ? true : false}
+                            helperText={touched.email ? errors.email : null}
+                        />
+                        <MyPasswordField setFieldValue={setFieldValue} handleBlur={handleBlur}
+                            error={touched.password && errors.password ? true : false}
+                            errorMessage={errors.password}
+                        />
+
+
+
+                        <Field type="submit" as={Button} variant="contained" color="secondary" id="button">Sign In</Field>
+                    </Form>
+                    <p>Not yet a Genius ? <NavLink to="/signup"><Button color="primary" size="small">Sign Up</Button></NavLink></p>
                 </div>
 
-                <Form>
-                    <Field as={TextField} type="email" name="email" label="Email" />
-                    <MyPasswordField setFieldValue={setFieldValue}/>
-                    <Field type="submit" as={Button} variant="contained" color="secondary">Sign In</Field>
-                </Form>
-                <p>Not yet a Genius ? <NavLink to="/signup"><Button color="primary" size="small">Sign Up</Button></NavLink></p>
+
             </div>
-
-
-        </div>
-    )
+        )
+    }
 }
 
 const FormikSignInPage = withFormik({
@@ -41,9 +55,22 @@ const FormikSignInPage = withFormik({
             password: ""
         }
     },
-    handleSubmit(values){
 
-        console.log(values)
+    validationSchema: SignInYupValidation,
+
+    handleSubmit(values, { props, setStatus, setSubmitting }) {
+        const { email, password } = values
+        setSubmitting(true)
+        setStatus(true)
+
+        auth.signInWithEmailAndPassword(email, password)
+            .then(() => {
+                setSubmitting(false)
+                setTimeout(() => {
+                    props.history.push('/profile')
+                }, 1000)
+            })
+
     }
 })(SignInPage)
 

@@ -6,9 +6,10 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import FormControl from '@material-ui/core/FormControl'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
+import FormHelperText from '@material-ui/core/FormHelperText'
 
 
-const MyPasswordField = ({setFieldValue}) => {
+const MyPasswordField = ({setFieldValue, handleBlur, error, errorMessage }) => {
 
     const [showPassword, setShowPassWord] = useState(false)
    // const [ password, setPassword ] = useState("")
@@ -23,17 +24,19 @@ const MyPasswordField = ({setFieldValue}) => {
 
     const handleChange = (e) =>{
         //setPassword(e.target.value)
-        setFieldValue("password", e.target.value)
+        setFieldValue("password", e.target.value, true)
+        //setFieldTouched("password")
+
     }
     return (
-        <FormControl >
-            <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+        <FormControl error={error} >
+            <InputLabel htmlFor="password">Password</InputLabel>
             <Input
-                id="standard-adornment-password"
+                id="password"
                 type={showPassword ? 'text' : 'password'}
-                //value={password}
-                //name="password"
                 onChange={handleChange}
+                name="password"
+                onBlur={handleBlur}
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton
@@ -46,6 +49,7 @@ const MyPasswordField = ({setFieldValue}) => {
                     </InputAdornment>
                 }
             />
+           { error && <FormHelperText id="component-error-text">{errorMessage}</FormHelperText>}
         </FormControl>
     )
 

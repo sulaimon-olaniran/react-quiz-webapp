@@ -12,9 +12,9 @@ const ForthSection = () => (
             offset={150}
         >
 
-            <div className="post-jamb-section">
+            <div className="about-section-container">
                 <h1>Win A Cash Price</h1>
-                <div className="post-jamb-image">
+                <div className="forth-section-image">
                     <img src={cash_reward} alt="JAMB" />
                 </div>
                 <p>

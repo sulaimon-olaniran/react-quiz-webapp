@@ -6,17 +6,17 @@ import ScrollAnimation from 'react-animate-on-scroll'
 
 //style for each-section-container can be found in homepage.scss
 
-const FirstSection = () => (
+const SecondSection = () => (
   <div className="each-section-container">
     <ScrollAnimation
-      animateIn='bounceInLeft'
-      animateOut='bounceOutLeft'
+      animateIn='bounceInRight'
+      animateOut='bounceOutRight'
       offset={150}
     >
-      <div className="demo-section">
+      <div className="about-section-container">
 
         <h1>Become A Genius</h1>
-        <div className="demo-image">
+        <div className="second-section-image">
           <img src={happy_prof} alt="DEMO" />
         </div>
 
@@ -33,4 +33,4 @@ const FirstSection = () => (
 
 )
 
-export default FirstSection
+export default SecondSection

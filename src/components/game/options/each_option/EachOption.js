@@ -2,6 +2,7 @@ import React, { useContext, useRef } from 'react'
 import { GameContext } from '../../../../contexts/GameContext'
 import right_answer from './assets/right_answer.wav'
 import wrong_answer from './assets/wrong_answer.wav'
+import { QuestionContext } from '../../../../contexts/QuestionsContext'
 
 const EachOption = ({ option, answer, nextQuestion }) => {
     const {
@@ -10,6 +11,7 @@ const EachOption = ({ option, answer, nextQuestion }) => {
         setAnsweredRight, setAnsweredWrong,
         answeredRight, setUsedHint
     } = useContext(GameContext)
+    const { handleNextQuestion } = useContext(QuestionContext)
 
     const wrongAnswer = useRef()
     const rightAnswer = useRef()
@@ -23,7 +25,7 @@ const EachOption = ({ option, answer, nextQuestion }) => {
         setUsedHint(false)
 
         setTimeout(() => {
-            nextQuestion()
+            handleNextQuestion()
         }, 700)
 
         if (optionValue === correctAnswer) {
@@ -38,6 +40,7 @@ const EachOption = ({ option, answer, nextQuestion }) => {
         }
 
     }
+    console.log("hello from each options")
 
     return (
 

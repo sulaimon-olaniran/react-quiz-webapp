@@ -1,27 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import EachOption from './each_option/EachOption'
 import FiftyFifty from './life_lines/fifty_fifty/FiftyFifty'
 import Hints from './life_lines/hints/Hints'
+//import { GameContext } from '../../../contexts/GameContext'
+import { QuestionContext } from '../../../contexts/QuestionsContext'
 
 const Options = ({ options, answers, nextQuestion }) => {
+    const { currentOptions, currentAnswers } = useContext(QuestionContext)
     
-    const randomAnswer = answers[Math.floor(Math.random() * answers.length)]
+    const randomAnswer = currentAnswers[Math.floor(Math.random() * currentAnswers.length)]
     const randomOptions = []
     const randomFinalOptions = []
+    console.log("options is updating")
 
     // function for shuffling array
     
 
     const shuffleArray = (oldArray, newArray, arrayLength) => {
         while (newArray.length <= arrayLength) {
-            const random = oldArray[Math.floor(Math.random() * oldArray.length)]
+            const random =  oldArray[Math.floor(Math.random() * oldArray.length)]
             if (!newArray.includes(random)) {
                 newArray.push(random)
             }
         }
 
     }
-    shuffleArray(options, randomOptions, 2)
+    shuffleArray( currentOptions, randomOptions, 2)
 
     const finalOptions = randomOptions.concat(randomAnswer)
 

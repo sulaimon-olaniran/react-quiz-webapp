@@ -1,0 +1,23 @@
+.loader-container{
+    width: 100%;
+    min-height: 100vh;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1{
+        color: salmon;
+    }
+
+    div{
+        width : 120px !important;
+        height: 120px !important;
+    }
+    .MuiSvgIcon-root{
+        height: 120px;
+        width: 120px;
+        color :green;
+    }
+}

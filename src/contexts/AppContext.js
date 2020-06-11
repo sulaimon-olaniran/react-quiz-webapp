@@ -1,14 +1,42 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
+import { auth } from '../firebase/Firebase'
 
 export const AppContext = createContext()
 
-const AppContextProvider = ({children}) => {
+const AppContextProvider = ({ children }) => {
 
-    const [ darkTheme, setDarkTheme ] = useState(false)
-    const [ menuLink, setMenuLink] = useState(false)
-    
+    const [darkTheme, setDarkTheme] = useState(false)
+    const [menuLink, setMenuLink] = useState(false)
+    const [loggedIn, setLoggedIn] = useState()
+    const [isAuth, setIsAuth] = useState(true)
 
-   
+    useEffect(() => {
+        authUser().then((user) => {
+            setIsAuth(false)
+
+        }, (error) => {
+            setIsAuth(false)
+            console.log(error);
+        });
+    }, [])
+
+    const authUser = () => {
+        return new Promise(function (resolve, reject) {
+            auth.onAuthStateChanged(user => {
+                if (user) {
+                    resolve(user)
+                    setLoggedIn(true)
+                }
+                else {
+                    setLoggedIn(false)
+                }
+                reject("not logged in")
+            })
+        })
+    }
+
+
+
     const toggleTheme = () => {
         setDarkTheme(prev => !prev)
     }
@@ -20,14 +48,14 @@ const AppContextProvider = ({children}) => {
         setMenuLink(false)
     }
 
-    const toggleMenu = () =>{
+    const toggleMenu = () => {
         setMenuLink(prev => !prev)
     }
 
     return (
         <AppContext.Provider value={{
-            toggleTheme:toggleTheme, darkTheme, themeClass, blueThemeClass,  
-            closeMenu:closeMenu, toggleMenu:toggleMenu, menuLink
+            toggleTheme: toggleTheme, darkTheme, themeClass, blueThemeClass, loggedIn,
+            closeMenu: closeMenu, toggleMenu: toggleMenu, menuLink, isAuth,
         }}>
             {children}
         </AppContext.Provider>

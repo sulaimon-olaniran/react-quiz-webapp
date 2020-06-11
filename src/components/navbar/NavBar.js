@@ -13,18 +13,17 @@ import Avatar from '@material-ui/core/Avatar'
 import profile_picture from './assets/profile_picture.png'
 import PersonTwoToneIcon from '@material-ui/icons/PersonTwoTone'
 import LockTwoToneIcon from '@material-ui/icons/LockTwoTone'
-import SettingsIcon from '@material-ui/icons/Settings';
+import SettingsIcon from '@material-ui/icons/Settings'
+import { auth } from '../../firebase/Firebase'
 //import logo_head from './assets/logo_head.png'
-
-
 
 
 const NavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null)
     const [anchorElTwo, setAnchorElTwo] = useState(null)
-    const { toggleTheme, darkTheme, themeClass, toggleMenu } = useContext(AppContext)
+    const { toggleTheme, darkTheme, themeClass, toggleMenu, loggedIn, isAuth } = useContext(AppContext)
 
-    const loggedIn = false;
+    //const loggedIn = auth.currentUser ? true : false
 
     const handleClickOffline = (event) => {
         setAnchorEl(event.currentTarget)
@@ -38,6 +37,11 @@ const NavBar = () => {
         setAnchorEl(null);
         setAnchorElTwo(null);
     };
+
+    const handleLogOut = () => {
+        handleClose()
+        auth.signOut()
+    }
 
     const useStyles = makeStyles({
         paper: {
@@ -86,7 +90,7 @@ const NavBar = () => {
                     onClose={handleClose}
                     classes={{ paper: styles.paper }}
                 >
-                   <NavLink to="/signin"> <MenuItem onClick={handleClose} >Sign In</MenuItem></NavLink>
+                    <NavLink to="/signin"> <MenuItem onClick={handleClose} >Sign In</MenuItem></NavLink>
                     <NavLink to="/signup"><MenuItem onClick={handleClose} >Sign Up</MenuItem></NavLink>
                 </Menu>
 
@@ -101,8 +105,10 @@ const NavBar = () => {
                     <NavLink exact to="/profile">
                         <MenuItem onClick={handleClose} > <PersonTwoToneIcon size="small" /> Profile</MenuItem>
                     </NavLink>
-                    <MenuItem onClick={handleClose} > <SettingsIcon size="small" /> Settings</MenuItem>
-                    <MenuItem onClick={handleClose} > <LockTwoToneIcon size="small" /> Log Out</MenuItem>
+                    <NavLink exact to="/settings">
+                        <MenuItem onClick={handleClose} > <SettingsIcon size="small" /> Settings</MenuItem>
+                    </NavLink>
+                    <MenuItem onClick={handleLogOut} > <LockTwoToneIcon size="small" /> Log Out</MenuItem>
                 </Menu>
             </div>
 

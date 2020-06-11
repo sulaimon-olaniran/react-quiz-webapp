@@ -1,13 +1,7 @@
-.jamb-section {
-    height: 25rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 10px;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-    .jamb-image{
+.about-section-container {
+   // box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+    padding-bottom: 8px;
+    .third-section-image{
         width: 75%;
         height: 10rem;
         img{
@@ -25,7 +19,7 @@
 
 
 @media(min-width : 768px){
-    .jamb-section{
+    .about-section-container{
         p{
             font-size: 1.1rem;
         }
@@ -33,9 +27,8 @@
 }
 
 @media(min-width : 968px){
-    .jamb-section{
-       height: 30rem;
-       .jamb-image{
+    .about-section-container{
+       .third-section-image{
            height: 16rem;
 
        }

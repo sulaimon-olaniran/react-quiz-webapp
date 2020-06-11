@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import NavBar from './components/navbar/NavBar'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './styles/Styles.scss'
@@ -9,49 +9,97 @@ import Footer from './components/footer/Footer'
 import GameQuestions from './components/game/GameQuestions'
 import GameContextProvider from './contexts/GameContext'
 import GameStats from './components/game/game_stats/GameStats'
-import DeviceOrientation, { Orientation } from 'react-screen-orientation'
+//import DeviceOrientation, { Orientation } from 'react-screen-orientation'
 import Instructions from './components/instructions/Instructions'
 import ProfilePage from './components/profile/ProfilePage'
 import FormikSignUpPage from './components/auth/sign_up/SignUp'
 import FormikSignInPage from './components/auth/sign_in/SignIn'
 import AboutPage from './components/about/AboutPage'
+import QuestionContextProvider from './contexts/QuestionsContext'
+import SettingsPage from './components/settings/Settings'
+import ProfileContextProvider from './contexts/ProfileContext'
+import { auth } from './firebase/Firebase'
+import Loader from './components/loader/Loader'
+import { Offline, Online } from "react-detect-offline"
 
 function App() {
-  return (
+  const [isAuth, setIsAuth] = useState(true)
+  const [show, setShow] = useState(false)
+  //const [ ]
 
-    <AppContextProvider>
-      <GameContextProvider >
-        <Router>
-        <DeviceOrientation lockOrientation={'portrait'}>
-        <Orientation orientation='portrait' alwaysRender={true}>
-          <div className="App">
+  useEffect(() => {
+    authUser().then((user) => {
+      setIsAuth(false)
+      setTimeout(() => {
+        setShow(true)
+      }, 500)
 
-            <NavContent />
-            <NavBar />
+    }, (error) => {
+      setIsAuth(false)
+      setTimeout(() => {
+        setShow(true)
+      }, 500)
+      console.log(error);
+      console.log("error was found")
+    });
 
+  }, [])
 
-            <div className="page-section">
-              <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/game" component={GameQuestions} />
-                <Route exact path="/game/instructions" component={Instructions} />
-                <Route exact path="/about" component={AboutPage} />
-                <Route exact path="/game/stats" component={GameStats} />
-                <Route exact path="/profile" component={ProfilePage} />
-                <Route exact path="/signup" component={FormikSignUpPage}  />
-                <Route exact path="/signin" component={FormikSignInPage} />
+  const authUser = () => {
+    return new Promise(function (resolve, reject) {
+      auth.onAuthStateChanged(user => {
+        if (user) {
+          resolve(user)
+        }
+        reject("not logged in")
+      })
+    })
+  }
+  const message = "Authenticating User"
 
-              </Switch>
-            </div>
-            <Footer />
-          </div>
-          </Orientation>
-          </DeviceOrientation>
-        </Router>
-      </GameContextProvider>
-    </AppContextProvider>
+  if (show === false) return <Loader loading={isAuth} message={message} />
 
-  )
+  else {
+    return (
+      <React.Fragment>
+        <Online>
+          <AppContextProvider>
+            <GameContextProvider >
+              <QuestionContextProvider>
+                <ProfileContextProvider >
+                  <Router>
+                    <div className="App">
+                      <NavContent />
+                      <NavBar />
+
+                      <div className="page-section">
+
+                        <Switch>
+                          <Route exact path="/" component={HomePage} />
+                          <Route exact path="/game" component={GameQuestions} />
+                          <Route exact path="/game/instructions" component={Instructions} />
+                          <Route exact path="/about" component={AboutPage} />
+                          <Route exact path="/game/stats" component={GameStats} />
+                          <Route exact path="/profile" component={ProfilePage} />
+                          <Route exact path="/signup" component={FormikSignUpPage} />
+                          <Route exact path="/signin" component={FormikSignInPage} />
+                          <Route exact path="/settings" component={SettingsPage} />
+                        </Switch>
+                      </div>
+                      <Footer />
+                    </div>
+                  </Router>
+                </ProfileContextProvider>
+              </QuestionContextProvider>
+            </GameContextProvider>
+          </AppContextProvider>
+        </Online>
+        <Offline>
+          <h1>Connect to Internet</h1>
+        </Offline>
+      </React.Fragment>
+    )
+  }
 }
 
 export default App;

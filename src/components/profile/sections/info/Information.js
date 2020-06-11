@@ -4,13 +4,12 @@ import silver_cup from './assets/silver_cup.png'
 import bronze_cup from './assets/bronze_cup.png'
 
 
-const Information = () => {
+const Information = ({ details }) => {
     return (
         <div className="profile-information-container" >
 
             <div className="profile-name-container">
-                <h3>Olaniran Oladipupo Sulaimon</h3>
-                <p>(OlaDi-Genius)</p>
+                <h3>{details.firstName} {details.lastName}</h3>
             </div>
 
             <div className="achievements-container" >

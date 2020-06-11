@@ -5,41 +5,98 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .sections-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .each-section-container{
     width: 95%;
+    height: 25rem;
+    margin: 10px;
+
+    .animated{
+        height: 25rem;
+        .about-section-container{
+            min-height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+    }
   }
 
   
 @media(min-width : 500px) and (orientation: landscape) {
+    .about-page-container{
+        .sections-container{
+            width: 90%;
+            justify-content: space-around;
+            flex-direction: row;
+            flex-wrap: wrap ;
+        }
+    }
     .each-section-container{
       width: 45%;
     }
   }
   
   @media(min-width : 768px){
+      .about-page-container{
+          .sections-container{
+              width: 50%;
+          }
+      }
     .each-section-container{
-      width: 70%;
+      width: 100%;
     }
   }
   
   
   @media(min-width : 968px){
-    
+    .about-page-container{
+        .sections-container{
+            width: 50%;
+        }
+    }
+  .each-section-container{
+    width: 100%;
+    height: 30rem;
+
+    .animated{
+        height: 30rem;
+    }
+  }
     
   }
   
-  @media(min-width : 1200px){    
-    .each-section-container{
-      width: 45%;
+  @media(min-width : 1200px){  
+    .about-page-container{
+        .sections-container{
+            width: 75%;
+            flex-direction: row;
+            justify-content: space-around;
+        }
     }
+  .each-section-container{
+    width: 40%;
+    height: 26rem;
+    .animated{
+        height: 26rem;
+    }
+  }
+   
   }
 
 
-@import './sections/first_section/FirstSection';
-@import './sections/second_section/SecondSection';
+@import './sections/secondSection/SecondSection';
 @import './sections/third_section/ThirdSection';
 @import './sections/forth_section/ForthSection';
-@import './sections/summary/Summary';
-@import './sections/about_me/AboutMe';
+@import './sections/firstSection/FirstSection';
