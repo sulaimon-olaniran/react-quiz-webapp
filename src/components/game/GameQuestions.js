@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import graphicOne from './assets/graphicOne.mp4'
+//import graphicOne from './assets/graphicOne.mp4'
 import Options from './options/Options'
 import Question from './question/Question'
 import GameDetails from './game_details/GameDetails'

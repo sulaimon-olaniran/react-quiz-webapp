@@ -18,27 +18,34 @@ import AboutPage from './components/about/AboutPage'
 import QuestionContextProvider from './contexts/QuestionsContext'
 import SettingsPage from './components/settings/Settings'
 import ProfileContextProvider from './contexts/ProfileContext'
-import { auth } from './firebase/Firebase'
+import { auth, db } from './firebase/Firebase'
 import Loader from './components/loader/Loader'
 import { Offline, Online } from "react-detect-offline"
 
 function App() {
   const [isAuth, setIsAuth] = useState(true)
   const [show, setShow] = useState(false)
-  //const [ ]
+  const [user, setUser] = useState(true)
+
+  const getUser = () => {
+    const userId = auth.currentUser && auth.currentUser.uid
+    db.collection("users").doc(userId)
+      .get()
+      .then((data) => {
+        setUser(data.data())
+        setIsAuth(false)
+        setTimeout(() => {
+          setShow(true)
+        }, 500);
+      })
+  }
 
   useEffect(() => {
     authUser().then((user) => {
-      setIsAuth(false)
-      setTimeout(() => {
-        setShow(true)
-      }, 500)
+      getUser()
 
     }, (error) => {
-      setIsAuth(false)
-      setTimeout(() => {
-        setShow(true)
-      }, 500)
+      getUser()
       console.log(error);
       console.log("error was found")
     });
@@ -55,6 +62,7 @@ function App() {
       })
     })
   }
+
   const message = "Authenticating User"
 
   if (show === false) return <Loader loading={isAuth} message={message} />
@@ -70,7 +78,7 @@ function App() {
                   <Router>
                     <div className="App">
                       <NavContent />
-                      <NavBar />
+                      <NavBar profile={user} />
 
                       <div className="page-section">
 

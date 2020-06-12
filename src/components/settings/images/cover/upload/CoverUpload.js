@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { storage, db, auth } from '../../../../firebase/Firebase'
+import React, { useState } from 'react'
+import { storage, db, auth } from '../../../../../firebase/Firebase'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button'
 import Fab from '@material-ui/core/Fab'
 import CheckIcon from '@material-ui/icons/Check'
 import SaveIcon from '@material-ui/icons/Save'
-import { ProfileContext } from '../../../../contexts/ProfileContext'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -42,10 +41,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const ImageUpload = ({ photo }) => {
+const CoverImageUpload = ({ photo }) => {
     const [image, setImage] = useState(null)
-    //const [preview, setPreview] = useState('')
-    const { profile } = useContext(ProfileContext)
+    const [preview, setPreview] = useState('')
+
     const classes = useStyles();
     const [loading, setLoading] = React.useState(false);
     const [success, setSuccess] = React.useState(false);
@@ -59,7 +58,7 @@ const ImageUpload = ({ photo }) => {
     const handleChange = e => {
         if (e.target.files[0]) {
             setImage(e.target.files[0])
-           // setPreview(URL.createObjectURL(e.target.files[0]))
+            setPreview(URL.createObjectURL(e.target.files[0]))
         }
     }
 
@@ -83,7 +82,7 @@ const ImageUpload = ({ photo }) => {
                 storage.ref('images').child(image.name).getDownloadURL()
                     .then(url => {
                         return db.collection("users").doc(userId && userId).set({
-                           photo: url
+                           coverImage : url
                         }, { merge: true })
                     }).then(() => {
                         console.log("Upload sucessful")
@@ -111,7 +110,7 @@ const ImageUpload = ({ photo }) => {
             <div className="image-display-con">
 
                 <div className="uploaded-image">
-                    <img src={ imagePlace} alt="Uploaded" />
+                    <img src={preview ? preview : imagePlace} alt="Uploaded" />
                 </div>
 
             </div>
@@ -147,4 +146,4 @@ const ImageUpload = ({ photo }) => {
     )
 }
 
-export default ImageUpload
+export default CoverImageUpload

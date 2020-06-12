@@ -10,7 +10,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 //import { ProfileContext } from '../../../contexts/ProfileContext'
 
 const ProfileSettings = ({ isSubmitting, status }) => {
-    const displayed = isSubmitting ? <CircularProgress color="primary" /> : <h3 style={{color : 'green'}}>Updated</h3>
+    const displayed = isSubmitting ? <CircularProgress color="primary" /> : <h3 style={{ color: 'green' }}>Updated</h3>
 
     return (
         <div className="profile-settings-container" >
@@ -42,7 +42,7 @@ const ProfileSettings = ({ isSubmitting, status }) => {
                 <Field as={TextField} type="text" name="about" label="About You" />
 
                 <Field type="submit" as={Button} variant="contained" color="primary" disabled={status} >Update Details</Field>
-                { status && displayed }
+                {status && displayed}
             </Form>
         </div>
     )
@@ -51,17 +51,17 @@ const ProfileSettings = ({ isSubmitting, status }) => {
 
 const FormikProfileSettings = withFormik({
     mapPropsToValues({ details }) {
-        const { firstName, lastName } = details
+        const { firstName, lastName, sex, phoneNumber, instagram, twitter, about, facebook } = details
         return {
             firstName: firstName || "",
             lastName: lastName || "",
-            sex: "",
-            country: "",
-            phoneNumber: "",
-            instagram: "",
-            twitter: "",
-            about: "",
-            facebook : ""
+            sex: sex || "",
+            // country: country || "",
+            phoneNumber: phoneNumber || "",
+            instagram: instagram || "",
+            twitter: twitter || "",
+            about: about || "",
+            facebook: facebook || ""
         }
     },
 
@@ -76,19 +76,19 @@ const FormikProfileSettings = withFormik({
             firstName: firstName,
             lastName: lastName,
             sex: sex,
-            country: country,
+           // country: country,
             phoneNumber: phoneNumber,
             instagram: instagram,
             twitter: twitter,
-            facebook : facebook,
+            facebook: facebook,
             about: about
 
-        } , { merge: true } ).then(() =>{
+        }, { merge: true }).then(() => {
             setSubmitting(false)
             setTimeout(() => {
                 setStatus(false)
             }, 1000)
-           // console.log("Profile Updated")
+            // console.log("Profile Updated")
         })
 
     }

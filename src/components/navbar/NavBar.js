@@ -10,21 +10,22 @@ import MenuItem from '@material-ui/core/MenuItem'
 import { makeStyles } from '@material-ui/core/styles'
 import { AppContext } from '../../contexts/AppContext'
 import Avatar from '@material-ui/core/Avatar'
-import profile_picture from './assets/profile_picture.png'
+//import profile_picture from './assets/profile_picture.png'
 import PersonTwoToneIcon from '@material-ui/icons/PersonTwoTone'
 import LockTwoToneIcon from '@material-ui/icons/LockTwoTone'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { auth } from '../../firebase/Firebase'
-//import logo_head from './assets/logo_head.png'
+import { ProfileContext } from '../../contexts/ProfileContext'
+import user_avatar from '../profile/sections/picture/assets/user_avatar.png'
 
 
-const NavBar = () => {
+const NavBar = ({profile}) => {
     const [anchorEl, setAnchorEl] = useState(null)
     const [anchorElTwo, setAnchorElTwo] = useState(null)
     const { toggleTheme, darkTheme, themeClass, toggleMenu, loggedIn } = useContext(AppContext)
 
-    //const loggedIn = auth.currentUser ? true : false
-
+    let profileImage = profile.displayImage === "" ? user_avatar : profile.displayImage
+    
     const handleClickOffline = (event) => {
         setAnchorEl(event.currentTarget)
     };
@@ -78,7 +79,7 @@ const NavBar = () => {
 
                         :
                         <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleClickOnline} >
-                            <Avatar alt="Remy Sharp" src={profile_picture} />
+                            <Avatar alt="Remy Sharp" src={profileImage} />
                         </IconButton>
                 }
 
