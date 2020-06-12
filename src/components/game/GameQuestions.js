@@ -1,12 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import graphicOne from './assets/graphicOne.mp4'
 import Options from './options/Options'
 import Question from './question/Question'
 import GameDetails from './game_details/GameDetails'
 import { QuestionContext } from '../../contexts/QuestionsContext'
+import Loader from '../loader/Loader'
 
 const GameQuestions = () => {
-    const { questions } = useContext(QuestionContext)
+    const { fetching, loading, getGameQuestions } = useContext(QuestionContext)
+    
+    useEffect(() =>{
+       getGameQuestions()
+    }, [])
 
     const getRandomColor = () => {
         const letters = '0123456789ABCDEF';
@@ -16,20 +21,23 @@ const GameQuestions = () => {
         }
         return color;
     }
-   
-   return (
-        <div className={`game-container`} style={{ background: getRandomColor() }} >
-            <video src={graphicOne} loop muted autoPlay></video>
+    const message = "Fetching Questions"
 
-           { questions &&
-            <div className="quiz" >
-                <GameDetails />
-                <Question  />
-                <Options  />
+    if (fetching) return <Loader message={message} loading={loading} />
+    else {
+        return (
+            <div className={`game-container`} style={{ background: getRandomColor() }} >
+                {/* <video src={graphicOne} loop muted autoPlay></video> */}
 
-            </div>}
-        </div>
-    )
+                <div className="quiz" >
+                    <GameDetails />
+                    <Question />
+                    <Options />
+
+                </div>
+            </div>
+        )
+   }
 
 }
 

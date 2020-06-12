@@ -11,7 +11,7 @@ const GameContextProvider = (props) => {
     const [rightAnswer, setRightAnswer] = useState(false)
     const [answeredRight, setAnsweredRight] = useState(0)
     const [answeredWrong, setAnsweredWrong] = useState(0)
-    const [timer, setTimer] = useState(20)
+    //const [timer, setTimer] = useState(20)
 
 
     const endGamePlay = () => {
@@ -29,8 +29,8 @@ const GameContextProvider = (props) => {
         return (
             <GameContext.Provider value={{
                 removedIndex, setRemovedIndex, rightAnswer, endGamePlay,
-                setRightAnswer, usedFiftyFifty, setUsedFiftyFifty, answeredWrong, setAnsweredWrong, usedHint, timer,
-                coins, setCoins, wrongAnswer, setWrongAnswer, answeredRight, setAnsweredRight, setUsedHint, setTimer,
+                setRightAnswer, usedFiftyFifty, setUsedFiftyFifty, answeredWrong, setAnsweredWrong, usedHint, //timer,
+                coins, setCoins, wrongAnswer, setWrongAnswer, answeredRight, setAnsweredRight, setUsedHint,// setTimer,
             }}>
                 {props.children}
             </GameContext.Provider>

@@ -21,7 +21,7 @@ import { auth } from '../../firebase/Firebase'
 const NavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null)
     const [anchorElTwo, setAnchorElTwo] = useState(null)
-    const { toggleTheme, darkTheme, themeClass, toggleMenu, loggedIn, isAuth } = useContext(AppContext)
+    const { toggleTheme, darkTheme, themeClass, toggleMenu, loggedIn } = useContext(AppContext)
 
     //const loggedIn = auth.currentUser ? true : false
 

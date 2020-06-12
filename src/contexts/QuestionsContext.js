@@ -1,13 +1,16 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState } from 'react'
 import { db } from '../firebase/Firebase'
 
 export const QuestionContext = createContext()
 
 const QuestionContextProvider = (props) => {
     const [questions, setQuestions] = useState(null)
-    const [questionNum, setQuestionNum] = useState(0)
+    const [questionNumber, setQuestionNumber] = useState(0)
+    const [ loading, setLoading ] = useState(true)
+    const [ fetching, setFetching ] = useState(true)
 
     const getGameQuestions = () => {
+        
         db.collection('questions')
             .get()
             .then(snapshot => {
@@ -18,13 +21,14 @@ const QuestionContextProvider = (props) => {
                 })
                 //console.log(questions)
                 setQuestions(questions)
+                setLoading(false)
+                
+                setTimeout(() =>{
+                    setFetching(false)
+                }, 1000)
             })
             .catch(error => console.log(error))
     }
-
-    useEffect(() => {
-        getGameQuestions()
-    }, [])
 
     //Reverse all options visibility back to visible incase of any hints being usded
     const showOptions = () => {
@@ -35,21 +39,17 @@ const QuestionContextProvider = (props) => {
     }
 
     const handleNextQuestion = () => {
-        if (questionNum < questions && questions.length) {
-            setQuestionNum(prev => prev + 1)
-        }
-        // console.log("clicked")
         showOptions()
     }
-    const currentQuestions = questions !== null ? questions[questionNum].questions : null
-    const currentOptions = questions !== null? questions[questionNum].options : null
-    const currentAnswers = questions !== null  ? questions[questionNum].answers : null
+    //const currentQuestions = questions && questions[questionNumber].questions// questions !== null ? questions[questionNum].questions : null
+    const currentOptions = questions !== null? questions[questionNumber].options : null
+    const currentAnswers = questions !== null  ? questions[questionNumber].answers : null
 
 
     return (
         <QuestionContext.Provider value={{ 
-            currentAnswers, currentOptions, currentQuestions,
-            handleNextQuestion, questionNum
+            currentAnswers, currentOptions,  questionNumber, setQuestionNumber, loading,
+            handleNextQuestion: handleNextQuestion , questions, getGameQuestions, fetching
         }}>
             {props.children}
         </QuestionContext.Provider>

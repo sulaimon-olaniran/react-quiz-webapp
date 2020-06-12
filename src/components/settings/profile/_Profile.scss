@@ -1,18 +1,19 @@
 .profile-settings-container{
    width: 100%;
-   height: 42rem;
+   height: 45rem;
    display: flex;
    flex-direction: column;
    align-items: center;
 
     .profile-settings-form{
         width: 80%;
-        height: 40rem;
+        height: 43rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
         color: inherit;
+        padding-bottom: 10px;
     }
     .MuiInput-underline:before{
         color: inherit !important;

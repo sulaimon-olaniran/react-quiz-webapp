@@ -5,21 +5,21 @@ export const ProfileContext = createContext()
 
 const ProfileContextProvider = ({children}) => {
     const [ profile, setProfile ] = useState(null)
+    const [ loading, setLoading ] = useState(true)
+    const [ fetching, setFetching ] = useState(true)
 
     const getUserProfile = () => {
        const userId = auth.currentUser && auth.currentUser.uid
-       db.collection("users").doc(userId) //doc('UllR35jwqcXz4FDLuH9Z9hfOnOD3')
+       db.collection("users").doc(userId) 
        .get()
             .then(snapshot => {
-                /*const profile = []
-                snapshot.forEach(doc => {
-                    const data = doc.data()
-                    profile.push(data)
-                })
-                console.log(profile)
-                setProfile(profile)*/
-                console.log(snapshot.data())
+                //console.log(snapshot.data())
                 setProfile(snapshot.data())
+                setLoading(false)
+                
+                setTimeout(() =>{
+                    setFetching(false)
+                }, 1000)
             })
             .catch(error => console.log(error))
     }
@@ -30,13 +30,12 @@ const ProfileContextProvider = ({children}) => {
                 getUserProfile()
             }
         })
-
         
     }, [])
 
     return (
         <ProfileContext.Provider value={{ 
-         profile, getUserProfile
+         profile, getUserProfile, loading, fetching
         }}>
             {children}
         </ProfileContext.Provider>

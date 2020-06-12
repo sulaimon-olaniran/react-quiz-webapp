@@ -11,7 +11,8 @@ const EachOption = ({ option, answer, nextQuestion }) => {
         setAnsweredRight, setAnsweredWrong,
         answeredRight, setUsedHint
     } = useContext(GameContext)
-    const { handleNextQuestion } = useContext(QuestionContext)
+
+    const { handleNextQuestion , setQuestionNumber} = useContext(QuestionContext)
 
     const wrongAnswer = useRef()
     const rightAnswer = useRef()
@@ -19,14 +20,16 @@ const EachOption = ({ option, answer, nextQuestion }) => {
     const handleOption = (event) => {
         const optionValue = event.target.innerHTML.toLowerCase()
         const correctAnswer = answer.toLowerCase()
-        console.log(answeredRight)
+       console.log(answeredRight)
         setRemovedIndex([])
         setUsedFiftyFifty(false)
         setUsedHint(false)
 
         setTimeout(() => {
             handleNextQuestion()
-        }, 700)
+            setQuestionNumber(prev => prev + 1)
+           
+        }, 800)
 
         if (optionValue === correctAnswer) {
             setRightAnswer(true)
@@ -40,7 +43,7 @@ const EachOption = ({ option, answer, nextQuestion }) => {
         }
 
     }
-    console.log("hello from each options")
+    //console.log("hello from each options")
 
     return (
 

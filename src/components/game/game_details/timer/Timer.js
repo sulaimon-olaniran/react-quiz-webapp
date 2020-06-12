@@ -6,8 +6,8 @@ import {  withRouter } from 'react-router-dom'
 const Timer = ({history }) => {
     const [dashArray, setDashArray] = useState(null)
     //const [timeLeft, setTimeLeft] = useState(gameTime)
-    const { timer, setTimer, endGamePlay } = useContext(GameContext)
-    
+    const {  endGamePlay } = useContext(GameContext)
+    const [timer, setTimer] = useState(20)
 
     const gameTime = 120
     const warningTime = 10

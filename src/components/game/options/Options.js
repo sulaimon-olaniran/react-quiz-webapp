@@ -5,7 +5,7 @@ import Hints from './life_lines/hints/Hints'
 //import { GameContext } from '../../../contexts/GameContext'
 import { QuestionContext } from '../../../contexts/QuestionsContext'
 
-const Options = ({ options, answers, nextQuestion }) => {
+const Options = () => {
     const { currentOptions, currentAnswers } = useContext(QuestionContext)
     
     const randomAnswer = currentAnswers[Math.floor(Math.random() * currentAnswers.length)]
@@ -37,7 +37,7 @@ const Options = ({ options, answers, nextQuestion }) => {
                 randomFinalOptions && randomFinalOptions.map((option, index) => {
                     return (
                         <React.Fragment key={index} >
-                            <EachOption option={option} answer={randomAnswer} nextQuestion={nextQuestion} />
+                            <EachOption option={option} answer={randomAnswer} />
                         </React.Fragment>
 
                     )

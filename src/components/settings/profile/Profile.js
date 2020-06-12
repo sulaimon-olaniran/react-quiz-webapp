@@ -6,9 +6,11 @@ import { withFormik, Form, Field } from 'formik'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 import { db, auth } from '../../../firebase/Firebase'
-import { ProfileContext } from '../../../contexts/ProfileContext'
+import CircularProgress from '@material-ui/core/CircularProgress'
+//import { ProfileContext } from '../../../contexts/ProfileContext'
 
-const ProfileSettings = () => {
+const ProfileSettings = ({ isSubmitting, status }) => {
+    const displayed = isSubmitting ? <CircularProgress color="primary" /> : <h3 style={{color : 'green'}}>Updated</h3>
 
     return (
         <div className="profile-settings-container" >
@@ -39,7 +41,8 @@ const ProfileSettings = () => {
 
                 <Field as={TextField} type="text" name="about" label="About You" />
 
-                <Field type="submit" as={Button} variant="contained" color="primary" >Update Details</Field>
+                <Field type="submit" as={Button} variant="contained" color="primary" disabled={status} >Update Details</Field>
+                { status && displayed }
             </Form>
         </div>
     )
@@ -62,11 +65,12 @@ const FormikProfileSettings = withFormik({
         }
     },
 
-    handleSubmit(values, {props}) {
+    handleSubmit(values, { setStatus, setSubmitting }) {
         const { sex, country, firstName, lastName, phoneNumber, instagram, twitter, about, facebook } = values
-        const { details } = props
-        console.log(values)
+        //console.log(values)
         const userId = auth.currentUser.uid
+        setSubmitting(true)
+        setStatus(true)
 
         db.collection("users").doc(userId).set({
             firstName: firstName,
@@ -80,7 +84,11 @@ const FormikProfileSettings = withFormik({
             about: about
 
         } , { merge: true } ).then(() =>{
-            console.log("Profile Updated")
+            setSubmitting(false)
+            setTimeout(() => {
+                setStatus(false)
+            }, 1000)
+           // console.log("Profile Updated")
         })
 
     }
