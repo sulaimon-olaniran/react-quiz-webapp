@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import ProfilePicture from './sections/picture/ProfilePicture'
 import { AppContext } from '../../contexts/AppContext'
 import Information from './sections/info/Information'
@@ -10,9 +10,6 @@ import Loader from '../loader/Loader'
 const ProfilePage = () => {
     const { themeClass } = useContext(AppContext)
     const { profile, loading, fetching, getUserProfile } = useContext(ProfileContext)
-    useEffect(() =>{
-        getUserProfile()
-    }, [])
     
     const message = "Fetching User Data"
     

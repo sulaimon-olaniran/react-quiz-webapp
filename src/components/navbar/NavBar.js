@@ -19,12 +19,13 @@ import { ProfileContext } from '../../contexts/ProfileContext'
 import user_avatar from '../profile/sections/picture/assets/user_avatar.png'
 
 
-const NavBar = ({profile}) => {
+const NavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null)
     const [anchorElTwo, setAnchorElTwo] = useState(null)
     const { toggleTheme, darkTheme, themeClass, toggleMenu, loggedIn } = useContext(AppContext)
+    const { profile } = useContext(ProfileContext)
 
-    let profileImage = profile.displayImage === "" ? user_avatar : profile.displayImage
+    let profileImage = profile === null || profile.displayImage === "" ? user_avatar : profile.displayImage
     
     const handleClickOffline = (event) => {
         setAnchorEl(event.currentTarget)
