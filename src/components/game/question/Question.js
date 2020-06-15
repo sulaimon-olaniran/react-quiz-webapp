@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 //import { GameContext } from '../../../contexts/GameContext'
-import { QuestionContext } from '../../../contexts/QuestionsContext'
+// import { QuestionContext } from '../../../contexts/QuestionsContext'
+// import { GameContext } from '../../../contexts/GameContext'
 
-const Question = () => {
-  const {  questions, questionNumber } = useContext(QuestionContext)
-  const currentQuestions = questions && questions[questionNumber].questions
-
+const Question = ({ currentQuestions, questionNumber }) => {
+  //const {  questions, questionNumber } = useContext(QuestionContext)
   const randomQuestion = currentQuestions[Math.floor(Math.random() * currentQuestions.length)]
+ 
 
   return (
   

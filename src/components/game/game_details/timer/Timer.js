@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
-import { GameContext } from '../../../../contexts/GameContext'
+//import { GameContext } from '../../../../contexts/GameContext'
 import {  withRouter } from 'react-router-dom'
 
 
 const Timer = ({history }) => {
     const [dashArray, setDashArray] = useState(null)
-    //const [timeLeft, setTimeLeft] = useState(gameTime)
-    const {  endGamePlay } = useContext(GameContext)
     const [timer, setTimer] = useState(20)
 
     const gameTime = 120
@@ -39,13 +37,12 @@ const Timer = ({history }) => {
             
         }, 1000);
         if ( timer === 0){
-            endGamePlay()
             clearInterval(timeInterval)
             history.push("/game/stats")
 
         }
         return () => clearInterval(timeInterval);
-    }, [timer, setTimer, endGamePlay, history ]);
+    }, [timer, setTimer,  history ]);
 
    
     

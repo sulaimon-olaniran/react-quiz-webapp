@@ -5,7 +5,7 @@ import success from './assets/success.wav'
 import error from './assets/error.wav'
 
 const FiftyFifty = ({ answer }) => {
-     const { usedFiftyFifty, setUsedFiftyFifty, coins, setCoins, usedHint } = useContext(GameContext)
+     const { usedFiftyFifty, setUsedFiftyFifty, coins, setCoins, usedHint, setCoinsSpent, setFiftyUsed } = useContext(GameContext)
      const successRef = useRef()
      const errorRef = useRef()
 
@@ -51,7 +51,8 @@ const FiftyFifty = ({ answer }) => {
             successRef.current.play()
             setUsedFiftyFifty(true)
             setCoins(prev => prev - 30)
-
+            setCoinsSpent(prev => prev + 30)
+            setFiftyUsed(prev => prev + 1)
         }else{
             errorRef.current.play()
         }

@@ -9,7 +9,7 @@ import Loader from '../loader/Loader'
 
 const ProfilePage = () => {
     const { themeClass } = useContext(AppContext)
-    const { profile, loading, fetching, getUserProfile } = useContext(ProfileContext)
+    const { profile, loading, fetching } = useContext(ProfileContext)
     
     const message = "Fetching User Data"
     

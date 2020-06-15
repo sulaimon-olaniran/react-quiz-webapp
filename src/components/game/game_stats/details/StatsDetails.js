@@ -4,13 +4,16 @@ import done_mark from './assets/done_mark.png'
 import PieChart from './piechart/PieChart'
 import { AppContext } from '../../../../contexts/AppContext'
 import Button from '@material-ui/core/Button'
+import { GameContext } from '../../../../contexts/GameContext'
 
 
 const StatsDetails = () => {
     const { themeClass } = useContext(AppContext)
-    const correct = 30
-    const total = 40
-    const percentage = (correct / total) * 100
+    const {answeredRight, answeredWrong, fiftyUsed, hintsUsed, coinsSpent, points, attempts } = useContext(GameContext)
+    // const correct = 30
+    // const total = 40
+
+    const percentage = (answeredRight / 4) * 100
     let message;
     let color;
 
@@ -49,13 +52,14 @@ const StatsDetails = () => {
 
                 <ul className="summary-container"  >
 
-                    <li><span>Questions</span> <span>50</span></li>
-                    <li><span>Correct Answers</span> <span>25</span></li>
-                    <li><span>Wrong Answers</span> <span>25</span></li>
-                    <li><span>Coins Spent</span> <span>150</span></li>
-                    <li><span>Hints Used</span> <span>10</span></li>
-                    <li><span>50/50 Used</span> <span>5</span></li>
-
+                    <li><span>Questions</span> <span>4</span></li>
+                    <li><span>Correct Answers</span> <span>{answeredRight}</span></li>
+                    <li><span>Wrong Answers</span> <span>{answeredWrong}</span></li>
+                    <li><span>Coins Spent</span> <span>{coinsSpent}</span></li>
+                    <li><span>Hints Used</span> <span>{hintsUsed}</span></li>
+                    <li><span>50/50 Used</span> <span>{fiftyUsed}</span></li>
+                    <li><span>Attempts</span> <span>{attempts}</span></li>
+                    <li><span>Points</span> <span>{points}</span></li>
                 </ul>
 
                 <div className="remark-container">

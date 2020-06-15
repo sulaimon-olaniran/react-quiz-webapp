@@ -1,17 +1,12 @@
-import React, { useContext, useEffect } from 'react'
-//import graphicOne from './assets/graphicOne.mp4'
+import React from 'react'
 import Options from './options/Options'
 import Question from './question/Question'
 import GameDetails from './game_details/GameDetails'
-import { QuestionContext } from '../../contexts/QuestionsContext'
-import Loader from '../loader/Loader'
+//import { QuestionContext } from '../../contexts/QuestionsContext'
 
-const GameQuestions = () => {
-    const { fetching, loading, getGameQuestions } = useContext(QuestionContext)
-    
-    useEffect(() =>{
-       getGameQuestions()
-    }, [])
+const GameQuestions = ({ currentOptions, currentAnswers, currentQuestions, questionNumber }) => {
+    //const { fetching, loading, getGameQuestions } = useContext(QuestionContext)
+
 
     const getRandomColor = () => {
         const letters = '0123456789ABCDEF';
@@ -21,27 +16,60 @@ const GameQuestions = () => {
         }
         return color;
     }
-    const message = "Fetching Questions"
+    return (
+        <div className={`game-container`} style={{ background: getRandomColor() }} >
 
-    if (fetching) return <Loader message={message} loading={loading} />
-    else {
-        return (
-            <div className={`game-container`} style={{ background: getRandomColor() }} >
-                {/* <video src={graphicOne} loop muted autoPlay></video> */}
+            <div className="quiz" >
+                <GameDetails />
+                <Question currentQuestions={currentQuestions} questionNumber={questionNumber} />
+                <Options currentAnswers={currentAnswers} currentOptions={currentOptions} />
 
-                <div className="quiz" >
-                    <GameDetails />
-                    <Question />
-                    <Options />
-
-                </div>
             </div>
-        )
-   }
-
+        </div>
+    )
 }
 
+
+
 export default React.memo(GameQuestions)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //<a target="_blank" href="https://icons8.com/icons/set/coins--v1">Doodle icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 

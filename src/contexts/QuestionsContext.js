@@ -41,14 +41,15 @@ const QuestionContextProvider = (props) => {
     const handleNextQuestion = () => {
         showOptions()
     }
-    //const currentQuestions = questions && questions[questionNumber].questions// questions !== null ? questions[questionNum].questions : null
-    const currentOptions = questions !== null? questions[questionNumber].options : null
-    const currentAnswers = questions !== null  ? questions[questionNumber].answers : null
+    // const currentQuestions = questions !== null ? questions[questionNumber].questions : null
+    // const currentOptions = questions !== null ? questions[questionNumber].options : null
+    // const currentAnswers = questions !== null  ? questions[questionNumber].answers : null
 
 
     return (
         <QuestionContext.Provider value={{ 
-            currentAnswers, currentOptions,  questionNumber, setQuestionNumber, loading,
+            //currentAnswers, currentOptions, currentQuestions,
+             questionNumber, setQuestionNumber, loading,
             handleNextQuestion: handleNextQuestion , questions, getGameQuestions, fetching
         }}>
             {props.children}

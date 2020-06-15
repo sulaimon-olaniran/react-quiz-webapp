@@ -6,7 +6,7 @@ import error from './assets/error.wav'
 
 
 const Hints = ({ answer }) => {
-    const { removedIndex, setRemovedIndex, coins, setCoins, setUsedHint, usedFiftyFifty } = useContext(GameContext)
+    const { removedIndex, setRemovedIndex, coins, setCoins, setUsedHint, usedFiftyFifty, setCoinsSpent, setHintsUsed } = useContext(GameContext)
     const successRef = useRef()
     const errorRef = useRef()
 
@@ -31,6 +31,8 @@ const Hints = ({ answer }) => {
                             option.style.visibility = "hidden"
                             setCoins(prev => prev - 20)
                             setUsedHint(true)
+                            setCoinsSpent(prev => prev + 20)
+                            setHintsUsed(prev => prev + 1)
                             successRef.current.play()
                             setRemovedIndex(prev => prev.concat(randomIndex))
                         }

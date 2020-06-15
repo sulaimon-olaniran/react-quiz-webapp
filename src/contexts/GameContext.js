@@ -1,4 +1,6 @@
 import React, { createContext, useState } from 'react'
+import { db, auth } from '../firebase/Firebase'
+import firebase from '../firebase/Firebase'
 
 export const GameContext = createContext()
 
@@ -9,33 +11,56 @@ const GameContextProvider = (props) => {
     const [coins, setCoins] = useState(100)
     const [wrongAnswer, setWrongAnswer] = useState(false)
     const [rightAnswer, setRightAnswer] = useState(false)
+
     const [answeredRight, setAnsweredRight] = useState(0)
     const [answeredWrong, setAnsweredWrong] = useState(0)
-    //const [timer, setTimer] = useState(20)
+    const [questionNumber, setQuestionNumber] = useState(0)
+    const [fiftyUsed, setFiftyUsed] = useState(0)
+    const [hintsUsed, setHintsUsed] = useState(0)
+    const [coinsSpent, setCoinsSpent] = useState(0)
+    const [ points, setPoints] = useState(0)
+    const [ attempts, setAttempts ] = useState(0)
 
 
-    const endGamePlay = () => {
-
-        /*const playerStats = {
-            score: playerScore,
-            right: answeredRight,
-            wrong: answeredWrong,
-            attempt: total,
-            usedCoins: 100 - coins
-        }*/
-        // console.log(playerStats)
+    const showOptions = () => {
+        const options = Array.from(document.activeElement.querySelectorAll('.each-option-container'))
+        options.forEach((option, index) => {
+            option.style.visibility = "visible"
+        })
     }
 
-        return (
-            <GameContext.Provider value={{
-                removedIndex, setRemovedIndex, rightAnswer, endGamePlay,
-                setRightAnswer, usedFiftyFifty, setUsedFiftyFifty, answeredWrong, setAnsweredWrong, usedHint, //timer,
-                coins, setCoins, wrongAnswer, setWrongAnswer, answeredRight, setAnsweredRight, setUsedHint,// setTimer,
-            }}>
-                {props.children}
-            </GameContext.Provider>
-        )
-    
+    const endGamePlay = () => {
+        const userId = auth.currentUser.uid
+        db.collection("users").doc(userId).update({
+            totalPoints: firebase.firestore.FieldValue.increment(points),
+            leaguePosition: null,
+            attempts: firebase.firestore.FieldValue.increment(attempts),
+            rightAnswers: firebase.firestore.FieldValue.increment(answeredRight),
+            worngAnswers: firebase.firestore.FieldValue.increment(answeredWrong),
+            successPercentage: firebase.firestore.FieldValue.increment(points),
+            fiftyUsed: firebase.firestore.FieldValue.increment(fiftyUsed),
+            hintsUsed: firebase.firestore.FieldValue.increment(hintsUsed),
+            coinsSpent: firebase.firestore.FieldValue.increment(coinsSpent),
+            coins: firebase.firestore.FieldValue.decrement(coinsSpent),
+
+        }, { merge: true })
+            .then(() => {
+                props.history.push("/game/stats")
+            })
+    }
+
+    return (
+        <GameContext.Provider value={{
+            removedIndex, setRemovedIndex, rightAnswer, questionNumber, setQuestionNumber, showOptions,
+            setRightAnswer, usedFiftyFifty, setUsedFiftyFifty, answeredWrong, setAnsweredWrong, usedHint,
+            coins, setCoins, wrongAnswer, setWrongAnswer, answeredRight, setAnsweredRight, setUsedHint,
+            fiftyUsed, setFiftyUsed, hintsUsed, setHintsUsed, points, setPoints, coinsSpent, setCoinsSpent,
+            attempts, setAttempts, endGamePlay
+        }}>
+            {props.children}
+        </GameContext.Provider>
+    )
+
 }
 
 

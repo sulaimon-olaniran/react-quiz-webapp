@@ -1,13 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import EachOption from './each_option/EachOption'
 import FiftyFifty from './life_lines/fifty_fifty/FiftyFifty'
 import Hints from './life_lines/hints/Hints'
 //import { GameContext } from '../../../contexts/GameContext'
-import { QuestionContext } from '../../../contexts/QuestionsContext'
 
-const Options = () => {
-    const { currentOptions, currentAnswers } = useContext(QuestionContext)
-    
+const Options = ({ currentAnswers, currentOptions }) => {
+
     const randomAnswer = currentAnswers[Math.floor(Math.random() * currentAnswers.length)]
     const randomOptions = []
     const randomFinalOptions = []

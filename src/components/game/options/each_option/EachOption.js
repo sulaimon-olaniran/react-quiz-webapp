@@ -1,18 +1,19 @@
 import React, { useContext, useRef } from 'react'
+import { withRouter } from 'react-router-dom'
 import { GameContext } from '../../../../contexts/GameContext'
 import right_answer from './assets/right_answer.wav'
 import wrong_answer from './assets/wrong_answer.wav'
-import { QuestionContext } from '../../../../contexts/QuestionsContext'
+//import { QuestionContext } from '../../../../contexts/QuestionsContext'
 
-const EachOption = ({ option, answer, nextQuestion }) => {
+const EachOption = ({ option, answer, nextQuestion, history }) => {
     const {
-        setRemovedIndex, setUsedFiftyFifty,
-        setRightAnswer, setWrongAnswer,
-        setAnsweredRight, setAnsweredWrong,
-        answeredRight, setUsedHint
+        setRemovedIndex, setUsedFiftyFifty, setAttempts,
+        setRightAnswer, setWrongAnswer, setPoints,
+        setAnsweredRight, setAnsweredWrong, questionNumber,
+        setUsedHint, setQuestionNumber, showOptions
     } = useContext(GameContext)
 
-    const { handleNextQuestion , setQuestionNumber} = useContext(QuestionContext)
+    // const { handleNextQuestion,  } = useContext(QuestionContext)
 
     const wrongAnswer = useRef()
     const rightAnswer = useRef()
@@ -20,31 +21,37 @@ const EachOption = ({ option, answer, nextQuestion }) => {
     const handleOption = (event) => {
         const optionValue = event.target.innerHTML.toLowerCase()
         const correctAnswer = answer.toLowerCase()
-       console.log(answeredRight)
         setRemovedIndex([])
         setUsedFiftyFifty(false)
         setUsedHint(false)
+        if (questionNumber <= 2) {
+            setTimeout(() => {
+                showOptions()
+                setQuestionNumber(prev => prev + 1)
 
-        setTimeout(() => {
-            handleNextQuestion()
-            setQuestionNumber(prev => prev + 1)
-           
-        }, 800)
+            }, 800)
+        } else {
+            console.log("Game Ended")
+            setTimeout(() => {
+                history.push("/game/stats")
+            }, 1000)
+        }
 
         if (optionValue === correctAnswer) {
             setRightAnswer(true)
             setAnsweredRight(prev => prev + 1)
+            setPoints(prev => prev + (1 * 5))
+            setAttempts(prev => prev + 1)
             rightAnswer.current.play()
         }
         else {
             setWrongAnswer(true)
             setAnsweredWrong(prev => prev + 1)
             wrongAnswer.current.play()
+            setAttempts(prev => prev + 1)
         }
 
     }
-    //console.log("hello from each options")
-
     return (
 
         <div className="each-option-container" >
@@ -58,4 +65,4 @@ const EachOption = ({ option, answer, nextQuestion }) => {
     )
 }
 
-export default React.memo(EachOption)
+export default withRouter(EachOption)

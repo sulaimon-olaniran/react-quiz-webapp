@@ -5,6 +5,7 @@ import coins_icon from './assets/coins_icon.png'
 
 const Coins = () => {
     const { coins } = useContext(GameContext)
+    console.log(coins)
     return(
 
      <div className="coins-container" >

@@ -14,6 +14,8 @@ import AboutPage from './about/AboutPage'
 import { ProfileContext } from '../contexts/ProfileContext'
 import SettingsPage from './settings/Settings'
 import Loader from './loader/Loader'
+import GameLeague from './league/GameLeague'
+import LeagueRules from './league/rules/LeagueRules'
 
 
 const Components = () => {
@@ -30,7 +32,9 @@ const Components = () => {
 
                     <Switch>
                         <Route exact path="/" component={HomePage} />
-                        <Route exact path="/game" component={GameQuestions} />
+                        <Route exact path="/games" component={GameQuestions} />
+                        <Route exact path="/league/game" component={GameLeague} />
+                        <Route exact path="/league/rules" component={LeagueRules} />
                         <Route exact path="/game/instructions" component={Instructions} />
                         <Route exact path="/about" component={AboutPage} />
                         <Route exact path="/game/stats" component={GameStats} />

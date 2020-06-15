@@ -93,22 +93,20 @@ const FormikSignUpPage = withFormik({
                     instagram: "",
                     twitter: "",
                     facebook: "",
-                    about: ""
-
-                    /*joinedLeague: false,
+                    about: "",
                     totalPoints: 0,
                     leaguePosition: null,
                     attempts: 0,
                     rightAnswers: 0,
                     worngAnswers: 0,
-                    successPercentage: null,
+                    successPercentage: 0,
                     fiftyUsed: 0,
                     hintsUsed: 0,
                     coinsSpent: 0,
                     coins: 100,
                     gold: 0,
                     silver: 0,
-                    bronze: 0*/
+                    bronze: 0
                 })
 
             }).then(() => {
