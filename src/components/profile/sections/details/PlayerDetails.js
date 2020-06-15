@@ -5,7 +5,7 @@ const PlayerDetails = ({ details }) => {
     const { totalPoints, leaguePosition, attempts, rightAnswers, wrongAnswers,
         fiftyUsed, hintsUsed, coinsSpent, successPercentage,
     } = details
-
+    const league = leaguePosition === null ? "-" : leaguePosition
     return (
         <div className="game-details-container">
 
@@ -15,7 +15,7 @@ const PlayerDetails = ({ details }) => {
             {/* <div><p><span className="title" >Nationality</span> <span className="subject">Nigerian</span></p></div> */}
 
             <div><p><span className="title" >Total Points</span> <span className="subject">{totalPoints} </span></p></div>
-            <div><p><span className="title" >League Position</span> <span className="subject">{leaguePosition}</span></p></div>
+            <div><p><span className="title" >League Position</span> <span className="subject">{league}</span></p></div>
             <div><p><span className="title" >Attempts</span> <span className="subject">{attempts}</span></p></div>
             <div><p><span className="title" >Right Answers</span> <span className="subject">{rightAnswers}</span></p></div>
             <div><p><span className="title" >Wrong Answers</span> <span className="subject">{wrongAnswers}</span></p></div>

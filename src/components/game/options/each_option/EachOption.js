@@ -8,7 +8,7 @@ import wrong_answer from './assets/wrong_answer.wav'
 const EachOption = ({ option, answer, nextQuestion, history }) => {
     const {
         setRemovedIndex, setUsedFiftyFifty, setAttempts,
-        setRightAnswer, setWrongAnswer, setPoints,
+        setRightAnswer, setWrongAnswer, setPoints, endGamePlay,
         setAnsweredRight, setAnsweredWrong, questionNumber,
         setUsedHint, setQuestionNumber, showOptions
     } = useContext(GameContext)
@@ -24,19 +24,7 @@ const EachOption = ({ option, answer, nextQuestion, history }) => {
         setRemovedIndex([])
         setUsedFiftyFifty(false)
         setUsedHint(false)
-        if (questionNumber <= 2) {
-            setTimeout(() => {
-                showOptions()
-                setQuestionNumber(prev => prev + 1)
-
-            }, 800)
-        } else {
-            console.log("Game Ended")
-            setTimeout(() => {
-                history.push("/game/stats")
-            }, 1000)
-        }
-
+        
         if (optionValue === correctAnswer) {
             setRightAnswer(true)
             setAnsweredRight(prev => prev + 1)
@@ -46,10 +34,26 @@ const EachOption = ({ option, answer, nextQuestion, history }) => {
         }
         else {
             setWrongAnswer(true)
-            setAnsweredWrong(prev => prev + 1)
-            wrongAnswer.current.play()
+            setAnsweredWrong(prev => prev + 1) 
             setAttempts(prev => prev + 1)
+            wrongAnswer.current.play()
         }
+
+
+        if (questionNumber <= 2) {
+            setTimeout(() => {
+                showOptions()
+                setQuestionNumber(prev => prev + 1)
+
+            }, 1000)
+        } else {
+            console.log("Game Ended")
+            setTimeout(() => {
+                //history.push("/game/stats")
+                endGamePlay()
+            }, 1000)
+        }
+
 
     }
     return (

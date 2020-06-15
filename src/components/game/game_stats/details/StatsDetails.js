@@ -1,18 +1,47 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 //import green_mark from './assets/green_mark.png'
 import done_mark from './assets/done_mark.png'
 import PieChart from './piechart/PieChart'
 import { AppContext } from '../../../../contexts/AppContext'
 import Button from '@material-ui/core/Button'
 import { GameContext } from '../../../../contexts/GameContext'
+import { db, auth } from '../../../../firebase/Firebase'
+import firebase from '../../../../firebase/Firebase'
+import { withRouter } from 'react-router-dom'
 
 
-const StatsDetails = () => {
+const StatsDetails = (props) => {
     const { themeClass } = useContext(AppContext)
-    const {answeredRight, answeredWrong, fiftyUsed, hintsUsed, coinsSpent, points, attempts } = useContext(GameContext)
-    // const correct = 30
-    // const total = 40
+    const {answeredRight, answeredWrong, fiftyUsed, hintsUsed, coinsSpent, points, attempts, clearData } = useContext(GameContext)
 
+     const updateFirebaseData = () => {
+        const userId = auth.currentUser.uid
+        db.collection("users").doc(userId).update({
+            totalPoints: firebase.firestore.FieldValue.increment(points),
+            leaguePosition: null,
+            attempts: firebase.firestore.FieldValue.increment(attempts),
+            rightAnswers: firebase.firestore.FieldValue.increment(answeredRight),
+            wrongAnswers: firebase.firestore.FieldValue.increment(answeredWrong),
+            successPercentage: firebase.firestore.FieldValue.increment(points),
+            fiftyUsed: firebase.firestore.FieldValue.increment(fiftyUsed),
+            hintsUsed: firebase.firestore.FieldValue.increment(hintsUsed),
+            coinsSpent: firebase.firestore.FieldValue.increment(coinsSpent),
+            coins: firebase.firestore.FieldValue.increment(-coinsSpent),
+
+        })
+        .then(() => {
+            props.history.push("/game/stats")
+        })
+     }
+
+    useEffect(() => {
+        updateFirebaseData()
+
+        return () => {
+            clearData()
+        }
+    }, [])
+    
     const percentage = (answeredRight / 4) * 100
     let message;
     let color;
@@ -80,4 +109,4 @@ const StatsDetails = () => {
 }
 
 
-export default StatsDetails
+export default withRouter(StatsDetails)

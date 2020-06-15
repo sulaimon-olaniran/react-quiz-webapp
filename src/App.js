@@ -13,8 +13,8 @@ import Components from './components/Components'
 function App() {
   const [isAuth, setIsAuth] = useState(true)
   const [show, setShow] = useState(false)
-  const [ error, setError ] = useState(false)
-  
+  const [error, setError] = useState(false)
+
 
   useEffect(() => {
     authUser().then((user) => {
@@ -52,23 +52,22 @@ function App() {
     return (
       <React.Fragment>
         <Online>
-          <AppContextProvider>
-            <GameContextProvider >
-              <QuestionContextProvider>
-                <ProfileContextProvider >
-                  <Router>
+          <Router>
+            <AppContextProvider>
+              <GameContextProvider >
+                <QuestionContextProvider>
+                  <ProfileContextProvider >
 
                     <div className="App">
 
                       <Components />
 
                     </div>
-
-                  </Router>
-                </ProfileContextProvider>
-              </QuestionContextProvider>
-            </GameContextProvider>
-          </AppContextProvider>
+                  </ProfileContextProvider>
+                </QuestionContextProvider>
+              </GameContextProvider>
+            </AppContextProvider>
+          </Router>
         </Online>
         <Offline>
           <h1>Connect to Internet</h1>

@@ -98,7 +98,7 @@ const FormikSignUpPage = withFormik({
                     leaguePosition: null,
                     attempts: 0,
                     rightAnswers: 0,
-                    worngAnswers: 0,
+                    wrongAnswers: 0,
                     successPercentage: 0,
                     fiftyUsed: 0,
                     hintsUsed: 0,
