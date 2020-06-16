@@ -3,7 +3,8 @@ import ProfilePicture from '../../profile/sections/picture/ProfilePicture'
 import Information from '../../profile/sections/info/Information'
 import PlayerDetails from '../../profile/sections/details/PlayerDetails'
 import Loader from '../../loader/Loader'
-import { db } from '../../../firebase/Firebase'
+import { db, auth } from '../../../firebase/Firebase'
+import { Redirect } from 'react-router-dom'
 import { AppContext } from '../../../contexts/AppContext'
 
 
@@ -30,6 +31,9 @@ const UserProfile = ({ match }) => {
 
     })
     const message = "Fetching Profile"
+
+    if (auth.currentUser === null) return <Redirect  to="/signin" />
+    
     if (fetching) return <Loader message={message} loading={loading} />
     else {
         return (

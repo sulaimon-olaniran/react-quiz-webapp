@@ -5,7 +5,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    margin-top: 10px;
+    margin: 5px 0;
+
+    p{
+        text-align: center;
+    }
 
     .user-image-container{
         width: 10rem;

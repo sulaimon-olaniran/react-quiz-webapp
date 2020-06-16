@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import albert_eintein from './assets/albert_eintein.png'
 import { AppContext } from '../../../contexts/AppContext'
 import Button from '@material-ui/core/Button'
+import { auth } from '../../../firebase/Firebase'
 
 const LeagueRules = () => {
     const { themeClass } = useContext(AppContext)
+    if (auth.currentUser === null) return <Redirect  to="/signin" />
     return(
         <div className={`league-rules-container ${themeClass}`} >
             <h1>Welocome To League of Genius</h1>

@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { QuestionContext } from '../../contexts/QuestionsContext'
 import GameQuestions from '../game/GameQuestions'
 import Loader from '../loader/Loader'
 import { GameContext } from '../../contexts/GameContext'
+import { auth } from '../../firebase/Firebase'
 
 
 const GameLeague = ({ history }) => {
@@ -31,6 +33,8 @@ const GameLeague = ({ history }) => {
     // const currentAnswers = questions !== null  ? questions[questionNumber].answers : null
 
     const message = "Fetching Questions"
+     
+    if (auth.currentUser === null) return <Redirect  to="/signin" />
 
     if (fetching) return <Loader message={message} loading={loading} />
     else {

@@ -85,6 +85,7 @@ const FormikSignUpPage = withFormik({
                 return db.collection("users").doc(res.user.uid).set({
                     firstName: firstName,
                     lastName: lastName,
+                    name : firstName + " " + lastName,
                     id: res.user.uid,
                     sex: "",
                     country: "",
