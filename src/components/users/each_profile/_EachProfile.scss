@@ -1,0 +1,20 @@
+.each-user-container{
+    width: 10rem;
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .user-image-container{
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        overflow: hidden;
+         img{
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+         }
+    }
+}

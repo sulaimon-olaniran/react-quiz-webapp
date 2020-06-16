@@ -1,0 +1,11 @@
+.users-container{
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+@import './each_profile/EachProfile'

@@ -35,33 +35,39 @@ function NavLinks() {
         </NavLink>
       </Zoom>
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '400ms' : '0ms' }}>
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '300ms' : '0ms' }}>
         <NavLink to="/about" className="button-link">
           <InfoSharpIcon /><Button color="inherit" size="medium" onClick={closeMenu}>About</Button>
         </NavLink>
       </Zoom>
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '600ms' : '0ms' }}>
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '400ms' : '0ms' }}>
         <NavLink to="#" className="button-link">
           <ContactSupportSharpIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Contact</Button>
         </NavLink>
       </Zoom>
 
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '500ms' : '0ms' }}>
+        <NavLink to="/users" className="button-link">
+          <ContactSupportSharpIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Users</Button>
+        </NavLink>
+      </Zoom>
+
       <hr className="divider"  />
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '800ms' : '0ms' }}>
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '600ms' : '0ms' }}>
         <NavLink exact to="/game" className="button-link">
           <SportsEsportsIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Quiz Demo</Button>
         </NavLink>
       </Zoom>
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '1000ms' : '0ms' }}>
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '700ms' : '0ms' }}>
         <NavLink exact to="/league/rules" className="button-link">
           <WbIncandescentIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Quiz League</Button>
         </NavLink>
       </Zoom>
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '1200ms' : '0ms' }}>
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '800ms' : '0ms' }}>
         <NavLink exact to="/game/instructions" className="button-link">
           <InfoIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Instructions</Button>
         </NavLink>

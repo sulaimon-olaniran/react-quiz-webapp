@@ -11,11 +11,13 @@ import ProfilePage from './profile/ProfilePage'
 import FormikSignUpPage from './auth/sign_up/SignUp'
 import FormikSignInPage from './auth/sign_in/SignIn'
 import AboutPage from './about/AboutPage'
+import UsersPage from '../components/users/UsersPage'
 import { ProfileContext } from '../contexts/ProfileContext'
 import SettingsPage from './settings/Settings'
 import Loader from './loader/Loader'
 import GameLeague from './league/GameLeague'
 import LeagueRules from './league/rules/LeagueRules'
+import UserProfile from './users/user_profile/UserProfile'
 
 
 const Components = () => {
@@ -42,6 +44,8 @@ const Components = () => {
                         <Route exact path="/signup" component={FormikSignUpPage} />
                         <Route exact path="/signin" component={FormikSignInPage} />
                         <Route exact path="/settings" component={SettingsPage} />
+                        <Route exact path="/users" component={UsersPage} />
+                        <Route exact path="/user/:id" component={UserProfile} />
                     </Switch>
                 </div>
                 <Footer />
