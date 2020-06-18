@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { withFormik, Field, Form } from 'formik'
 import { AppContext } from '../../../contexts/AppContext'
 import albert_einstein from './assets/albert_einstein.png'
@@ -13,7 +13,9 @@ import Loader from '../../loader/Loader'
 const SignInPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, status }) => {
     const { themeClass } = useContext(AppContext)
     const message= "Logging User In"
-    if (status) return <Loader loading={isSubmitting} message={message} />
+    
+    if(auth.currentUser !== null) return <Redirect to="/profile" />
+    if (status && status.loading) return <Loader loading={isSubmitting} message={message} />
     else {
         return (
             <div className={`signin-container ${themeClass}`} >
@@ -37,7 +39,8 @@ const SignInPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, 
 
 
 
-                        <Field type="submit" as={Button} variant="contained" color="secondary" id="button">Sign In</Field>
+                        <Field type="submit" as={Button} variant="contained" color="secondary" id="button" disabled={isSubmitting}>Sign In</Field>
+                        {status && status.error && <small style={{color:"red"}}>{status && status.error}</small>}
                     </Form>
                     <p>Not yet a Genius ? <NavLink to="/signup"><Button color="primary" size="small">Sign Up</Button></NavLink></p>
                 </div>
@@ -61,6 +64,7 @@ const FormikSignInPage = withFormik({
     handleSubmit(values, { props, setStatus, setSubmitting }) {
         const { email, password } = values
         setSubmitting(true)
+        setStatus({loading : true})
         setStatus(true)
 
         auth.signInWithEmailAndPassword(email, password)
@@ -69,6 +73,11 @@ const FormikSignInPage = withFormik({
                 setTimeout(() => {
                     props.history.push('/profile')
                 }, 1000)
+            }).catch(error =>{
+                setSubmitting(false)
+                console.log(error)
+                setStatus({loading : false})
+                setStatus({error : "Wrong Email or Password"})
             })
 
     }

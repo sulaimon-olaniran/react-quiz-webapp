@@ -68,6 +68,12 @@ function NavLinks() {
       </Zoom>
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '800ms' : '0ms' }}>
+        <NavLink exact to="/league/ranking" className="button-link">
+          <WbIncandescentIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Ranking</Button>
+        </NavLink>
+      </Zoom>
+
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '900ms' : '0ms' }}>
         <NavLink exact to="/game/instructions" className="button-link">
           <InfoIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Instructions</Button>
         </NavLink>

@@ -18,6 +18,7 @@ import Loader from './loader/Loader'
 import GameLeague from './league/GameLeague'
 import LeagueRules from './league/rules/LeagueRules'
 import UserProfile from './users/user_profile/UserProfile'
+import LeagueTable from './league_table/LeagueTable'
 
 
 const Components = () => {
@@ -38,6 +39,7 @@ const Components = () => {
                         <Route exact path="/league/game" component={GameLeague} />
                         <Route exact path="/league/rules" component={LeagueRules} />
                         <Route exact path="/game/instructions" component={Instructions} />
+                        <Route exact path="/league/ranking" component={LeagueTable} />
                         <Route exact path="/about" component={AboutPage} />
                         <Route exact path="/game/stats" component={GameStats} />
                         <Route exact path="/profile" component={ProfilePage} />

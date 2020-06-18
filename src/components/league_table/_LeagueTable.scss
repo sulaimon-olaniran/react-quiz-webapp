@@ -1,0 +1,7 @@
+.league-table-container{
+    width: 100%;
+    min-height: 90vh;
+}
+
+@import './top_three/TopThree';
+@import './other_ranks/OtherRanks'

@@ -34,7 +34,7 @@ const Information = ({ details }) => {
                     <div className="medal-image-container">
                         <img src={bronze_cup} alt="Bronze" />
                     </div>
-                    <h3>10</h3>
+                    <h3>{details.bronze}</h3>
 
                 </div>
 
@@ -43,7 +43,7 @@ const Information = ({ details }) => {
                     <div className="medal-image-container">
                         <img src={gold_cup} alt="Gold" />
                     </div>
-                    <h3>3</h3>
+                    <h3>{details.gold}</h3>
                 </div>
 
 
@@ -53,7 +53,7 @@ const Information = ({ details }) => {
                         <img src={silver_cup} alt="silver" />
                     </div>
 
-                    <h3>2</h3>
+                    <h3>{details.silver}</h3>
                 </div>
 
             </div>

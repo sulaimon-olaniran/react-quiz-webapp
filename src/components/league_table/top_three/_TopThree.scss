@@ -1,0 +1,59 @@
+.top-three-container{
+    width: 100%;
+    min-height: 20rem;
+    background-color: brown;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .first-position{
+        height: 18rem;
+        .top-three-image{
+            width: 7rem;
+            height: 7rem;
+        }
+    }
+
+    div{
+        width: 30%;
+        height: 15rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .top-three-image{
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .top-three-details{
+            width: 100%;
+            height: 5rem;
+            margin-top: 3px;
+            p{
+                color: white;
+                text-align: center;
+            }
+        }
+       
+
+        .medal-image{
+            width: 5rem;
+            height: 5rem;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+    
+
+}

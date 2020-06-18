@@ -12,18 +12,22 @@ import { auth } from '../../firebase/Firebase'
 const SettingsPage = () => {
     const { themeClass } = useContext(AppContext)
     const { profile, loading, fetching } = useContext(ProfileContext)
-    
+
     const message = "Fetching Details"
 
-    if (auth.currentUser === null) return <Redirect  to="/signin" />
+    if (auth.currentUser === null) return <Redirect to="/signin" />
 
     if (fetching) return <Loader message={message} loading={loading} />
     else {
         return (
             <div className={`settings-container ${themeClass}`} >
-                <DisplayImage />
-                <CoverImage />
-                <FormikProfileSettings details={profile} />
+                <div className="image-settings-container">
+                    <DisplayImage />
+                    <CoverImage />
+                </div>
+                <div className="details-settings-container" >
+                    <FormikProfileSettings details={profile} />
+                </div>
             </div>
         )
     }

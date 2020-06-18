@@ -39,7 +39,7 @@ const UserProfile = ({ match }) => {
         return (
             <div className={`profile-page-container ${themeClass}`}>
                 <ProfilePicture details={profile} />
-                <Information details={profile} />
+                <Information  details={profile} />
                 <PlayerDetails details={profile} />
             </div>
         )

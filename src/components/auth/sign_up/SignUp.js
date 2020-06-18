@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { SignUpYupValidation } from '../assets/Validation'
 import { withFormik, Field, Form } from 'formik'
 import { AppContext } from '../../../contexts/AppContext'
@@ -14,8 +14,9 @@ import Loader from '../../loader/Loader'
 const SignUpPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, status }) => {
     const { themeClass } = useContext(AppContext)
     const message = "Signing User Up"
-
-    if (status) return <Loader loading={isSubmitting} message={message} />
+    
+    if(auth.currentUser !== null) return <Redirect to="/profile" />
+    if (status && status.loading) return <Loader loading={isSubmitting} message={message} />
     else {
         return (
             <div className={`sign-up-container ${themeClass}`} >
@@ -50,6 +51,7 @@ const SignUpPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, 
                         />
 
                         <Field type="submit" as={Button} variant="contained" color="secondary" id="button" disabled={isSubmitting}>Join Now</Field>
+                        {status && status.error && <small style={{color:"red"}}>{status && status.error}</small>}
                     </Form>
                     <p>Already a Genius ? <NavLink to="/signin"><Button color="primary" size="small">Log In</Button></NavLink></p>
                 </div>
@@ -72,11 +74,11 @@ const FormikSignUpPage = withFormik({
 
     validationSchema: SignUpYupValidation,
 
-    handleSubmit(values, { props, setSubmitting, setStatus }) {
+    handleSubmit(values, { props, setSubmitting, setStatus, setErrors }) {
         const { email, password, firstName, lastName } = values
         console.log(values)
         setSubmitting(true)
-        setStatus(true)
+        setStatus({loading : true})
         auth.createUserWithEmailAndPassword(
             email,
             password
@@ -114,8 +116,15 @@ const FormikSignUpPage = withFormik({
             }).then(() => {
                 setSubmitting(false)
                 setTimeout(() => {
+                    setStatus({loading : false})
                     props.history.push('/settings')
                 }, 1000)
+            }).catch((error) =>{
+               // alert(error)
+                console.log(error)
+                setSubmitting(false)
+                setStatus({loading : false})
+                setStatus({error: error.message})
             })
     }
 
