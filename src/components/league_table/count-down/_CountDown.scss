@@ -1,0 +1,102 @@
+
+  //countdown component styles
+  .counter {
+    // margin: 0 -5px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+  }
+  
+  .entry {
+    text-align: center;
+    padding: 5px;
+  
+    .entry-value {
+      position: relative;
+      height: 95px;
+      perspective: 200px;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      transform: translate3d(0, 0, 0);
+      margin: 0 auto;
+    }
+  
+    .entry-title {
+      min-width: 80px;
+      color: #fff;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  }
+  
+  .count {
+    background-color: #202020;
+    color: #fff;
+    display: block;
+    font-size: 2em;
+    line-height: 2.4em;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+  
+    &.top {
+      height: 50%;
+      line-height: 95px;
+      transform-origin: 50% 100%;
+    }
+  
+    &.bottom {
+      line-height: 0;
+      height: 50%;
+      top: 50%;
+      transform-origin: 50% 0;
+    }
+  
+    &.flipTop {
+      animation-name: flipTop;
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+      z-index: 1;
+    }
+    &.flipBottom {
+      animation-name: flipBottom;
+      animation-duration: 0.3s;
+      animation-delay: 0.3s;
+      animation-fill-mode: both;
+      z-index: 1;
+    }
+  }
+  
+  .alert-danger {
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      position: relative;
+      padding: .75rem 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+    text-align: center;
+  }
+  
+  @keyframes flipTop {
+    from {
+      transform: rotateX(0deg);
+    }
+    to {
+      transform: rotateX(-90deg);
+    }
+  }
+  @keyframes flipBottom {
+    from {
+      transform: rotateX(90deg);
+    }
+    to {
+      transform: rotateX(0deg);
+    }
+  }
+  

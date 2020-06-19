@@ -1,11 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { db } from '../../../../firebase/Firebase'
 
 const PlayerDetails = ({ details }) => {
-
+    const [ position, setPosition ] = useState()
     const { totalPoints, leaguePosition, attempts, rightAnswers, wrongAnswers,
-        fiftyUsed, hintsUsed, coinsSpent, successPercentage,
+        fiftyUsed, hintsUsed, coinsSpent, successPercentage, id
     } = details
+
     const league = leaguePosition === null ? "-" : leaguePosition
+
+    const checkIndex = (index) => {
+        return index.id === id
+    }
+
+    const getUsersData = () => {
+        db.collection("users").onSnapshot(docs => {
+            const users = []
+            docs.forEach(doc => {
+                users.push(doc.data())
+            })
+
+            const sortedUsers = users.sort(function (a, b) { return b.totalPoints - a.totalPoints })
+
+            const leaguePosition = sortedUsers.findIndex(checkIndex)
+            console.log(leaguePosition)
+
+            return db.collection("users").doc(id).update({
+                leaguePosition : leaguePosition + 1
+            }).then(() =>{
+                setPosition(leaguePosition + 1)
+            })
+           
+        })
+    }
+
+    let suffix = ""
+    if(position === 1){
+        suffix = "st"
+    }else if(position === 2){
+        suffix = "nd"
+    }
+    else if( position === 3){
+        suffix = "rd"
+    }
+    else{
+        suffix = "th"
+    }
+
+
+    useEffect(() =>{
+        getUsersData()
+    }, [position])
     return (
         <div className="game-details-container">
 
@@ -15,7 +60,7 @@ const PlayerDetails = ({ details }) => {
             {/* <div><p><span className="title" >Nationality</span> <span className="subject">Nigerian</span></p></div> */}
 
             <div><p><span className="title" >Total Points</span> <span className="subject">{totalPoints} </span></p></div>
-            <div><p><span className="title" >League Position</span> <span className="subject">{league}</span></p></div>
+            <div><p><span className="title" >League Position</span> <span className="subject">{league}{suffix}</span></p></div>
             <div><p><span className="title" >Attempts</span> <span className="subject">{attempts}</span></p></div>
             <div><p><span className="title" >Right Answers</span> <span className="subject">{rightAnswers}</span></p></div>
             <div><p><span className="title" >Wrong Answers</span> <span className="subject">{wrongAnswers}</span></p></div>

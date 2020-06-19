@@ -4,6 +4,7 @@ import TopThree from './top_three/TopThree'
 import { AppContext } from '../../contexts/AppContext'
 import { db, auth } from '../../firebase/Firebase'
 import OtherRanks from './other_ranks/OtherRanks'
+import LeagueCountDown from './count-down/CountDown'
 
 
 const LeagueTable = () => {
@@ -40,6 +41,7 @@ const LeagueTable = () => {
     if(auth.currentUser === null) return <Redirect to="/login" />
     return(
         <div className={`league-table-container ${themeClass}`} >
+            <LeagueCountDown targetDate="Jun 21, 2020" targetTime="00:00:00" />
             <TopThree firstThree={firstThree} />
             <OtherRanks ranks={sortedArray} />
 
