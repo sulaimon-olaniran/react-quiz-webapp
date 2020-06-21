@@ -4,9 +4,9 @@ import {  withRouter } from 'react-router-dom'
 import { GameContext } from '../../../../contexts/GameContext'
 
 
-const Timer = ({history }) => {
+const Timer = ({ history, redirectTo }) => {
     const [dashArray, setDashArray] = useState(null)
-    const [timer, setTimer] = useState(20)
+    const [timer, setTimer] = useState(180)
     const { endGamePlay } = useContext(GameContext)
 
     const gameTime = 120
@@ -40,8 +40,7 @@ const Timer = ({history }) => {
         }, 1000);
         if ( timer === 0){
             clearInterval(timeInterval)
-            //history.push("/game/stats")
-            endGamePlay()
+           history.push(redirectTo)
 
         }
         return () => clearInterval(timeInterval);

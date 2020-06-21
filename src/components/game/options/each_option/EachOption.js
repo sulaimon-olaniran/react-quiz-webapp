@@ -3,17 +3,14 @@ import { withRouter } from 'react-router-dom'
 import { GameContext } from '../../../../contexts/GameContext'
 import right_answer from './assets/right_answer.wav'
 import wrong_answer from './assets/wrong_answer.wav'
-//import { QuestionContext } from '../../../../contexts/QuestionsContext'
 
-const EachOption = ({ option, answer, nextQuestion, history }) => {
+const EachOption = ({ option, answer, questionNumber, setQuestionNumber, totalQuestion, history, redirectTo }) => {
+   
     const {
         setRemovedIndex, setUsedFiftyFifty, setAttempts,
-        setRightAnswer, setWrongAnswer, setPoints, endGamePlay,
-        setAnsweredRight, setAnsweredWrong, questionNumber,
-        setUsedHint, setQuestionNumber, showOptions
+        setRightAnswer, setWrongAnswer, setPoints, setAnsweredRight, 
+        setAnsweredWrong,  setUsedHint, showOptions
     } = useContext(GameContext)
-
-    // const { handleNextQuestion,  } = useContext(QuestionContext)
 
     const wrongAnswer = useRef()
     const rightAnswer = useRef()
@@ -40,7 +37,7 @@ const EachOption = ({ option, answer, nextQuestion, history }) => {
         }
 
 
-        if (questionNumber <= 2) {
+        if (questionNumber <= totalQuestion - 2 ) {
             setTimeout(() => {
                 showOptions()
                 setQuestionNumber(prev => prev + 1)
@@ -49,8 +46,8 @@ const EachOption = ({ option, answer, nextQuestion, history }) => {
         } else {
             console.log("Game Ended")
             setTimeout(() => {
-                //history.push("/game/stats")
-                endGamePlay()
+                history.push(redirectTo)
+                //endGamePlay()
             }, 1000)
         }
 

@@ -6,29 +6,47 @@ export const QuestionContext = createContext()
 const QuestionContextProvider = (props) => {
     const [questions, setQuestions] = useState(null)
     const [questionNumber, setQuestionNumber] = useState(0)
-    const [ loading, setLoading ] = useState(true)
-    const [ fetching, setFetching ] = useState(true)
+    const [loading, setLoading] = useState(true)
+    const [fetching, setFetching] = useState(true)
 
     const getGameQuestions = () => {
-        
+
         db.collection('questions')
             .get()
             .then(snapshot => {
                 const questions = []
+                const shuffledQuestions = []
+
                 snapshot.forEach(doc => {
                     const data = doc.data()
                     questions.push(data)
                 })
                 //console.log(questions)
                 setQuestions(questions)
+                console.log(shuffledQuestions)
+
                 setLoading(false)
-                
-                setTimeout(() =>{
+
+                setTimeout(() => {
                     setFetching(false)
                 }, 1000)
             })
             .catch(error => console.log(error))
     }
+
+    const shuffledQuestions = []
+
+    //const shuffleArray = () => {
+        while (questions !== null && shuffledQuestions.length <= 2) {
+            const random = questions[Math.floor(Math.random() * questions.length)]
+            if (!shuffledQuestions.includes(random)) {
+                shuffledQuestions.push(random)
+            }
+        }
+
+  //  }
+
+
 
     //Reverse all options visibility back to visible incase of any hints being usded
     const showOptions = () => {
@@ -47,10 +65,10 @@ const QuestionContextProvider = (props) => {
 
 
     return (
-        <QuestionContext.Provider value={{ 
+        <QuestionContext.Provider value={{
             //currentAnswers, currentOptions, currentQuestions,
-             questionNumber, setQuestionNumber, loading,
-            handleNextQuestion: handleNextQuestion , questions, getGameQuestions, fetching
+            questionNumber, setQuestionNumber, loading, shuffledQuestions,
+            handleNextQuestion: handleNextQuestion, questions, getGameQuestions, fetching
         }}>
             {props.children}
         </QuestionContext.Provider>

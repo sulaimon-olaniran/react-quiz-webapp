@@ -56,7 +56,7 @@ function NavLinks() {
       <hr className="divider"  />
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '600ms' : '0ms' }}>
-        <NavLink exact to="/game" className="button-link">
+        <NavLink exact to="/demo" className="button-link">
           <SportsEsportsIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Quiz Demo</Button>
         </NavLink>
       </Zoom>

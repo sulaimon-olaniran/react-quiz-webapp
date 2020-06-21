@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { QuestionContext } from '../../contexts/QuestionsContext'
 import GameQuestions from '../game/GameQuestions'
@@ -7,34 +7,47 @@ import { GameContext } from '../../contexts/GameContext'
 import { auth } from '../../firebase/Firebase'
 
 
-const GameLeague = ({ history }) => {
-    const { getGameQuestions, questions, fetching, loading } = useContext(QuestionContext)
-    const { questionNumber, endGamePlay } = useContext(GameContext)
+const GameLeague = () => {
+    const { getGameQuestions, questions, fetching, loading, shuffledQuestions } = useContext(QuestionContext)
+    const { countDownDate, coins } = useContext(GameContext)
+    const [currentTime, setCurrentTime] = useState(new Date().getTime())
+    const [questionNumber, setQuestionNumber] = useState(0)
+
+    console.log(shuffledQuestions)
+
+    let timing;
+
+    const handleCurrentTime = () => {
+        timing = setInterval(() => {
+            setCurrentTime(new Date().getTime())
+            //console.log(new)
+        }, 1000000)
+    }
+
 
     useEffect(() => {
         getGameQuestions()
+        handleCurrentTime()
+
+        return () => {
+            clearInterval(timing)
+        }
     }, [])
 
-
-    // let currentQuestions = undefined
-    // let currentOptions = undefined
-    // let currentAnswers = undefineds
-
-    // if (questionNumber <= 2) {
-    const currentQuestions = questions !== null ? questions[questionNumber].questions : null
-    const currentOptions = questions !== null ? questions[questionNumber].options : null
-    const currentAnswers = questions !== null ? questions[questionNumber].answers : null
-    // } else {
-    //     history.push("/game/stats")
-    //     console.log("noticed that number is greater than 3")
-    // }
-    //const currentQuestions = questions !== null ? questions[questionNumber].questions : null
-    // const currentOptions = questions !== null ? questions[questionNumber].options : null
-    // const currentAnswers = questions !== null  ? questions[questionNumber].answers : null
+    const currentQuestions = shuffledQuestions.length > 0 ? shuffledQuestions[questionNumber].questions :null
+    const currentOptions = shuffledQuestions.length > 0 ? shuffledQuestions[questionNumber].options :null
+    const currentAnswers = shuffledQuestions.length > 0 ? shuffledQuestions[questionNumber].answers :null
+    const totalQuestion = shuffledQuestions.length > 0 ? shuffledQuestions.length : null
+    const redirectTo = "/game/stats"
 
     const message = "Fetching Questions"
-     
-    if (auth.currentUser === null) return <Redirect  to="/signin" />
+
+    const deadline = currentTime > countDownDate ? true : false
+
+
+    if (deadline) return <Redirect to="/league/ranking" />
+
+    if (auth.currentUser === null) return <Redirect to="/signin" />
 
     if (fetching) return <Loader message={message} loading={loading} />
     else {
@@ -42,10 +55,14 @@ const GameLeague = ({ history }) => {
             <React.Fragment>
 
                 <GameQuestions
+                    coins={coins}
                     currentOptions={currentOptions}
                     currentAnswers={currentAnswers}
                     currentQuestions={currentQuestions}
                     questionNumber={questionNumber}
+                    setQuestionNumber={setQuestionNumber}
+                    totalQuestion={totalQuestion}
+                    redirectTo={redirectTo}
                 />
             </React.Fragment>
         )

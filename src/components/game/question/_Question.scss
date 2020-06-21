@@ -1,16 +1,17 @@
 .question-container{
-    width: 100%;
+    width: 95%;
     height: 15vh;
     display: flex;
     flex-direction: column;
     padding: 0px 10px;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: inherit;
     
     h3{
       font-size: 1rem;
-      font-weight: 500;
+      font-weight: 700;
+      text-align: center;
     }
 }
 

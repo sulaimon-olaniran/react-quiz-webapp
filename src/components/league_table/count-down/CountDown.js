@@ -1,4 +1,5 @@
-import React, { Fragment, Component, useState, useEffect } from 'react'
+import React, { Fragment, useContext, useState, useEffect } from 'react'
+import { GameContext } from '../../../contexts/GameContext'
 
 const LeagueCountDown = (props) => {
     const [daysLeft, setDaysLeft] = useState(0)
@@ -6,23 +7,21 @@ const LeagueCountDown = (props) => {
     const [minutesLeft, setMinutesLeft] = useState(0)
     const [secondsLeft, setSecondsLeft] = useState(0)
     const [isExpired, setIsExpired] = useState(false)
-    //const [timeDifference, setTimeDifference] = useState(0)
+
+    const { countDownDate } = useContext(GameContext)
 
     const { targetDate, targetTime } = props
 
     let timer;
     let timeDifference; 
 
+     
     const createDate = () => {
         
         // Get todays date and time
-        let now = new Date().getTime()
+        const now = new Date().getTime()
+       
         // Set the date we're counting down to
-        let countDownDate = new Date(targetDate + " " + targetTime).getTime();
-
-        // Find the distance between now and the count down date
-       // setTimeDifference(countDownDate - now)
-        // const distance = countDownDate - now;
 
         timeDifference = countDownDate - now
  
@@ -30,6 +29,10 @@ const LeagueCountDown = (props) => {
         if (timeDifference < 0) {
             clearInterval(timer);
             setIsExpired(true)
+
+            setTimeout(() =>{
+                
+            }, 5000)
 
         } else {
             setDaysLeft(Math.floor(timeDifference / (1000 * 60 * 60 * 24)))
@@ -50,7 +53,11 @@ const LeagueCountDown = (props) => {
     useEffect(() =>{
             createDate()
             handleCounter()
-    }, [timer])
+
+            return () => {
+                clearInterval(timer)
+            }
+    }, [])
 
     return (
         <Fragment>

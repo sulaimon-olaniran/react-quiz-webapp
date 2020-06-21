@@ -11,8 +11,8 @@ const UsersPage = () => {
     const [usersData, setUsersData] = useState()
     const [searchField, setSearchField] = useState("")
     const { themeClass } = useContext(AppContext)
-    const [fetching, setFetching ] = useState(true)
-    const [loading, setLoading ] = useState(true)
+    const [fetching, setFetching] = useState(true)
+    const [loading, setLoading] = useState(true)
 
     const getUsersData = () => {
         db.collection("users").onSnapshot(docs => {
@@ -22,11 +22,11 @@ const UsersPage = () => {
                 users.push(doc.data())
             })
             setUsersData(users)
-           // console.log(users)
-           setFetching(false)
-           setTimeout(() => {
-               setLoading(false)
-           }, 1000);
+            // console.log(users)
+            setFetching(false)
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000);
         })
     }
 
@@ -52,31 +52,31 @@ const UsersPage = () => {
     const SearchResults = usersData && usersData.filter(handleSearchData)
 
     const usersDataList = searchField === "" ? usersData : SearchResults
-    
+
     const message = "Fetching Users"
-    
-    if (auth.currentUser === null) return <Redirect  to="/signin" />
 
-    if ( fetching ) return <Loader message={message} loading={loading} />
-    else{
-    return (
-        <div className={`users-container ${themeClass}`} > 
-            <div className="search-container" >
-                <TextField id="standard-basic" label="Search" onChange={handleChange} color="secondary" />
+    if (auth.currentUser === null) return <Redirect to="/signin" />
+
+    if (fetching) return <Loader message={message} loading={loading} />
+    else {
+        return (
+            <div className={`users-container ${themeClass}`} >
+                <div className="search-container" >
+                    <TextField id="standard-basic" label="Search" onChange={handleChange} color="secondary" />
+                </div>
+                <div className="users-results-container" >
+                    {
+                        usersData && usersDataList.map((user, i) => {
+                            return (
+                                <EachProfile details={user} key={user.id} />
+
+                            )
+                        })
+                    }
+                </div>
+
             </div>
-            <div className="users-results-container" >
-                {
-                    usersData && usersDataList.map((user, i) => {
-                        return (
-                            <EachProfile details={user} key={user.id} />
-
-                        )
-                    })
-                }
-            </div>
-
-        </div>
-    )
+        )
     }
 }
 

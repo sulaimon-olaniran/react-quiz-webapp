@@ -1,28 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Options from './options/Options'
 import Question from './question/Question'
 import GameDetails from './game_details/GameDetails'
-//import { QuestionContext } from '../../contexts/QuestionsContext'
+import { AppContext } from '../../contexts/AppContext'
 
-const GameQuestions = ({ currentOptions, currentAnswers, currentQuestions, questionNumber }) => {
-    //const { fetching, loading, getGameQuestions } = useContext(QuestionContext)
-
-
-    const getRandomColor = () => {
-        const letters = '0123456789ABCDEF';
-        let color = '#5';
-        for (let i = 0; i < 5; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
+const GameQuestions = ({ currentOptions, currentAnswers, currentQuestions, coins, questionNumber, setQuestionNumber, totalQuestion, redirectTo }) => {
+    const { themeClass } = useContext(AppContext)
+    
+    // const getRandomColor = () => {
+    //     const letters = '0123456789ABCDEF';
+    //     let color = '#5';
+    //     for (let i = 0; i < 5; i++) {
+    //         color += letters[Math.floor(Math.random() * 16)];
+    //     }
+    //     return color;
+    // }
     return (
-        <div className={`game-container`} style={{ background: getRandomColor() }} >
+        <div className={`game-container ${themeClass}`}  >
 
             <div className="quiz" >
-                <GameDetails />
-                <Question currentQuestions={currentQuestions} questionNumber={questionNumber} />
-                <Options currentAnswers={currentAnswers} currentOptions={currentOptions} />
+                <GameDetails coins={coins} redirectTo={redirectTo} />
+                <Question currentQuestions={currentQuestions} questionNumber={questionNumber} totalQuestion={totalQuestion} />
+                <Options currentAnswers={currentAnswers} currentOptions={currentOptions} setQuestionNumber={setQuestionNumber}
+                questionNumber={questionNumber} totalQuestion={totalQuestion} redirectTo={redirectTo} />
 
             </div>
         </div>

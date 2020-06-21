@@ -21,7 +21,13 @@ const GameContextProvider = (props) => {
     const [coinsSpent, setCoinsSpent] = useState(0)
     const [points, setPoints] = useState(0)
     const [attempts, setAttempts] = useState(0)
+    
 
+    const [ disableLeague, setDisableLeague ] = useState(false)
+
+    const targetDate = "06 23, 2020"
+    
+    const countDownDate = new Date(`${targetDate} 18:01:00`).getTime()
 
     const showOptions = () => {
         const options = Array.from(document.activeElement.querySelectorAll('.each-option-container'))
@@ -29,6 +35,7 @@ const GameContextProvider = (props) => {
             option.style.visibility = "visible"
         })
     }
+
     const clearData = () =>{
         setAttempts(0)
         setCoinsSpent(0)
@@ -39,34 +46,13 @@ const GameContextProvider = (props) => {
         setHintsUsed(0)
         setPoints(0)
     }
-
-    const endGamePlay = () => {
-        // const userId = auth.currentUser.uid
-        // db.collection("users").doc(userId).update({
-        //     totalPoints: firebase.firestore.FieldValue.increment(points),
-        //     leaguePosition: null,
-        //     attempts: firebase.firestore.FieldValue.increment(attempts),
-        //     rightAnswers: firebase.firestore.FieldValue.increment(answeredRight),
-        //     wrongAnswers: firebase.firestore.FieldValue.increment(answeredWrong),
-        //     successPercentage: firebase.firestore.FieldValue.increment(points),
-        //     fiftyUsed: firebase.firestore.FieldValue.increment(fiftyUsed),
-        //     hintsUsed: firebase.firestore.FieldValue.increment(hintsUsed),
-        //     coinsSpent: firebase.firestore.FieldValue.increment(coinsSpent),
-        //     coins: firebase.firestore.FieldValue.increment(-coinsSpent),
-
-        // })
-        // .then(() => {
-            props.history.push("/game/stats")
-       // })
-    }
-
     return (
         <GameContext.Provider value={{
             removedIndex, setRemovedIndex, rightAnswer, questionNumber, setQuestionNumber, showOptions,
             setRightAnswer, usedFiftyFifty, setUsedFiftyFifty, answeredWrong, setAnsweredWrong, usedHint,
             coins, setCoins, wrongAnswer, setWrongAnswer, answeredRight, setAnsweredRight, setUsedHint,
             fiftyUsed, setFiftyUsed, hintsUsed, setHintsUsed, points, setPoints, coinsSpent, setCoinsSpent,
-            attempts, setAttempts, endGamePlay, clearData
+            attempts, setAttempts, clearData, disableLeague, setDisableLeague, countDownDate
         }}>
             {props.children}
         </GameContext.Provider>

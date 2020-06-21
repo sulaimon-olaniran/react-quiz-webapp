@@ -2,28 +2,26 @@ import React from 'react'
 import EachOption from './each_option/EachOption'
 import FiftyFifty from './life_lines/fifty_fifty/FiftyFifty'
 import Hints from './life_lines/hints/Hints'
-//import { GameContext } from '../../../contexts/GameContext'
 
-const Options = ({ currentAnswers, currentOptions }) => {
+const Options = ({ currentAnswers, currentOptions, questionNumber, setQuestionNumber, totalQuestion, redirectTo }) => {
 
     const randomAnswer = currentAnswers[Math.floor(Math.random() * currentAnswers.length)]
     const randomOptions = []
     const randomFinalOptions = []
-    console.log("options is updating")
 
     // function for shuffling array
-    
+
 
     const shuffleArray = (oldArray, newArray, arrayLength) => {
         while (newArray.length <= arrayLength) {
-            const random =  oldArray[Math.floor(Math.random() * oldArray.length)]
+            const random = oldArray[Math.floor(Math.random() * oldArray.length)]
             if (!newArray.includes(random)) {
                 newArray.push(random)
             }
         }
 
     }
-    shuffleArray( currentOptions, randomOptions, 2)
+    shuffleArray(currentOptions, randomOptions, 2)
 
     const finalOptions = randomOptions.concat(randomAnswer)
 
@@ -35,7 +33,8 @@ const Options = ({ currentAnswers, currentOptions }) => {
                 randomFinalOptions && randomFinalOptions.map((option, index) => {
                     return (
                         <React.Fragment key={index} >
-                            <EachOption option={option} answer={randomAnswer} />
+                            <EachOption option={option} answer={randomAnswer} setQuestionNumber={setQuestionNumber}
+                                questionNumber={questionNumber} totalQuestion={totalQuestion} redirectTo={redirectTo} />
                         </React.Fragment>
 
                     )
@@ -66,7 +65,7 @@ class DontRender  extends React.PureComponent{
     shouldComponentUpdate(nextProps, nextState){
        return nextProps === this.props
     }
-    
+
     constructor(props){
         super(props);
     }
@@ -83,20 +82,20 @@ class DontRender  extends React.PureComponent{
                     newArray.push(random)
                 }
             }
-    
+
         }
         shuffleArray(options, randomOptions, 2)
-    
+
         const finalOptions = randomOptions.concat(randomAnswer)
-    
+
         shuffleArray(finalOptions, randomFinalOptions, 3)
 
         const pickOptions = () => {
             const options = Array.from(document.activeElement.querySelectorAll('.each-option-container'))
             console.log(options)
         }
-         
-        
+
+
         return(
          <div className="options-container" >
             {
