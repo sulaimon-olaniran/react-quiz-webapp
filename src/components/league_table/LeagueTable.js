@@ -40,7 +40,8 @@ const LeagueTable = () => {
 
     if(auth.currentUser === null) return <Redirect to="/login" />
     return(
-        <div className={`league-table-container ${themeClass}`} >
+        <div className={`league-table-container ${themeClass}`} >    
+            <h1>League Table and Duration</h1>
             <LeagueCountDown targetDate="06 26, 2020" targetTime="00:00:00" />
             <TopThree firstThree={firstThree} />
             <OtherRanks ranks={sortedArray} />

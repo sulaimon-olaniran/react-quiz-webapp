@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useEffect } from 'react'
 import Options from './options/Options'
 import Question from './question/Question'
 import GameDetails from './game_details/GameDetails'
@@ -6,19 +6,29 @@ import { AppContext } from '../../contexts/AppContext'
 
 const GameQuestions = ({ currentOptions, currentAnswers, currentQuestions, coins, questionNumber, setQuestionNumber, totalQuestion, redirectTo }) => {
     const { themeClass } = useContext(AppContext)
+    const mountedRef = useRef(true)
+
+    useEffect(() => {
+        return () => {
+            mountedRef.current = false
+        }
+    }, [])
+
+    if (!mountedRef.current) return null
     
-    return (
-        <div className={`game-container ${themeClass}`}  >
+        return (
+            <div className={`game-container ${themeClass}`}  >
 
-            <div className="quiz" >
-                <GameDetails coins={coins} redirectTo={redirectTo} />
-                <Question currentQuestions={currentQuestions} questionNumber={questionNumber} totalQuestion={totalQuestion} />
-                <Options currentAnswers={currentAnswers} currentOptions={currentOptions} setQuestionNumber={setQuestionNumber}
-                questionNumber={questionNumber} totalQuestion={totalQuestion} redirectTo={redirectTo} />
+                <div className="quiz" >
+                    <GameDetails coins={coins} redirectTo={redirectTo} />
+                    <Question currentQuestions={currentQuestions} questionNumber={questionNumber} totalQuestion={totalQuestion} />
+                    <Options currentAnswers={currentAnswers} currentOptions={currentOptions} setQuestionNumber={setQuestionNumber}
+                        questionNumber={questionNumber} totalQuestion={totalQuestion} redirectTo={redirectTo} />
 
+                </div>
             </div>
-        </div>
-    )
+        )
+    
 }
 
 

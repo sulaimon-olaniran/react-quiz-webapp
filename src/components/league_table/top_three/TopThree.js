@@ -3,6 +3,7 @@ import gold from './assets/gold.png'
 import silver from './assets/silver.png'
 import bronze from './assets/bronze.png'
 import Avatar from '@material-ui/core/Avatar'
+import { Link } from 'react-router-dom'
 
 
 const TopThree = ({ firstThree }) => {
@@ -13,56 +14,57 @@ const TopThree = ({ firstThree }) => {
 
 
     const firstImage = first !== undefined && first.displayImage
-    const secondImage = second !== undefined  && second.displayImage
+    const secondImage = second !== undefined && second.displayImage
     const thirdImage = third !== undefined && third.displayImage
-  
+
 
     return (
         <div className="top-three-container" >
 
-            <div>
+            <Link to={`/user/${second && second.id}`} className="each-top-container" >
                 <div className="top-three-image">
                     <Avatar src={secondImage} alt="Second Position" />
                 </div>
 
                 <div className="top-three-details" >
                     <p>{second && second.name}</p>
-                    <p>{second && second.totalPoints}</p>
+                    <h3>{second && second.totalPoints}</h3>
                 </div>
 
 
                 <div className="medal-image">
                     <img src={silver} alt="Gold" />
                 </div>
-            </div>
+            </Link>
 
-            <div className="first-position">
+
+            <Link  to={`/user/${first && first.id}`} className="each-top-container first-position">
                 <div className="top-three-image">
                     <Avatar src={firstImage} alt="First Position" />
                 </div>
                 <div className="top-three-details" >
                     <p>{first && first.name}</p>
-                    <p>{first && first.totalPoints}</p>
+                    <h3>{first && first.totalPoints}</h3>
                 </div>
 
                 <div className="medal-image">
                     <img src={gold} alt="Gold" />
                 </div>
-            </div>
+            </Link>
 
-            <div>
+            <Link  to={`/user/${third && third.id}`} className="each-top-container" >
                 <div className="top-three-image">
                     <Avatar src={thirdImage} alt="Third Position" />
                 </div>
                 <div className="top-three-details" >
                     <p>{third && third.name}</p>
-                    <p>{third && third.totalPoints}</p>
+                    <h3>{third && third.totalPoints}</h3>
                 </div>
 
                 <div className="medal-image">
                     <img src={bronze} alt="Bronze" />
                 </div>
-            </div>
+            </Link>
 
         </div>
     )

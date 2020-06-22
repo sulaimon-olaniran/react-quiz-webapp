@@ -6,7 +6,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Zoom from '@material-ui/core/Zoom'
 import CoverImageUpload from './upload/CoverUpload'
 import { ProfileContext } from '../../../../contexts/ProfileContext'
-import cover_photo from '../../../profile/sections/picture/assets/cover_photo.jpg'
+import Avatar from '@material-ui/core/Avatar'
+//import cover_photo from '../../../profile/sections/picture/assets/cover_photo.jpg'
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -28,13 +29,12 @@ const CoverImage = () => {
         setImageModal(false)
     }
 
-    const coverImage = profile.coverImage === "" ? cover_photo : profile.coverImage
 
     return (
         <div className="profile-picture-container" >
             <h3>Cover Picture</h3>
             <div className="profile-image-container" >
-                <img src={coverImage} alt="Profile P" />
+            <Avatar src={profile.coverImage} alt="Display P" />
             </div>
 
             <Button color="secondary" variant="contained" onClick={openImageModal}  >Change Image</Button>

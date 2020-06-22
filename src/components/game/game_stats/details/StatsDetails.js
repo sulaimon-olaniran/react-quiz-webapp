@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button'
 import { GameContext } from '../../../../contexts/GameContext'
 import { db, auth } from '../../../../firebase/Firebase'
 import firebase from '../../../../firebase/Firebase'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter, Redirect, NavLink } from 'react-router-dom'
 
 
 const StatsDetails = (props) => {
@@ -100,8 +100,8 @@ const StatsDetails = (props) => {
             </div>
 
             <div className="buttons-container">
-                <Button color="secondary" variant="contained" >Play Again</Button>
-                <Button color="primary" variant="contained" >Home Page</Button>
+                <NavLink to="/league/game"><Button color="secondary" variant="contained" >Play Again</Button></NavLink>
+                <NavLink to="/"><Button color="primary" variant="contained" >Home Page</Button></NavLink>
             </div>
 
 

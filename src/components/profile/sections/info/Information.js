@@ -18,6 +18,8 @@ const Information = ({ details }) => {
 
                 {details.sex && <div><p>Sex - {details.sex}</p></div>}
                 { details.about && <div className="about-container" ><p>{details.about}</p></div>}
+                { details.country && <div><p>Country - {details.country}</p></div> }
+                { details.state && <div><p>State - {details.state}</p></div> }
     
             </div>
 

@@ -34,6 +34,8 @@ const ProfileSettings = ({ isSubmitting, status }) => {
 
 
                 <Field as={TextField} type="number" name="phoneNumber" label="Phone number" />
+                <Field as={TextField} type="text" name="country" label="Country" />
+                <Field as={TextField} type="text" name="state" label="State" />
                 <Field as={TextField} type="text" name="instagram" label="Instagram" />
                 <Field as={TextField} type="text" name="twitter" label="Twitter" />
                 <Field as={TextField} type="text" name="facebook" label="Facebook" />
@@ -51,12 +53,13 @@ const ProfileSettings = ({ isSubmitting, status }) => {
 
 const FormikProfileSettings = withFormik({
     mapPropsToValues({ details }) {
-        const { firstName, lastName, sex, phoneNumber, instagram, twitter, about, facebook } = details
+        const { firstName, lastName, sex, phoneNumber, instagram, twitter, about, facebook, country, state } = details
         return {
             firstName: firstName || "",
             lastName: lastName || "",
             sex: sex || "",
-            // country: country || "",
+            country: country || "",
+            state : state || "",
             phoneNumber: phoneNumber || "",
             instagram: instagram || "",
             twitter: twitter || "",
@@ -66,7 +69,7 @@ const FormikProfileSettings = withFormik({
     },
 
     handleSubmit(values, { setStatus, setSubmitting }) {
-        const { sex, country, firstName, lastName, phoneNumber, instagram, twitter, about, facebook } = values
+        const { sex, country, firstName, lastName, phoneNumber, instagram, twitter, about, facebook, state } = values
         //console.log(values)
         const userId = auth.currentUser.uid
         setSubmitting(true)
@@ -76,7 +79,8 @@ const FormikProfileSettings = withFormik({
             firstName: firstName,
             lastName: lastName,
             sex: sex,
-           // country: country,
+            country: country,
+            state : state,
             phoneNumber: phoneNumber,
             instagram: instagram,
             twitter: twitter,

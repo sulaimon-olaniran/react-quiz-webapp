@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import Fab from '@material-ui/core/Fab'
 import CheckIcon from '@material-ui/icons/Check'
 import SaveIcon from '@material-ui/icons/Save'
+import Avatar from '@material-ui/core/Avatar'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,8 +46,8 @@ const DisplayImageUpload = ({ photo }) => {
     const [image, setImage] = useState(null)
     const [preview, setPreview] = useState('')
     const classes = useStyles();
-    const [loading, setLoading] = React.useState(false);
-    const [success, setSuccess] = React.useState(false);
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
 
 
     const buttonClassname = clsx({
@@ -93,7 +94,6 @@ const DisplayImageUpload = ({ photo }) => {
         )
     }
 
-    const imagePlace = "https://via.placeholder.com/250"
 
     return (
         <div className="upload-image-container">
@@ -109,7 +109,7 @@ const DisplayImageUpload = ({ photo }) => {
             <div className="image-display-con">
 
                 <div className="uploaded-image">
-                    <img src={preview ? preview : imagePlace} alt="Uploaded" />
+                    <Avatar src={preview} alt="Preview" />
                 </div>
 
             </div>
@@ -131,7 +131,7 @@ const DisplayImageUpload = ({ photo }) => {
                         variant="contained"
                         color="primary"
                         className={buttonClassname}
-                        disabled={loading}
+                        disabled={ image === null || loading }
                         onClick={handleSubmit}
                     >
                         Upload Image

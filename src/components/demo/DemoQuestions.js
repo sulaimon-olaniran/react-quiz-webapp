@@ -156,7 +156,6 @@ export const demoQuestions = [
     }
 ] 
 
-console.log(demoQuestions.length)
 
 export const shuffledQuestions = [] 
 

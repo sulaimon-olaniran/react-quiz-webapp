@@ -5,9 +5,10 @@ import Modal from '@material-ui/core/Modal'
 import Backdrop from '@material-ui/core/Backdrop'
 import { makeStyles } from '@material-ui/core/styles'
 import Zoom from '@material-ui/core/Zoom'
-import user_avatar from '../../../profile/sections/picture/assets/user_avatar.png'
 import { ProfileContext } from '../../../../contexts/ProfileContext'
+import Avatar from '@material-ui/core/Avatar'
 import DisplayImageUpload from './upload/DisplayUpload'
+
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -29,13 +30,12 @@ const DisplayImage = () => {
         setImageModal(false)
     }
 
-    const displayImage = profile.displayImage === "" ? user_avatar : profile.displayImage
 
     return (
         <div className="profile-picture-container" >
             <h3>Display Picture</h3>
             <div className="profile-image-container" >
-                <img src={displayImage} alt="Profile P" />
+                <Avatar src={profile.displayImage} alt="Display P" />
             </div>
 
             <Button color="secondary" variant="contained" onClick={openImageModal}  >Change Image</Button>

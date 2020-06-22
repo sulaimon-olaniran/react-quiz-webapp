@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.2.1",
     "chart.js": "^2.9.3",
     "csshake": "^1.5.3",
+    "emailjs-com": "^2.4.1",
     "firebase": "^7.14.2",
     "formik": "^2.1.4",
     "highcharts": "^8.1.1",

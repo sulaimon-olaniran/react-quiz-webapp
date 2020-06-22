@@ -1,12 +1,8 @@
 import React, { createContext, useState, useContext } from 'react'
-//import { db, auth } from '../firebase/Firebase'
-import { ProfileContext } from './ProfileContext'
-import { auth } from '../firebase/Firebase'
 
 export const GameContext = createContext()
 
 const GameContextProvider = (props) => {
-    const { profile } = useContext(ProfileContext)
     const [removedIndex, setRemovedIndex] = useState([])
     const [usedFiftyFifty, setUsedFiftyFifty] = useState(false)
     const [usedHint, setUsedHint] = useState(false)
@@ -22,8 +18,6 @@ const GameContextProvider = (props) => {
     const [coinsSpent, setCoinsSpent] = useState(0)
     const [points, setPoints] = useState(0)
     const [attempts, setAttempts] = useState(0)
-
-    console.log(profile && profile)
 
     const [disableLeague, setDisableLeague] = useState(false)
 

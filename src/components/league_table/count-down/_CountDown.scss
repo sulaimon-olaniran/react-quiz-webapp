@@ -1,12 +1,10 @@
-
-  //countdown component styles
-  .counter {
-    // margin: 0 -5px;
+ .counter {
     text-align: center;
     display: inline-flex;
     justify-content: center;
     width: 100%;
     background-color: rgba(0,0,0,0.6);
+    margin: 1rem 0 0 0;
   }
   
   .entry {
@@ -97,6 +95,25 @@
     }
     to {
       transform: rotateX(0deg);
+    }
+  }
+
+  @media(min-width : 760px){
+    .counter{
+      width: 70%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media(min-width : 960px){
+    .counter{
+      width: 50%;
+    }
+  }
+  
+  @media(min-width : 1200px){
+    .counter{
+      width: 40%;
     }
   }
   

@@ -21,7 +21,8 @@ const UsersPage = () => {
             docs.forEach(doc => {
                 users.push(doc.data())
             })
-            setUsersData(users)
+            const sortedArray = users && users.sort(function(a, b){return a.firstName - b.firstName})
+            setUsersData(sortedArray)
             // console.log(users)
             setFetching(false)
             setTimeout(() => {

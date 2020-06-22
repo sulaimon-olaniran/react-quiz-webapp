@@ -50,13 +50,11 @@ const EachOption = ({ option, answer, questionNumber, setQuestionNumber, totalQu
             console.log("Game Ended")
             setTimeout(() => {
                 history.push(redirectTo)
-                //endGamePlay()
             }, 1000)
         }
 
 
     }
-    console.log(disableOption)
     return (
 
         <div className="each-option-container" >

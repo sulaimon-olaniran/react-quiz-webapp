@@ -15,7 +15,6 @@ const GameLeague = () => {
     const [currentTime, setCurrentTime] = useState(new Date().getTime())
     const [questionNumber, setQuestionNumber] = useState(0)
 
-    console.log(shuffledQuestions)
 
     let timing;
 

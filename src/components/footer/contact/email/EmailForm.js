@@ -1,5 +1,6 @@
 import React from 'react'
 import { withFormik, Form, Field } from 'formik'
+import emailjs from 'emailjs-com'
 
 
 const EmailForm = () => {
@@ -31,7 +32,7 @@ const EmailForm = () => {
             <div className="w3-row w3-section">
                 <div className="w3-col" style={{width: "50px"}}><i className="w3-xxlarge fa fa-phone"></i></div>
                 <div className="w3-rest">
-                    <Field type="text" className="w3-input w3-border" name="phone" placeholder="Phone" />
+                    <Field type="text" className="w3-input w3-border" name="number" placeholder="Phone" />
                 </div>
             </div>
 
@@ -60,8 +61,19 @@ const FormikEmailForm = withFormik({
         }
     },
 
-    handleSubmit(values) {
+    handleSubmit(values, {resetForm}) {
+        const templatedId = "template_AgNfqmY4"
+        const serviceId = "default_service"
+        const userId = "user_KHVompyz6Bjkqit10kCMV"
         console.log(values)
+        emailjs.send( serviceId, templatedId, values, userId)
+        .then(() =>{
+            alert("Sent")
+            resetForm({})
+        })
+        .catch(error =>{
+            console.log(error.message)
+        })
     }
 
 })(EmailForm)

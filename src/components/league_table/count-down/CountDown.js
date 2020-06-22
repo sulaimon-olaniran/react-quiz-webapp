@@ -90,7 +90,7 @@ const LeagueCountDown = (props) => {
                                 <span className="count bottom next flipBottom">{minutesLeft}</span>
                                 <span className="count bottom curr">{minutesLeft + 1}</span>
                             </div>
-                            <div className="entry-title">Hours</div>
+                            <div className="entry-title">Minutes</div>
                         </div>
 
                         <div className="entry">
@@ -100,7 +100,7 @@ const LeagueCountDown = (props) => {
                                 <span className="count bottom next flipBottom">{secondsLeft}</span>
                                 <span className="count bottom curr">{secondsLeft + 1}</span>
                             </div>
-                            <div className="entry-title">Hours</div>
+                            <div className="entry-title">Seconds</div>
                         </div>
                   
                 </div>

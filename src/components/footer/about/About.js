@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import { NavLink } from 'react-router-dom'
 
 const About = () => {
     return (
@@ -7,13 +8,14 @@ const About = () => {
             <h1>About OS-Quiz</h1>
             <div className="about-text">
                 <p>
-                    This project was built to help people have learn while they
-                    having fun, and also prepare them for exams and have wide 
-                    ideas of .......
+                    Os-Quiz was a project built to help people have fun, 
+                    learn and gain new knowledges in the process.......
                 </p>
 
             </div>
-             <Button color="secondary" size="large" variant="outlined">Learn More ...</Button>
+            <NavLink to="/about" >
+                <Button color="secondary" size="large" variant="outlined">Learn More ...</Button>
+            </NavLink>
         </div>
     )
 }

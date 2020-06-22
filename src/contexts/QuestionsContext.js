@@ -15,15 +15,11 @@ const QuestionContextProvider = (props) => {
             .get()
             .then(snapshot => {
                 const questions = []
-                const shuffledQuestions = []
-
                 snapshot.forEach(doc => {
                     const data = doc.data()
                     questions.push(data)
                 })
-                //console.log(questions)
                 setQuestions(questions)
-                console.log(shuffledQuestions)
 
                 setLoading(false)
 
@@ -36,17 +32,12 @@ const QuestionContextProvider = (props) => {
 
     const shuffledQuestions = []
 
-    //const shuffleArray = () => {
         while (questions !== null && shuffledQuestions.length <= 2) {
             const random = questions[Math.floor(Math.random() * questions.length)]
             if (!shuffledQuestions.includes(random)) {
                 shuffledQuestions.push(random)
             }
         }
-
-  //  }
-
-
 
     //Reverse all options visibility back to visible incase of any hints being usded
     const showOptions = () => {
@@ -59,14 +50,9 @@ const QuestionContextProvider = (props) => {
     const handleNextQuestion = () => {
         showOptions()
     }
-    // const currentQuestions = questions !== null ? questions[questionNumber].questions : null
-    // const currentOptions = questions !== null ? questions[questionNumber].options : null
-    // const currentAnswers = questions !== null  ? questions[questionNumber].answers : null
-
 
     return (
         <QuestionContext.Provider value={{
-            //currentAnswers, currentOptions, currentQuestions,
             questionNumber, setQuestionNumber, loading, shuffledQuestions,
             handleNextQuestion: handleNextQuestion, questions, getGameQuestions, fetching
         }}>
