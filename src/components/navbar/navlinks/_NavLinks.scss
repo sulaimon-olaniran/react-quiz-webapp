@@ -52,6 +52,12 @@ hr {
     color: inherit;
 }
 
+@media(min-width :300px ){
+    .navlink-con {
+        overflow: scroll;
+        }
+}
+
 @media(min-width : 500px) and (orientation: landscape) {
 .navlink-con {
     overflow: scroll;

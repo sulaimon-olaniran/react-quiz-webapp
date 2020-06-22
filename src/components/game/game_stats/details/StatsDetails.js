@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button'
 import { GameContext } from '../../../../contexts/GameContext'
 import { db, auth } from '../../../../firebase/Firebase'
 import firebase from '../../../../firebase/Firebase'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
 
 const StatsDetails = (props) => {
@@ -59,7 +59,8 @@ const StatsDetails = (props) => {
         color = "green"
     }
 
-
+    if( auth.currentUser === null) return <Redirect to="/signup" />
+    if(attempts === 0) return <Redirect to="/league/rules" />
     return (
         <div className={`stats-details-container ${themeClass}`} >
 

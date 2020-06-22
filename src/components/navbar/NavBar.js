@@ -58,7 +58,7 @@ const NavBar = () => {
         <nav className={themeClass}>
             <div className="menu-con">
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleMenu} >
-                    <MenuIcon fontSize="large" />
+                    <MenuIcon fontSize="small" />
                 </IconButton>
             </div>
 
@@ -68,6 +68,7 @@ const NavBar = () => {
                     control={<Switch size="small" color="default" checked={darkTheme} onChange={toggleTheme} />}
                     label="Dark Mode"
                     labelPlacement="top"
+                    size="small"
                 />
             </div>
 
@@ -75,12 +76,12 @@ const NavBar = () => {
                 {
                     !loggedIn ?
                         <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleClickOffline} >
-                            <AccountCircleIcon fontSize="large" />
+                            <AccountCircleIcon fontSize="small" />
                         </IconButton>
 
                         :
                         <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleClickOnline} >
-                            <Avatar alt="Remy Sharp" src={profileImage} />
+                            <Avatar alt="Remy Sharp" src={profileImage} size="small" />
                         </IconButton>
                 }
 

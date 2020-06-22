@@ -7,14 +7,6 @@ import { AppContext } from '../../contexts/AppContext'
 const GameQuestions = ({ currentOptions, currentAnswers, currentQuestions, coins, questionNumber, setQuestionNumber, totalQuestion, redirectTo }) => {
     const { themeClass } = useContext(AppContext)
     
-    // const getRandomColor = () => {
-    //     const letters = '0123456789ABCDEF';
-    //     let color = '#5';
-    //     for (let i = 0; i < 5; i++) {
-    //         color += letters[Math.floor(Math.random() * 16)];
-    //     }
-    //     return color;
-    // }
     return (
         <div className={`game-container ${themeClass}`}  >
 
@@ -68,6 +60,14 @@ export default React.memo(GameQuestions)
 
 
 
+    // const getRandomColor = () => {
+    //     const letters = '0123456789ABCDEF';
+    //     let color = '#5';
+    //     for (let i = 0; i < 5; i++) {
+    //         color += letters[Math.floor(Math.random() * 16)];
+    //     }
+    //     return color;
+    // }
 
 
 

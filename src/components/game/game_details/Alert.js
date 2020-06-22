@@ -21,7 +21,7 @@ const GameAlert = () => {
     
     return (
         <div>
-            <Snackbar open={rightAnswer} autoHideDuration={1500} onClose={handleClose}
+            <Snackbar open={rightAnswer} autoHideDuration={500} onClose={handleClose}
               anchorOrigin={{
                 vertical: 'top',
                 horizontal: 'left'
@@ -32,7 +32,7 @@ const GameAlert = () => {
                  </Alert>
             </Snackbar>
 
-            <Snackbar open={wrongAnswer} autoHideDuration={1500} onClose={handleClose}
+            <Snackbar open={wrongAnswer} autoHideDuration={500} onClose={handleClose}
             anchorOrigin={{ vertical:"top", horizontal:"right" }}
             >
                 <Alert onClose={handleClose} severity="error">

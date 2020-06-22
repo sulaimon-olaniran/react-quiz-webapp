@@ -8,19 +8,23 @@
     background-color: inherit;
     border-radius: 15px;
     color: inherit;
+    overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-    p{
+    button{
         font-size: 0.9rem;
         font-weight: 600;
         text-transform: uppercase;
-        width: 90%;
+        width: 100%;
+        color: inherit;
+        background-color: inherit;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+        border: none;
+        outline: none;
     }
-    
 }
 
 @media(min-width : 960px){
