@@ -54,18 +54,19 @@ function App() {
         <Online>
           <Router>
             <AppContextProvider>
-              <GameContextProvider >
+              
                 <QuestionContextProvider>
                   <ProfileContextProvider >
-
+                   <GameContextProvider >
                     <div className="App">
 
                       <Components />
 
                     </div>
+                    </GameContextProvider>
                   </ProfileContextProvider>
                 </QuestionContextProvider>
-              </GameContextProvider>
+              
             </AppContextProvider>
           </Router>
         </Online>

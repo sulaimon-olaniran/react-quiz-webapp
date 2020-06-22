@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import cover_photo from './assets/cover_photo.jpg'
 import user_avatar from './assets/user_avatar.png'
+import Avatar from '@material-ui/core/Avatar'
 import { AppContext } from '../../../../contexts/AppContext'
 
 const ProfilePicture = ({details}) => {
@@ -21,8 +22,7 @@ const ProfilePicture = ({details}) => {
             </div>
 
             <div className="photo-container" style={{color : color}} >
-                <img src={displayImage} alt="Profile"  />
-
+                <Avatar src={details.displayImage} alt="DP" />
             </div>
 
         </div>

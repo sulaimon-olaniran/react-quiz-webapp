@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect, useContext } from 'react'
 import { db, auth } from '../firebase/Firebase'
 
 export const ProfileContext = createContext()
@@ -9,14 +9,8 @@ const ProfileContextProvider = ({ children }) => {
     const [fetching, setFetching] = useState(true)
 
     const getUserProfile = () => {
-        // setLoading(true)
-        // setFetching(true)
         const userId = auth.currentUser && auth.currentUser.uid
-        db.collection("users").doc(userId).onSnapshot(snapshot =>
-        //    .get()
-        //         .then(snapshot
-        {
-            //console.log(snapshot.data())
+        db.collection("users").doc(userId).onSnapshot(snapshot => {
             setProfile(snapshot.data())
             setLoading(false)
 

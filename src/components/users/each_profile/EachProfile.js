@@ -1,15 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import user_avatar from '../../profile/sections/picture/assets/user_avatar.png'
+import Avatar from '@material-ui/core/Avatar'
 
 
 const EachProfile = ({ details }) => {
-    const image = details.displayImage === "" ? user_avatar : details.displayImage
     return (
             <div className="each-user-container" >
                 <Link to={`/user/${details.id}`} >
                 <div className="user-image-container" >
-                    <img src={image} alt="User" />
+                    <Avatar src={ details.displayImage} alt="DP" />
                 </div>
                 <p>{details.firstName} {details.lastName}</p>
                 </Link>

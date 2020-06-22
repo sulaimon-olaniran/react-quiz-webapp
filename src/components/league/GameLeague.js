@@ -5,11 +5,13 @@ import GameQuestions from '../game/GameQuestions'
 import Loader from '../loader/Loader'
 import { GameContext } from '../../contexts/GameContext'
 import { auth } from '../../firebase/Firebase'
+import { ProfileContext } from '../../contexts/ProfileContext'
 
 
 const GameLeague = () => {
-    const { getGameQuestions, questions, fetching, loading, shuffledQuestions } = useContext(QuestionContext)
-    const { countDownDate, coins } = useContext(GameContext)
+    const { getGameQuestions, fetching, loading, shuffledQuestions } = useContext(QuestionContext)
+    const { profile } = useContext(ProfileContext)
+    const { countDownDate, setCoins } = useContext(GameContext)
     const [currentTime, setCurrentTime] = useState(new Date().getTime())
     const [questionNumber, setQuestionNumber] = useState(0)
 
@@ -28,7 +30,7 @@ const GameLeague = () => {
     useEffect(() => {
         getGameQuestions()
         handleCurrentTime()
-
+        setCoins(profile && profile.coins)
         return () => {
             clearInterval(timing)
         }
@@ -55,7 +57,6 @@ const GameLeague = () => {
             <React.Fragment>
 
                 <GameQuestions
-                    coins={coins}
                     currentOptions={currentOptions}
                     currentAnswers={currentAnswers}
                     currentQuestions={currentQuestions}

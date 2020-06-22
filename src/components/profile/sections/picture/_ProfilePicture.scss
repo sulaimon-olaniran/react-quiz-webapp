@@ -21,15 +21,16 @@
             height: 11rem; 
             border: 5px solid;
             border-color: inherit;
-            overflow: hidden;
+            //overflow: hidden;
             border-radius: 50%;
             position: absolute;
             top: 10rem;
+            background-color: inherit;
 
-            img{
+            .MuiAvatar-root{
                 height: 100%;
                 width: 100%;
-                object-fit: cover;
+                //object-fit: contain;
             }
         }
     }

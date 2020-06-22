@@ -1,15 +1,16 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useContext } from 'react'
 //import { db, auth } from '../firebase/Firebase'
-import { withRouter } from 'react-router-dom'
-//import firebase from '../firebase/Firebase'
+import { ProfileContext } from './ProfileContext'
+import { auth } from '../firebase/Firebase'
 
 export const GameContext = createContext()
 
 const GameContextProvider = (props) => {
+    const { profile } = useContext(ProfileContext)
     const [removedIndex, setRemovedIndex] = useState([])
     const [usedFiftyFifty, setUsedFiftyFifty] = useState(false)
     const [usedHint, setUsedHint] = useState(false)
-    const [coins, setCoins] = useState(100)
+    const [coins, setCoins] = useState(0)
     const [wrongAnswer, setWrongAnswer] = useState(false)
     const [rightAnswer, setRightAnswer] = useState(false)
 
@@ -21,12 +22,13 @@ const GameContextProvider = (props) => {
     const [coinsSpent, setCoinsSpent] = useState(0)
     const [points, setPoints] = useState(0)
     const [attempts, setAttempts] = useState(0)
-    
 
-    const [ disableLeague, setDisableLeague ] = useState(false)
+    console.log(profile && profile)
+
+    const [disableLeague, setDisableLeague] = useState(false)
 
     const targetDate = "06 23, 2020"
-    
+
     const countDownDate = new Date(`${targetDate} 18:01:00`).getTime()
 
     const showOptions = () => {
@@ -36,7 +38,7 @@ const GameContextProvider = (props) => {
         })
     }
 
-    const clearData = () =>{
+    const clearData = () => {
         setAttempts(0)
         setCoinsSpent(0)
         setAnsweredRight(0)
@@ -61,4 +63,4 @@ const GameContextProvider = (props) => {
 }
 
 
-export default withRouter(GameContextProvider)
+export default GameContextProvider

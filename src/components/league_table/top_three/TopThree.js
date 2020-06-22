@@ -1,9 +1,8 @@
 import React from 'react'
-import oladipupo from './assets/oladipupo.png'
 import gold from './assets/gold.png'
 import silver from './assets/silver.png'
 import bronze from './assets/bronze.png'
-import user_avatar from './assets/user_avatar.png'
+import Avatar from '@material-ui/core/Avatar'
 
 
 const TopThree = ({ firstThree }) => {
@@ -13,9 +12,9 @@ const TopThree = ({ firstThree }) => {
     const third = firstThree && firstThree[2]
 
 
-    const firstImage = first !== undefined ? first.displayImage === "" ? user_avatar : first.displayImage : null
-    const secondImage = second !== undefined ? second.displayImage === "" ? user_avatar : second.displayImage : null
-    const thirdImage = third !== undefined ? third.displayImage === "" ? user_avatar : third.displayImage : null
+    const firstImage = first !== undefined && first.displayImage
+    const secondImage = second !== undefined  && second.displayImage
+    const thirdImage = third !== undefined && third.displayImage
   
 
     return (
@@ -23,7 +22,7 @@ const TopThree = ({ firstThree }) => {
 
             <div>
                 <div className="top-three-image">
-                    <img src={secondImage} alt="blah" />
+                    <Avatar src={secondImage} alt="Second Position" />
                 </div>
 
                 <div className="top-three-details" >
@@ -39,8 +38,7 @@ const TopThree = ({ firstThree }) => {
 
             <div className="first-position">
                 <div className="top-three-image">
-                    <img src={firstImage} alt="blah" />
-
+                    <Avatar src={firstImage} alt="First Position" />
                 </div>
                 <div className="top-three-details" >
                     <p>{first && first.name}</p>
@@ -54,7 +52,7 @@ const TopThree = ({ firstThree }) => {
 
             <div>
                 <div className="top-three-image">
-                    <img src={thirdImage} alt="blah" />
+                    <Avatar src={thirdImage} alt="Third Position" />
                 </div>
                 <div className="top-three-details" >
                     <p>{third && third.name}</p>
