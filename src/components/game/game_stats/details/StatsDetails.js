@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 //import green_mark from './assets/green_mark.png'
 import done_mark from './assets/done_mark.png'
 import PieChart from './piechart/PieChart'
@@ -13,12 +13,12 @@ import { withRouter, Redirect, NavLink } from 'react-router-dom'
 const StatsDetails = (props) => {
     const { themeClass } = useContext(AppContext)
     const {answeredRight, answeredWrong, fiftyUsed, hintsUsed, coinsSpent, points, attempts, clearData } = useContext(GameContext)
-
+    const mountedRef = useRef(true)
      const updateFirebaseData = () => {
         const userId = auth.currentUser.uid
         db.collection("users").doc(userId).update({
             totalPoints: firebase.firestore.FieldValue.increment(points),
-            leaguePosition: null,
+            leaguePoints : firebase.firestore.FieldValue.increment(points),
             attempts: firebase.firestore.FieldValue.increment(attempts),
             rightAnswers: firebase.firestore.FieldValue.increment(answeredRight),
             wrongAnswers: firebase.firestore.FieldValue.increment(answeredWrong),
@@ -39,6 +39,7 @@ const StatsDetails = (props) => {
 
         return () => {
             clearData()
+            mountedRef.current = false
         }
     }, [])
     
@@ -58,9 +59,9 @@ const StatsDetails = (props) => {
         message = "Great Job Done"
         color = "green"
     }
-
-    if( auth.currentUser === null) return <Redirect to="/signup" />
-    if(attempts === 0) return <Redirect to="/league/rules" />
+    //if( attempts === 0) return <Redirect to="/league/rules" />
+    if( auth.currentUser === null) return <Redirect to="/signup" /> 
+    
     return (
         <div className={`stats-details-container ${themeClass}`} >
 

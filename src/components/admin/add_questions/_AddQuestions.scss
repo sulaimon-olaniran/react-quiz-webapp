@@ -1,0 +1,27 @@
+.admin-page-container{
+    form{
+        width: 80%;
+        min-height: 20rem ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        //margin-top: 3rem;
+
+        .field-container{
+            width: 80%;
+           display: flex;
+           flex-direction: column;
+           justify-content: space-around; 
+           align-items: center;
+
+           .MuiButtonBase-root{
+               width: 10rem;
+           }
+           div{
+               display: flex;
+               margin: 5px 0 7px 0;
+           }
+        }
+    }
+}

@@ -4,7 +4,7 @@ import { db } from '../../../../firebase/Firebase'
 const PlayerDetails = ({ details }) => {
     const [ position, setPosition ] = useState()
     const { totalPoints, leaguePosition, attempts, rightAnswers, wrongAnswers,
-        fiftyUsed, hintsUsed, coinsSpent, successPercentage, id
+        fiftyUsed, hintsUsed, coinsSpent,  id, leaguePoints
     } = details
 
     const league = leaguePosition === null ? "-" : leaguePosition
@@ -20,7 +20,7 @@ const PlayerDetails = ({ details }) => {
                 users.push(doc.data())
             })
 
-            const sortedUsers = users.sort(function (a, b) { return b.totalPoints - a.totalPoints })
+            const sortedUsers = users.sort(function (a, b) { return b.leaguePoints - a.leaguePoints })
 
             const leaguePosition = sortedUsers.findIndex(checkIndex)
             console.log(leaguePosition)
@@ -56,6 +56,7 @@ const PlayerDetails = ({ details }) => {
         <div className="game-details-container">
 
             <div><p><span className="title" >Total Points</span> <span className="subject">{totalPoints} </span></p></div>
+            <div><p><span className="title" >League Points</span> <span className="subject">{leaguePoints} </span></p></div>
             <div><p><span className="title" >League Position</span> <span className="subject">{league}{suffix}</span></p></div>
             <div><p><span className="title" >Attempts</span> <span className="subject">{attempts}</span></p></div>
             <div><p><span className="title" >Right Answers</span> <span className="subject">{rightAnswers}</span></p></div>

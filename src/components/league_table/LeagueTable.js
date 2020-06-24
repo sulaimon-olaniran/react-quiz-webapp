@@ -32,7 +32,7 @@ const LeagueTable = () => {
     }, [])
     //Arrange user's data in descending order according to points
 
-    const sortedArray = usersData && usersData.sort(function(a, b){return b.totalPoints - a.totalPoints})
+    const sortedArray = usersData && usersData.sort(function(a, b){return b.leaguePoints - a.leaguePoints})
 
     //picking the first three
     const firstThree = usersData && sortedArray.slice(0, 3)

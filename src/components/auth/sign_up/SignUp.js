@@ -100,6 +100,7 @@ const FormikSignUpPage = withFormik({
                     facebook: "",
                     about: "",
                     totalPoints: 0,
+                    leaguePoints : 0,
                     leaguePosition: null,
                     attempts: 0,
                     rightAnswers: 0,

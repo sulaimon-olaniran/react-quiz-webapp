@@ -28,7 +28,7 @@ const TopThree = ({ firstThree }) => {
 
                 <div className="top-three-details" >
                     <p>{second && second.name}</p>
-                    <h3>{second && second.totalPoints}</h3>
+                    <h3>{second && second.leaguePoints}</h3>
                 </div>
 
 
@@ -44,7 +44,7 @@ const TopThree = ({ firstThree }) => {
                 </div>
                 <div className="top-three-details" >
                     <p>{first && first.name}</p>
-                    <h3>{first && first.totalPoints}</h3>
+                    <h3>{first && first.leaguePoints}</h3>
                 </div>
 
                 <div className="medal-image">
@@ -58,7 +58,7 @@ const TopThree = ({ firstThree }) => {
                 </div>
                 <div className="top-three-details" >
                     <p>{third && third.name}</p>
-                    <h3>{third && third.totalPoints}</h3>
+                    <h3>{third && third.leaguePoints}</h3>
                 </div>
 
                 <div className="medal-image">

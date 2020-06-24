@@ -79,6 +79,12 @@ function NavLinks() {
         </NavLink>
       </Zoom>
 
+      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '900ms' : '0ms' }}>
+        <NavLink exact to="/admin" className="button-link">
+          <InfoIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Admin</Button>
+        </NavLink>
+      </Zoom>
+
 
     </div>
   );

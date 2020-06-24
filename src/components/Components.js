@@ -19,81 +19,12 @@ import LeagueRules from './league/rules/LeagueRules'
 import UserProfile from './users/user_profile/UserProfile'
 import LeagueTable from './league_table/LeagueTable'
 import Demo from './demo/Demo'
-//import { GameContext } from '../contexts/GameContext'
-// import { db } from '../firebase/Firebase'
-// import firebase from '../firebase/Firebase'
-// import { AppContext } from '../contexts/AppContext'
+import Admin from './admin/Admin'
 
 
 const Components = () => {
-   // const [currentTime, setCurrentTime] = useState(new Date().getTime())
     const { loading, fetching } = useContext(ProfileContext)
-   // const { countDownDate } = useContext(GameContext)
-   // const { usersData } = useContext(AppContext)
     const message = "Fetching User Data"
-
-    // let timing;
-
-    // useEffect(() => {
-    //     timing = setInterval(() => {
-    //         setCurrentTime(new Date().getTime())
-    //     }, 1000)
-
-    //     return () => {
-    //         clearInterval(timing)
-    //     }
-    // }, [])
-
-
-    // if (currentTime > countDownDate) {
-    //     // console.log("Timer is working pretty well")
-    //     usersData && usersData.map(user => {
-    //         if (user.leaguePosition === 1) {
-    //             return db.collection("users").doc(user.id).update({
-    //                gold : firebase.firestore.FieldValue.increment(1)
-
-    //             })
-            
-    //         }
-    //         else if ( user.leaguePosition === 2) {
-    //             return db.collection("users").doc(user.id).update({
-    //                silver : firebase.firestore.FieldValue.increment(1)
-    //             })
-    //         }
-    //         else if ( user.leaguePosition === 3) {
-    //             return db.collection("users").doc(user.id).update({
-    //                bronze : firebase.firestore.FieldValue.increment(1)
-    //             })
-    //         }
-    //     })
-    // }
-
-    // if ( currentTime < countDownDate){
-    //     console.log("why you do this")
-    //     if ( profile && profile.leaguePosition === 2) {
-    //         alert("second")
-    //     }
-    // }
-
-    // if (currentTime > countDownDate) {
-    //     if ( profile && profile.leaguePostion === 1) {
-    //         db.collection("users").doc(profile.id).update({
-    //            gold : firebase.firestore.FieldValue.increment(1)
-
-    //         })
-    //     }
-    //     else if ( profile && profile.leaguePostion === 2) {
-    //         db.collection("users").doc(profile.id).update({
-    //            silver : firebase.firestore.FieldValue.increment(1)
-    //         })
-    //     }
-    //     else if ( profile && profile.leaguePostion === 3) {
-    //         db.collection("users").doc(profile.id).update({
-    //            bronze : firebase.firestore.FieldValue.increment(1)
-    //         })
-    //     }
-
-    // }
 
 
     if (fetching) return <Loader message={message} loading={loading} />
@@ -119,6 +50,7 @@ const Components = () => {
                         <Route exact path="/settings" component={SettingsPage} />
                         <Route exact path="/users" component={UsersPage} />
                         <Route exact path="/user/:id" component={UserProfile} />
+                        <Route exact path="/admin" component={Admin} />
                     </Switch>
                 </div>
                 <Footer />
