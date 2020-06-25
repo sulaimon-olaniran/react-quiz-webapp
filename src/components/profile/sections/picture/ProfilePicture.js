@@ -3,38 +3,20 @@ import cover_photo from './assets/cover_photo.jpg'
 import Avatar from '@material-ui/core/Avatar'
 import Modal from '@material-ui/core/Modal'
 import { makeStyles } from '@material-ui/core/styles'
+import Backdrop from '@material-ui/core/Backdrop'
+import Zoom from '@material-ui/core/Zoom'
 import { AppContext } from '../../../../contexts/AppContext'
 
-function rand() {
-    return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
-
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
-
 const useStyles = makeStyles((theme) => ({
-    paper: {
-        position: 'absolute',
-        // width: 400,
-        // backgroundColor: theme.palette.background.paper,
-        // border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        //padding: theme.spacing(2, 4, 3),
-    },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 }));
-
 
 const ProfilePicture = ({ details }) => {
     const classes = useStyles()
-    const [modalStyle] = React.useState(getModalStyle)
     const [openDp, setOpenDp] = useState(false)
     const [openCover, setOpenCover] = useState(false)
     const { darkTheme } = useContext(AppContext)
@@ -68,28 +50,44 @@ const ProfilePicture = ({ details }) => {
             </div>
 
             <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
                 open={openDp}
                 onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
             >
-                <div style={modalStyle} className={classes.paper}  >
-                    <img src={details.displayImage} alt="DP" />
-                </div>
+                <Zoom in={openDp} >
+                    <div className="view-image-container" >
+                        <img src={details.displayImage} alt="DP" />
+                    </div>
+                </Zoom>
 
             </Modal>
+
             <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
                 open={openCover}
                 onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
             >
-                <div style={modalStyle} className={classes.paper}  >
-                    <img src={coverImage} alt="Cover" />
+                <Zoom in={openCover} >
+                    <div className="view-image-container" >
+                        <img src={coverImage} alt="Cover" />
+                    </div>
+                </Zoom>
 
-                </div>
             </Modal>
-
         </div>
     )
 }
