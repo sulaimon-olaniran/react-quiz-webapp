@@ -7,48 +7,48 @@ import { AppContext } from '../../../../contexts/AppContext'
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
-  }
-  
-  function getModalStyle() {
+}
+
+function getModalStyle() {
     const top = 50 + rand();
     const left = 50 + rand();
-  
+
     return {
-      top: `${top}%`,
-      left: `${left}%`,
-      transform: `translate(-${top}%, -${left}%)`,
+        top: `${top}%`,
+        left: `${left}%`,
+        transform: `translate(-${top}%, -${left}%)`,
     };
-  }
-  
-  const useStyles = makeStyles((theme) => ({
+}
+
+const useStyles = makeStyles((theme) => ({
     paper: {
-      position: 'absolute',
-     // width: 400,
-     // backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      //padding: theme.spacing(2, 4, 3),
+        position: 'absolute',
+        // width: 400,
+        // backgroundColor: theme.palette.background.paper,
+        // border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        //padding: theme.spacing(2, 4, 3),
     },
-  }));
+}));
 
 
 const ProfilePicture = ({ details }) => {
     const classes = useStyles()
     const [modalStyle] = React.useState(getModalStyle)
-    const [ openDp, setOpenDp ] = useState(false)
-    const [ openCover, setOpenCover ] = useState(false)
+    const [openDp, setOpenDp] = useState(false)
+    const [openCover, setOpenCover] = useState(false)
     const { darkTheme } = useContext(AppContext)
 
     const viewDisplayImage = () => {
         setOpenDp(true)
     }
-    const viewCoverImage = () =>{
-       setOpenCover(true)
+    const viewCoverImage = () => {
+        setOpenCover(true)
     }
     const handleClose = () => {
         setOpenDp(false);
         setOpenCover(false)
-      }
+    }
 
     const coverImage = details.coverImage === "" ? cover_photo : details.coverImage
 
@@ -85,9 +85,9 @@ const ProfilePicture = ({ details }) => {
                 aria-describedby="simple-modal-description"
             >
                 <div style={modalStyle} className={classes.paper}  >
-                    <img src={coverImage} alt="DP" />
-                </div>
+                    <img src={coverImage} alt="Cover" />
 
+                </div>
             </Modal>
 
         </div>

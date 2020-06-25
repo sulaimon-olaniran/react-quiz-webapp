@@ -29,11 +29,27 @@
 
 .makeStyles-paper-186{
    // .view-image-container{
-        width: 20rem;
-        height: 30rem;
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        // width: 20rem;
+        // height: 30rem;
+        width: 70vw;
+        height: 60vh;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 2px solid salmon;
+        }
+
+    // img{
+    //     width: 100%;
+    //     height: 100%;
+    //     object-fit: cover;
+    // }
+}
+
+@media(min-width : 1200px) {
+    .makeStyles-paper-186{
+        width: 30vw;
+        height: 80vh;
     }
 }
