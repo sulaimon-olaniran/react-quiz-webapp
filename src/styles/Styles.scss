@@ -34,7 +34,7 @@
         img{
             width: 100%;
             height: 100%;
-            object-fit: cover;
+           
         }
     }
 }
@@ -42,7 +42,7 @@
 @media(min-width : 1200px) {
     .makeStyles-modal-128, .makeStyles-modal-186{
         .view-image-container{
-            width: 40%;
+            width: 30%;
             height: 70vh;
         }
     }
