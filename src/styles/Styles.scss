@@ -23,16 +23,14 @@
 }
 
 body { 
-    .makeStyles-modal-128, .makeStyles-modal-186{
-        .view-image-container{
-            width: 70%;
-            height: 60vh;
-            border: 2px solid saddlebrown;
-            img{
-                width: 100%;
-                height: 100%;
-            
-            }
+    .view-image-container{
+        width: 70%;
+        height: 60vh;
+        border: 2px solid saddlebrown;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 }
@@ -40,12 +38,11 @@ body {
 
 @media(min-width : 1200px) {
     body{
-        .makeStyles-modal-128, .makeStyles-modal-186{
             .view-image-container{
                 width: 30%;
                 height: 70vh;
             }
-        }
+        
     }
 }
 
