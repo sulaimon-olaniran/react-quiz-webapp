@@ -10,21 +10,25 @@ import SportsEsportsIcon from '@material-ui/icons/SportsEsports'
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
 import InfoIcon from '@material-ui/icons/Info';
 import Zoom from '@material-ui/core/Zoom'
+import { ProfileContext } from '../../../contexts/ProfileContext'
 
 
 function NavLinks() {
   const { menuLink, darkTheme, closeMenu } = useContext(AppContext)
+  const { profile } = useContext(ProfileContext)
 
   const linkClass = menuLink ? darkTheme ? "navlink-con open darkMenu" :
     "navlink-con open lightMenu" : darkTheme ?
       "navlink-con darkMenu" : "navlink-con lightmenu"
 
+      const adminId = "OkQFLgxG6iaH0eT55e8ciAdRrrO2"
+
   return (
     <div className={linkClass} >
       <Link to="/">
-       <Zoom in={menuLink}>
-        <Button onClick={closeMenu} color="inherit"><div className="app-logo"><img src={app_logo} alt="Logo" /> </div></Button>
-      </Zoom>
+        <Zoom in={menuLink}>
+          <Button onClick={closeMenu} color="inherit"><div className="app-logo"><img src={app_logo} alt="Logo" /> </div></Button>
+        </Zoom>
       </Link>
 
       <hr />
@@ -53,7 +57,7 @@ function NavLinks() {
         </NavLink>
       </Zoom>
 
-      <hr className="divider"  />
+      <hr className="divider" />
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '600ms' : '0ms' }}>
         <NavLink exact to="/demo" className="button-link">
@@ -79,11 +83,16 @@ function NavLinks() {
         </NavLink>
       </Zoom>
 
-      <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '900ms' : '0ms' }}>
+     { 
+       profile && profile.id === adminId ?
+       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '900ms' : '0ms' }}>
         <NavLink exact to="/admin" className="button-link">
           <InfoIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Admin</Button>
         </NavLink>
       </Zoom>
+      : null
+      
+    }
 
 
     </div>

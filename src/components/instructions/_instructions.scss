@@ -25,7 +25,7 @@
 
     .instructions-info-container{
         width: 90%;
-        height: 75rem;
+        min-height: 50rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -41,6 +41,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-around;
+            margin-bottom: 2rem;
      
             li{
                 font-size: 0.9rem;
@@ -50,6 +51,7 @@
         .question-image-container{
          width: 90%;
          height: 12rem;
+         margin-bottom: 2rem;
      
             img{
                 width: 100%;
@@ -65,6 +67,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 2rem;
             li{
                 font-size: 0.9rem;
             }
@@ -89,6 +92,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 2rem;
             li{
                 font-size: 0.9rem;
             }

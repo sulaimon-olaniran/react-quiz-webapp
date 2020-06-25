@@ -24,8 +24,8 @@
 
 body { 
     .view-image-container{
-        width: 70%;
-        height: 60vh;
+        width: 90%;
+        height: 80vh;
         border: 2px solid saddlebrown;
         img{
             width: 100%;
@@ -39,8 +39,8 @@ body {
 @media(min-width : 1200px) {
     body{
             .view-image-container{
-                width: 30%;
-                height: 70vh;
+                width: 35%;
+                height: 80vh;
             }
         
     }

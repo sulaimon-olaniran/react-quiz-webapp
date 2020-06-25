@@ -22,7 +22,7 @@ const ProfilePicture = ({ details }) => {
     const { darkTheme } = useContext(AppContext)
 
     const viewDisplayImage = () => {
-        setOpenDp(true)
+        details.displayImage && setOpenDp(true)
     }
     const viewCoverImage = () => {
         setOpenCover(true)

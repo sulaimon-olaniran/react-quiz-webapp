@@ -109,9 +109,9 @@ const Instructions = () => {
 
                 </div>
                 <div className="instructions-buttons-container">
-                <Button color="secondary" variant="contained" >Game Demo</Button>
-                <Button color="primary" variant="contained" >Game League</Button>
-            </div>
+                        <Button color="secondary" variant="contained" >Game Demo</Button>
+                        <Button color="primary" variant="contained" >Game League</Button>
+                </div>
 
 
 

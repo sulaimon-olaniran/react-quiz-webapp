@@ -6,12 +6,12 @@ import error from './assets/error.wav'
 
 
 const Hints = ({ answer }) => {
-    const { removedIndex, setRemovedIndex, coins, setCoins, setUsedHint, usedFiftyFifty, setCoinsSpent, setHintsUsed } = useContext(GameContext)
+    const { removedIndex, setRemovedIndex, coins, setCoins, setCoinsSpent, setHintsUsed } = useContext(GameContext)
     const successRef = useRef()
     const errorRef = useRef()
 
     const handleHint = () => {
-        if ( coins >= 20 && usedFiftyFifty === false ) {
+        if ( coins >= 20  ) {
             const options = Array.from(document.activeElement.querySelectorAll('.each-option-container'))
             let answerIndex
 
@@ -30,7 +30,6 @@ const Hints = ({ answer }) => {
                         if (index === randomIndex ) {
                             option.style.visibility = "hidden"
                             setCoins(prev => prev - 20)
-                            setUsedHint(true)
                             setCoinsSpent(prev => prev + 20)
                             setHintsUsed(prev => prev + 1)
                             successRef.current.play()
