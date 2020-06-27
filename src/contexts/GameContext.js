@@ -21,9 +21,9 @@ const GameContextProvider = (props) => {
 
     const [disableLeague, setDisableLeague] = useState(false)
 
-    const targetDate = "06 23, 2020"
+    const targetDate = "07 01, 2020"
 
-    const countDownDate = new Date(`${targetDate} 18:01:00`).getTime()
+    const countDownDate = new Date(`${targetDate} 00:00:00`).getTime()
 
     const showOptions = () => {
         const options = Array.from(document.activeElement.querySelectorAll('.each-option-container'))

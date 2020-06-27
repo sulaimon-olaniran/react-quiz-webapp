@@ -13,9 +13,9 @@ const TopThree = ({ firstThree }) => {
     const third = firstThree && firstThree[2]
 
 
-    const firstImage = first !== undefined && first.displayImage
-    const secondImage = second !== undefined && second.displayImage
-    const thirdImage = third !== undefined && third.displayImage
+    const firstImage = first !== undefined ? first.displayImage : null
+    const secondImage = second !== undefined ? second.displayImage : null
+    const thirdImage = third !== undefined ? third.displayImage : null
 
 
     return (

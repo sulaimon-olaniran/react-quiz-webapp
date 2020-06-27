@@ -20,7 +20,7 @@ const QuestionContextProvider = (props) => {
                     questions.push(data)
                 })
                 setQuestions(questions)
-
+                console.log(questions.length)
                 setLoading(false)
 
                 setTimeout(() => {
@@ -32,12 +32,14 @@ const QuestionContextProvider = (props) => {
 
     const shuffledQuestions = []
 
-        while (questions !== null && shuffledQuestions.length <= 2) {
+        while (questions !== null && shuffledQuestions.length <= 29) {
             const random = questions[Math.floor(Math.random() * questions.length)]
             if (!shuffledQuestions.includes(random)) {
                 shuffledQuestions.push(random)
             }
         }
+
+        console.log(shuffledQuestions)
 
     //Reverse all options visibility back to visible incase of any hints being usded
     const showOptions = () => {
