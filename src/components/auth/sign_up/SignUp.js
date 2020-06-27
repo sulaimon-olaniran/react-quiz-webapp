@@ -15,7 +15,7 @@ const SignUpPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, 
     const { themeClass } = useContext(AppContext)
     const message = "Signing User Up"
     
-    if(auth.currentUser !== null) return <Redirect to="/profile" />
+   // if(auth.currentUser !== null) return <Redirect to="/profile" />
     if (status && status.loading) return <Loader loading={isSubmitting} message={message} />
     else {
         return (

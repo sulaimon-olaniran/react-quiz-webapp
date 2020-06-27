@@ -21,7 +21,7 @@ function NavLinks() {
     "navlink-con open lightMenu" : darkTheme ?
       "navlink-con darkMenu" : "navlink-con lightmenu"
 
-      const adminId = "OkQFLgxG6iaH0eT55e8ciAdRrrO2"
+      const adminId = "fHK2wfRDKigi9FCkXBRCBZAPzxZ2"
 
   return (
     <div className={linkClass} >
