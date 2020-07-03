@@ -14,7 +14,8 @@ const Information = ({ details }) => {
         <div className="profile-information-container" >
 
             <div className="profile-name-container">
-                <div><h3>{details.firstName} {details.lastName}</h3></div>
+                <div><h3>{details.name && details.name}</h3></div>
+                <div><h3>{details.userName && details.userName}</h3></div>
 
                 {details.sex && <div><p>Sex - {details.sex}</p></div>}
                 { details.about && <div className="about-container" ><p>{details.about}</p></div>}
@@ -36,7 +37,7 @@ const Information = ({ details }) => {
                     <div className="medal-image-container">
                         <img src={bronze_cup} alt="Bronze" />
                     </div>
-                    <h3>{details.bronze}</h3>
+                    <h3>{details.bronze && details.bronze}</h3>
 
                 </div>
 
@@ -45,7 +46,7 @@ const Information = ({ details }) => {
                     <div className="medal-image-container">
                         <img src={gold_cup} alt="Gold" />
                     </div>
-                    <h3>{details.gold}</h3>
+                    <h3>{details.gold && details.gold}</h3>
                 </div>
 
 
@@ -55,7 +56,7 @@ const Information = ({ details }) => {
                         <img src={silver_cup} alt="silver" />
                     </div>
 
-                    <h3>{details.silver}</h3>
+                    <h3>{details.silver && details.silver}</h3>
                 </div>
 
             </div>

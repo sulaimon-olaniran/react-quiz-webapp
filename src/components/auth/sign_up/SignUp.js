@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { SignUpYupValidation } from '../assets/Validation'
 import { withFormik, Field, Form } from 'formik'
 import { AppContext } from '../../../contexts/AppContext'
@@ -14,8 +14,7 @@ import Loader from '../../loader/Loader'
 const SignUpPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, status }) => {
     const { themeClass } = useContext(AppContext)
     const message = "Signing User Up"
-    
-   // if(auth.currentUser !== null) return <Redirect to="/profile" />
+
     if (status && status.loading) return <Loader loading={isSubmitting} message={message} />
     else {
         return (
@@ -39,6 +38,11 @@ const SignUpPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, 
                             helperText={touched.lastName ? errors.lastName : null}
                         />
 
+                        <Field as={TextField} type="Text" name="userName" label="Username"
+                            error={touched.userName && errors.userName ? true : false}
+                            helperText={touched.userName ? errors.userName : null}
+                        />
+
                         <Field as={TextField} type="email" name="email" label="Email"
                             error={touched.email && errors.email ? true : false}
                             helperText={touched.email ? errors.email : null}
@@ -51,7 +55,7 @@ const SignUpPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, 
                         />
 
                         <Field type="submit" as={Button} variant="contained" color="secondary" id="button" disabled={isSubmitting}>Join Now</Field>
-                        {status && status.error && <small style={{color:"red"}}>{status && status.error}</small>}
+                        {status && status.error && <small style={{ color: "red" }}>{status && status.error}</small>}
                     </Form>
                     <p>Already a Genius ? <NavLink to="/signin"><Button color="primary" size="small">Log In</Button></NavLink></p>
                 </div>
@@ -67,6 +71,7 @@ const FormikSignUpPage = withFormik({
         return {
             firstName: "",
             lastName: "",
+            userName: "",
             email: "",
             password: ""
         }
@@ -74,59 +79,78 @@ const FormikSignUpPage = withFormik({
 
     validationSchema: SignUpYupValidation,
 
-    handleSubmit(values, { props, setSubmitting, setStatus, setErrors }) {
-        const { email, password, firstName, lastName } = values
-        console.log(values)
+    handleSubmit(values, { props, setSubmitting, setStatus }) {
+        const { email, password, firstName, lastName, userName } = values
+        const { users, history } = props
+        
         setSubmitting(true)
-        setStatus({loading : true})
-        auth.createUserWithEmailAndPassword(
-            email,
-            password
-        )
-            .then((res) => {
-                return db.collection("users").doc(res.user.uid).set({
-                    firstName: firstName,
-                    lastName: lastName,
-                    name : firstName + " " + lastName,
-                    id: res.user.uid,
-                    sex: "",
-                    country: "",
-                    state: "",
-                    displayImage: "",
-                    coverImage: "",
-                    phoneNumber: "",
-                    instagram: "",
-                    twitter: "",
-                    facebook: "",
-                    about: "",
-                    totalPoints: 0,
-                    leaguePoints : 0,
-                    leaguePosition: null,
-                    attempts: 0,
-                    rightAnswers: 0,
-                    wrongAnswers: 0,
-                    fiftyUsed: 0,
-                    hintsUsed: 0,
-                    coinsSpent: 0,
-                    coins: 100,
-                    gold: 0,
-                    silver: 0,
-                    bronze: 0
-                })
+        setStatus({ loading: true })
 
-            }).then(() => {
-                setSubmitting(false)
-                setTimeout(() => {
-                    setStatus({loading : false})
-                    props.history.push('/settings')
-                }, 1000)
-            }).catch((error) =>{
-               // alert(error)
-                console.log(error)
+        const usersNameArray = []
+
+        users.map((user) => {
+            const names = user.userName.toLowerCase()
+            usersNameArray.push(names)
+
+            if (usersNameArray.includes(userName.toLowerCase())) {
                 setSubmitting(false)
                 setStatus({loading : false})
-                setStatus({error: error.message})
-            })
+                setStatus({ error : "Username already Exists."})
+
+            }
+            else {
+                auth.createUserWithEmailAndPassword(
+                    email,
+                    password
+                )
+                    .then((res) => {
+                        return db.collection("users").doc(res.user.uid).set({
+                            firstName: firstName,
+                            lastName: lastName,
+                            name: firstName + " " + lastName,
+                            userName : userName,
+                            id: res.user.uid,
+                            sex: "",
+                            country: "",
+                            state: "",
+                            displayImage: "",
+                            coverImage: "",
+                            phoneNumber: "",
+                            instagram: "",
+                            twitter: "",
+                            facebook: "",
+                            about: "",
+                            totalPoints: 0,
+                            leaguePoints: 0,
+                            leaguePosition: null,
+                            attempts: 0,
+                            rightAnswers: 0,
+                            wrongAnswers: 0,
+                            fiftyUsed: 0,
+                            hintsUsed: 0,
+                            coinsSpent: 0,
+                            coins: 100,
+                            gold: 0,
+                            silver: 0,
+                            bronze: 0
+                        })
+
+                    }).then(() => {
+                        setSubmitting(false)
+                        setTimeout(() => {
+                            setStatus({ loading: false })
+                            history.push('/settings')
+                        }, 1000)
+                    }).catch((error) => {
+                        // alert(error)
+                        console.log(error)
+                        setSubmitting(false)
+                        setStatus({ loading: false })
+                        setStatus({ error: error.message })
+                    })
+            }
+        })
+
     }
 
 })(SignUpPage)

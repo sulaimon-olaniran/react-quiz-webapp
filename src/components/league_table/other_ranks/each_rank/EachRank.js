@@ -9,9 +9,9 @@ const EachRank = ({ details, position }) => {
     return (
         <Link to={`/user/${details.id}`} className="each-rank-container">
                 <h1>{position + 4}th</h1>
-                <p>{details && details.name}</p>
+                <p>{details && details.userName}</p>
                 <p>{details.leaguePoints}</p>
-                <Avatar alt={details.name} src={details.displayImage} />
+                <Avatar alt={details.userName} src={details.displayImage} />
         </Link>
     )
 }

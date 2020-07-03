@@ -16,9 +16,12 @@ export const SignUpYupValidation = yup.object().shape({
 
     lastName : yup.string()
     .required('Last Name is Required')
-    .min(2, 'Min of 2 letters')
+    .min(2, 'Min of 2 letters'),
     //.matches('/^[a-z]+$/', "Name must be alphabets")
-    
+
+    userName : yup.string()
+    .required("Username is Required")
+    .min(4, 'Min of 4 letters')
 })
 
 

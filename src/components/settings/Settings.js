@@ -6,11 +6,11 @@ import CoverImage from './images/cover/CoverImage'
 import { ProfileContext } from '../../contexts/ProfileContext'
 import Loader from '../loader/Loader'
 import { Redirect } from 'react-router-dom'
-import { auth, db } from '../../firebase/Firebase'
+import { auth } from '../../firebase/Firebase'
 
 
 const SettingsPage = () => {
-    const { themeClass } = useContext(AppContext)
+    const { themeClass, usersData } = useContext(AppContext)
 
     const { profile, loading, fetching } = useContext(ProfileContext)
 
@@ -29,7 +29,7 @@ const SettingsPage = () => {
                     <CoverImage />
                 </div>
                 <div className="details-settings-container" >
-                    <FormikProfileSettings details={profile} />
+                    <FormikProfileSettings details={profile} users={usersData} />
                 </div>
             </div>
         )

@@ -20,10 +20,12 @@ import UserProfile from './users/user_profile/UserProfile'
 import LeagueTable from './league_table/LeagueTable'
 import Demo from './demo/Demo'
 import Admin from './admin/Admin'
+import { AppContext } from '../contexts/AppContext'
 
 
 const Components = () => {
     const { loading, fetching } = useContext(ProfileContext)
+    const { usersData } = useContext(AppContext)
     const message = "Fetching User Data"
 
 
@@ -45,7 +47,7 @@ const Components = () => {
                         <Route exact path="/about" component={AboutPage} />
                         <Route exact path="/game/stats" component={GameStats} />
                         <Route exact path="/profile" component={ProfilePage} />
-                        <Route exact path="/signup" component={FormikSignUpPage} />
+                        <Route exact path="/signup" component={ () => <FormikSignUpPage users ={usersData}/>} />
                         <Route exact path="/signin" component={FormikSignInPage} />
                         <Route exact path="/settings" component={SettingsPage} />
                         <Route exact path="/users" component={UsersPage} />

@@ -27,7 +27,7 @@ const TopThree = ({ firstThree }) => {
                 </div>
 
                 <div className="top-three-details" >
-                    <p>{second && second.name}</p>
+                    <p>{second && second.userName}</p>
                     <h3>{second && second.leaguePoints}</h3>
                 </div>
 
@@ -43,7 +43,7 @@ const TopThree = ({ firstThree }) => {
                     <Avatar src={firstImage} alt="First Position" />
                 </div>
                 <div className="top-three-details" >
-                    <p>{first && first.name}</p>
+                    <p>{first && first.userName}</p>
                     <h3>{first && first.leaguePoints}</h3>
                 </div>
 
@@ -57,7 +57,7 @@ const TopThree = ({ firstThree }) => {
                     <Avatar src={thirdImage} alt="Third Position" />
                 </div>
                 <div className="top-three-details" >
-                    <p>{third && third.name}</p>
+                    <p>{third && third.userName}</p>
                     <h3>{third && third.leaguePoints}</h3>
                 </div>
 

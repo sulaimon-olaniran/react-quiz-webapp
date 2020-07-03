@@ -10,7 +10,7 @@ const EachProfile = ({ details }) => {
                 <div className="user-image-container" >
                     <Avatar src={ details.displayImage} alt="DP" />
                 </div>
-                <p>{details.firstName} {details.lastName}</p>
+                <p>{details.userName}</p>
                 </Link>
             </div>
      

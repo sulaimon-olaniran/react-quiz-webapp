@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import ScrollAnimation from 'react-animate-on-scroll'
 import { AppContext } from '../../contexts/AppContext'
 import Button from '@material-ui/core/Button'
@@ -109,8 +110,8 @@ const Instructions = () => {
 
                 </div>
                 <div className="instructions-buttons-container">
-                        <Button color="secondary" variant="contained" >Game Demo</Button>
-                        <Button color="primary" variant="contained" >Game League</Button>
+                    <NavLink exact to="/demo"><Button color="secondary" variant="contained" >Game Demo</Button></NavLink>    
+                     <NavLink exact to="league/rules"><Button color="primary" variant="contained" >Game League</Button></NavLink>   
                 </div>
 
 

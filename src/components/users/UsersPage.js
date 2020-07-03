@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useRef } from 'react'
 import { db, auth } from '../../firebase/Firebase'
 import { Redirect } from 'react-router-dom'
 import EachProfile from './each_profile/EachProfile'
@@ -13,10 +13,11 @@ const UsersPage = () => {
     const { themeClass } = useContext(AppContext)
     const [fetching, setFetching] = useState(true)
     const [loading, setLoading] = useState(true)
+    const mountedRef = useRef(true)
 
     const getUsersData = () => {
         db.collection("users").onSnapshot(docs => {
-
+            if (!mountedRef.current) return null
             const users = []
             docs.forEach(doc => {
                 users.push(doc.data())
@@ -33,6 +34,10 @@ const UsersPage = () => {
 
     useEffect(() => {
         getUsersData()
+        
+        return () => {
+            mountedRef.current = false
+        }
     }, [])
 
 
@@ -42,11 +47,8 @@ const UsersPage = () => {
 
     const handleSearchData = (data) => {
         return (
-            data.firstName.toLowerCase().includes(searchField.toLowerCase()) ||
-            data.lastName.includes(searchField) ||
-            data.firstName === searchField ||
-            data.name.toLowerCase().includes(searchField.toLowerCase) ||
-            data.name.toLowerCase() === searchField.toLowerCase()
+            data.userName.toLowerCase().includes(searchField.toLowerCase()) ||
+            data.userName.toLowerCase() === searchField.toLowerCase()
         )
     }
 

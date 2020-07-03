@@ -19,6 +19,8 @@ const ProfileSettings = ({ isSubmitting, status }) => {
 
                 <Field as={TextField} type="text" name="firstName" label="First Name" color="primary" />
                 <Field as={TextField} type="text" name="lastName" label="Last Name" />
+                <Field as={TextField} type="text" name="userName" label="Last Name" />
+                { status && status.error && <small>{status.error}</small>}
 
                 <RadioGroup>
                     <FormLabel>
@@ -44,7 +46,7 @@ const ProfileSettings = ({ isSubmitting, status }) => {
                 <Field as={TextField} type="text" name="about" label="About You" />
 
                 <Field type="submit" as={Button} variant="contained" color="primary" disabled={status} >Update Details</Field>
-                {status && displayed}
+                {status && status.loading && displayed}
             </Form>
         </div>
     )
@@ -53,13 +55,14 @@ const ProfileSettings = ({ isSubmitting, status }) => {
 
 const FormikProfileSettings = withFormik({
     mapPropsToValues({ details }) {
-        const { firstName, lastName, sex, phoneNumber, instagram, twitter, about, facebook, country, state } = details
+        const { firstName, lastName, sex, phoneNumber, instagram, twitter, about, facebook, country, state, userName } = details
         return {
             firstName: firstName || "",
             lastName: lastName || "",
+            userName: userName || "",
             sex: sex || "",
             country: country || "",
-            state : state || "",
+            state: state || "",
             phoneNumber: phoneNumber || "",
             instagram: instagram || "",
             twitter: twitter || "",
@@ -68,31 +71,48 @@ const FormikProfileSettings = withFormik({
         }
     },
 
-    handleSubmit(values, { setStatus, setSubmitting }) {
-        const { sex, country, firstName, lastName, phoneNumber, instagram, twitter, about, facebook, state } = values
-        //console.log(values)
+    handleSubmit(values, { setStatus, setSubmitting, props }) {
+        const { sex, country, firstName, lastName, phoneNumber, instagram, twitter, about, facebook, state, userName } = values
+        const { users } = props
         const userId = auth.currentUser.uid
         setSubmitting(true)
-        setStatus(true)
+        setStatus({loading : true})
+        
+        const usersNameArray = []
+        users.map((user) => {
+            const names = user.userName.toLowerCase()
+            usersNameArray.push(names)
 
-        db.collection("users").doc(userId).set({
-            firstName: firstName,
-            lastName: lastName,
-            sex: sex,
-            country: country,
-            state : state,
-            phoneNumber: phoneNumber,
-            instagram: instagram,
-            twitter: twitter,
-            facebook: facebook,
-            about: about
+            if (usersNameArray.includes(userName.toLowerCase())) {
+                setSubmitting(false)
+                setStatus({ loading: false })
+                setStatus({ error: "Username already Exists." })
 
-        }, { merge: true }).then(() => {
-            setSubmitting(false)
-            setTimeout(() => {
-                setStatus(false)
-            }, 1000)
-            // console.log("Profile Updated")
+            }
+            else {
+
+                db.collection("users").doc(userId).set({
+                    firstName: firstName,
+                    lastName: lastName,
+                    name: firstName + " " + lastName,
+                    userName: userName,
+                    sex: sex,
+                    country: country,
+                    state: state,
+                    phoneNumber: phoneNumber,
+                    instagram: instagram,
+                    twitter: twitter,
+                    facebook: facebook,
+                    about: about
+
+                }, { merge: true }).then(() => {
+                    setSubmitting(false)
+                    setTimeout(() => {
+                        setStatus({loading : false})
+                    }, 1000)
+                    // console.log("Profile Updated")
+                })
+            }
         })
 
     }
