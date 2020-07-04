@@ -8,8 +8,13 @@ import InfoSharpIcon from '@material-ui/icons/InfoSharp'
 import ContactSupportSharpIcon from '@material-ui/icons/ContactSupportSharp'
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports'
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from '@material-ui/icons/Info'
+import GamesIcon from '@material-ui/icons/Games'
 import Zoom from '@material-ui/core/Zoom'
+import StarIcon from '@material-ui/icons/Star'
+import StarsIcon from '@material-ui/icons/Stars'
+import FaceIcon from '@material-ui/icons/Face'
+import PanToolIcon from '@material-ui/icons/PanTool'
 import { ProfileContext } from '../../../contexts/ProfileContext'
 
 
@@ -35,25 +40,25 @@ function NavLinks() {
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '200ms' : '0ms' }}>
         <NavLink to="/" className="button-link" >
-          <HomeSharpIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Home</Button>
+          <HomeSharpIcon /><Button color="inherit" size="small" onClick={closeMenu}>Home</Button>
         </NavLink>
       </Zoom>
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '300ms' : '0ms' }}>
         <NavLink to="/about" className="button-link">
-          <InfoSharpIcon /><Button color="inherit" size="medium" onClick={closeMenu}>About</Button>
+          <InfoSharpIcon /><Button color="inherit" size="small" onClick={closeMenu}>About</Button>
         </NavLink>
       </Zoom>
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '400ms' : '0ms' }}>
-        <NavLink to="#" className="button-link">
-          <ContactSupportSharpIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Contact</Button>
+        <NavLink exact to="/game/instructions" className="button-link">
+          <PanToolIcon fontSize="small" /><Button color="inherit" size="small" onClick={closeMenu}>Instructions</Button>
         </NavLink>
       </Zoom>
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '500ms' : '0ms' }}>
         <NavLink to="/users" className="button-link">
-          <ContactSupportSharpIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Users</Button>
+          <FaceIcon /><Button color="inherit" size="small" onClick={closeMenu}>Users</Button>
         </NavLink>
       </Zoom>
 
@@ -61,33 +66,35 @@ function NavLinks() {
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '600ms' : '0ms' }}>
         <NavLink exact to="/demo" className="button-link">
-          <SportsEsportsIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Quiz Demo</Button>
+          <SportsEsportsIcon /><Button color="inherit" size="small" onClick={closeMenu}>Quiz Demo</Button>
         </NavLink>
       </Zoom>
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '700ms' : '0ms' }}>
         <NavLink exact to="/league/rules" className="button-link">
-          <WbIncandescentIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Quiz League</Button>
+          <GamesIcon /><Button color="inherit" size="small" onClick={closeMenu}>Quiz League</Button>
         </NavLink>
       </Zoom>
-
+      
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '800ms' : '0ms' }}>
-        <NavLink exact to="/league/ranking" className="button-link">
-          <WbIncandescentIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Ranking</Button>
+        <NavLink to="/coins" className="button-link">
+          <StarsIcon /><Button color="inherit" size="small" onClick={closeMenu}>Coins</Button>
         </NavLink>
       </Zoom>
 
       <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '900ms' : '0ms' }}>
-        <NavLink exact to="/game/instructions" className="button-link">
-          <InfoIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Instructions</Button>
+        <NavLink exact to="/league/ranking" className="button-link">
+          <StarIcon /><Button color="inherit" size="small" onClick={closeMenu}>Ranking</Button>
         </NavLink>
       </Zoom>
+
+      
 
      { 
        profile && profile.id === adminId ?
        <Zoom in={menuLink} style={{ transitionDelay: menuLink ? '900ms' : '0ms' }}>
         <NavLink exact to="/admin" className="button-link">
-          <InfoIcon /><Button color="inherit" size="medium" onClick={closeMenu}>Admin</Button>
+          <InfoIcon /><Button color="inherit" size="small" onClick={closeMenu}>Admin</Button>
         </NavLink>
       </Zoom>
       : null

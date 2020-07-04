@@ -16,9 +16,12 @@ const LeagueRules = () => {
                 <img src={albert_eintein} alt="Albert" />
 
             </div>
+            
             <ul>
-                <li>You have 2 mins 30 seconds per session</li>
-                <li>The game and time starts once you click on continue</li>
+                <li>Each session consists of 25 questions</li>
+                <li>You have 3 mins for each game session</li>
+                <li>The game starts once you click on continue</li>
+                <li>Game is interupted if network connection is lost</li>
                 <li>You can play as many times as you want to accumulate points</li>
                 <li>Your points are not recorded if game is not completed</li>
             </ul>

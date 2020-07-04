@@ -1,0 +1,22 @@
+.coins-container{
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background: url('./assets/coins_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .coins-details-container{
+         margin: 1rem 0;
+    }
+
+    .payment-options-container{
+      width: 100%;
+      min-height: 8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+}

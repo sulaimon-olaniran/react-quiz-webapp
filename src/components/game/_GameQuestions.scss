@@ -1,31 +1,26 @@
 .game-container{
-    min-height: 90vh;
-    width: 100%;
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  //position: relative;
+    
+  .quiz{
+    position: absolute;
+    z-index: 0.5;
+    height: 80vh;
+    width: 90%;
     display: flex;
     flex-direction: column;
-    flex: 1;
     align-items: center;
-    justify-content: center;
-    //position: relative;
-    
-    video {
-      min-width: 100%;
-      min-height: 90vh;
-      z-index: 0;
-    }
-    .quiz{
-      position: absolute;
-      z-index: 0.5;
-      height: 80vh;
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      background: inherit;
-      border-radius: 20px;
-      padding: 10px 0;
-    }
+    justify-content: space-around;
+    background: inherit;
+    border-radius: 20px;
+    padding: 10px 0;
+  }
 
 }
 
@@ -52,6 +47,14 @@
      width: 80%;
    }
   }
+}
+
+@media(min-width : 960px){
+    .game-container{
+      .quiz{
+        height: 50rem;
+      }
+    }
 }
 
 @media(min-width : 1200px){ 

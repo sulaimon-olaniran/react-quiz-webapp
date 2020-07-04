@@ -16,7 +16,7 @@ import LockTwoToneIcon from '@material-ui/icons/LockTwoTone'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { auth } from '../../firebase/Firebase'
 import { ProfileContext } from '../../contexts/ProfileContext'
-import user_avatar from '../profile/sections/picture/assets/user_avatar.png'
+//import user_avatar from '../profile/sections/picture/assets/user_avatar.png'
 
 
 const NavBar = () => {
@@ -25,7 +25,7 @@ const NavBar = () => {
     const { toggleTheme, darkTheme, themeClass, toggleMenu, loggedIn } = useContext(AppContext)
     const { profile } = useContext(ProfileContext)
 
-    let profileImage = profile === null || profile.displayImage === "" ? user_avatar : profile.displayImage
+  //  let profileImage = profile === null || profile.displayImage === "" ? user_avatar : profile.displayImage
     
     const handleClickOffline = (event) => {
         setAnchorEl(event.currentTarget)

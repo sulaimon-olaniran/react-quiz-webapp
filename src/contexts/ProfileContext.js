@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import { db, auth } from '../firebase/Firebase'
 
 export const ProfileContext = createContext()

@@ -10,7 +10,7 @@ const Demo = () => {
 
     useEffect(() =>{
         setCoins(200)
-    }, [])
+    }, [setCoins])
     const currentQuestions = shuffledQuestions[questionNumber].questions 
     const currentOptions =  shuffledQuestions[questionNumber].options 
     const currentAnswers = shuffledQuestions[questionNumber].answers 
@@ -26,7 +26,6 @@ const Demo = () => {
             questionNumber={questionNumber}
             totalQuestion={totalQuestion}
             setQuestionNumber={setQuestionNumber}
-            totalQuestion ={totalQuestion}
             redirectTo={redirectTo}
         />
     )

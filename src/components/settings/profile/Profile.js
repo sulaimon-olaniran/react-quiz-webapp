@@ -79,7 +79,7 @@ const FormikProfileSettings = withFormik({
         setStatus({loading : true})
         
         const usersNameArray = []
-        users.map((user) => {
+        users.forEach((user) => {
             const names = user.userName.toLowerCase()
             usersNameArray.push(names)
 

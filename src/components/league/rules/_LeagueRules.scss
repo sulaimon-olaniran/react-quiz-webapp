@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+
     .rules-image-container{
         width: 12rem;
         height: 18rem;
@@ -22,6 +23,7 @@
     }
 
     .rules-buttons-container{
+        margin-top: 25px;
         height: 3rem;
         width: 80%;
         display: flex;
@@ -29,3 +31,40 @@
 
     }
 }
+
+@media(min-width : 760px){
+    .league-rules-container ul{
+      width: 50%;
+    }
+   
+    .league-rules-container .rules-buttons-container{
+        margin: 0;
+    }
+ }
+
+ @media(min-width : 960px){
+    .league-rules-container ul{
+        width: 40%;
+    }
+    .league-rules-container .rules-buttons-container{
+        width: 60%;
+    }
+
+    .league-rules-container{
+        .rules-image-container{
+            height: 25rem;
+            width: 15rem;
+        }
+    }
+ }
+
+ @media(min-width : 960px){
+     .league-rules-container{
+         .rules-image-container{
+             height: 15rem;
+             width: 10rem;
+         }
+     }
+ }
+
+ 

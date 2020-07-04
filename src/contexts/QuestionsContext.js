@@ -39,7 +39,6 @@ const QuestionContextProvider = (props) => {
             }
         }
 
-        console.log(shuffledQuestions)
 
     //Reverse all options visibility back to visible incase of any hints being usded
     const showOptions = () => {

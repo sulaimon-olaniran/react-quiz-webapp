@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { db } from '../../../../firebase/Firebase'
 
 const PlayerDetails = ({ details }) => {
@@ -8,11 +8,11 @@ const PlayerDetails = ({ details }) => {
     } = details && details
 
 
-    const checkIndex = (index) => {
+    const checkIndex = useCallback ((index) => {
         return index.id === id
-    }
+    }, [id])
 
-    const getUsersData = () => {
+    const getUsersData = useCallback(() => {
         db.collection("users").onSnapshot(docs => {
             const users = []
             docs.forEach(doc => {
@@ -31,7 +31,7 @@ const PlayerDetails = ({ details }) => {
             })
            
         })
-    }
+    }, [checkIndex, id])
 
     let suffix = ""
     if(position === 1){
@@ -49,7 +49,8 @@ const PlayerDetails = ({ details }) => {
 
     useEffect(() =>{
         getUsersData()
-    }, [position])
+        
+    }, [getUsersData])
     
     return (
         <div className="game-details-container">

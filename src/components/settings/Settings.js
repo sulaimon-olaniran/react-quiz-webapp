@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import FormikProfileSettings from './profile/Profile'
 import { AppContext } from '../../contexts/AppContext'
 import DisplayImage from './images/display/DisplayImage'

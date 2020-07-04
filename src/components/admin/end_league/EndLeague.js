@@ -9,7 +9,7 @@ const EndLeague = () =>{
     const { usersData } = useContext(AppContext)
 
     const handleAwards = () =>{
-        usersData && usersData.map(user => {
+        usersData && usersData.forEach(user => {
                     if (user.leaguePosition === 1) {
                         return db.collection("users").doc(user.id).update({
                            gold : firebase.firestore.FieldValue.increment(1)

@@ -14,6 +14,7 @@
 @import '../components//users/UsersPage';
 @import '../components/league_table/LeagueTable';
 @import '../components/admin/Admin';
+@import '../components/buy_coins/BuyCoins';
 
 .page-section {
     margin-top: 10vh;
@@ -24,13 +25,13 @@
 
 body { 
     .view-image-container{
-        width: 90%;
-        height: 80vh;
-        border: 2px solid saddlebrown;
+        max-width: 90%;
+        max-height: 80vh;
+        //border: 2px solid saddlebrown;
         img{
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
     }
 }
@@ -38,10 +39,10 @@ body {
 
 @media(min-width : 1200px) {
     body{
-            .view-image-container{
-                width: 35%;
-                height: 80vh;
-            }
+        .view-image-container{
+            max-width: 70%;
+            max-height: 80vh;
+        }
         
     }
 }

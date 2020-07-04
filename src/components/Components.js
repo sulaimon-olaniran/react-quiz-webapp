@@ -21,6 +21,7 @@ import LeagueTable from './league_table/LeagueTable'
 import Demo from './demo/Demo'
 import Admin from './admin/Admin'
 import { AppContext } from '../contexts/AppContext'
+import BuyCoins from './buy_coins/BuyCoins'
 
 
 const Components = () => {
@@ -53,6 +54,7 @@ const Components = () => {
                         <Route exact path="/users" component={UsersPage} />
                         <Route exact path="/user/:id" component={UserProfile} />
                         <Route exact path="/admin" component={Admin} />
+                        <Route exact path="/coins" component={BuyCoins} />
                     </Switch>
                 </div>
                 <Footer />

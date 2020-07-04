@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState } from 'react'
 
 export const GameContext = createContext()
 
@@ -21,7 +21,7 @@ const GameContextProvider = (props) => {
 
     const [disableLeague, setDisableLeague] = useState(false)
 
-    const targetDate = "07 01, 2020"
+    const targetDate = "07 06, 2020"
 
     const countDownDate = new Date(`${targetDate} 00:00:00`).getTime()
 

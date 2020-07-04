@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useCallback } from 'react'
 //import green_mark from './assets/green_mark.png'
 import done_mark from './assets/done_mark.png'
 import PieChart from './piechart/PieChart'
@@ -10,11 +10,13 @@ import firebase from '../../../../firebase/Firebase'
 import { withRouter, Redirect, NavLink } from 'react-router-dom'
 
 
-const StatsDetails = (props) => {
+const StatsDetails = ({ history }) => {
     const { themeClass } = useContext(AppContext)
     const {answeredRight, answeredWrong, fiftyUsed, hintsUsed, coinsSpent, points, attempts, clearData } = useContext(GameContext)
     const mountedRef = useRef(true)
-     const updateFirebaseData = () => {
+
+
+    const updateFirebaseData = useCallback( () => {
         const userId = auth.currentUser.uid
         db.collection("users").doc(userId).update({
             totalPoints: firebase.firestore.FieldValue.increment(points),
@@ -30,9 +32,9 @@ const StatsDetails = (props) => {
 
         })
         .then(() => {
-            props.history.push("/game/stats")
+            history.push("/game/stats")
         })
-     }
+     }, [answeredRight, answeredWrong, attempts, coinsSpent, fiftyUsed, hintsUsed, history, points])
 
     useEffect(() => {
         updateFirebaseData()
@@ -41,7 +43,7 @@ const StatsDetails = (props) => {
             clearData()
             mountedRef.current = false
         }
-    }, [])
+    }, [clearData, updateFirebaseData])
     
     const percentage = (answeredRight / 4) * 100
     let message;

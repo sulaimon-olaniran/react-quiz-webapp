@@ -8,7 +8,7 @@
     box-sizing: border-box;
 
    .form-container{
-       height: 32rem;
+       height: 35rem;
        width: 80%;
        display: flex;
        flex-direction: column;
@@ -24,19 +24,20 @@
        }
 
         .signup-image-container{
-            width: 6rem;
-            height: 6rem;
+            width: 5rem;
+            height: 5rem;
 
             img{
                 width: 100%;
                 height: 100%;
+                object-fit: cover;
             }
         }
 
 
         form{
             width: 80%;
-            height: 22rem;
+            height: 25rem;
             display: flex;
             flex-direction: column;
             align-items: center;

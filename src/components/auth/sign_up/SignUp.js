@@ -82,21 +82,20 @@ const FormikSignUpPage = withFormik({
     handleSubmit(values, { props, setSubmitting, setStatus }) {
         const { email, password, firstName, lastName, userName } = values
         const { users, history } = props
-        
+
         setSubmitting(true)
         setStatus({ loading: true })
 
         const usersNameArray = []
 
-        users.map((user) => {
+        users.forEach((user) => {
             const names = user.userName.toLowerCase()
             usersNameArray.push(names)
 
             if (usersNameArray.includes(userName.toLowerCase())) {
                 setSubmitting(false)
-                setStatus({loading : false})
-                setStatus({ error : "Username already Exists."})
-
+                setStatus({ loading: false })
+                setStatus({ error: "Username already Exists." })
             }
             else {
                 auth.createUserWithEmailAndPassword(
@@ -108,7 +107,7 @@ const FormikSignUpPage = withFormik({
                             firstName: firstName,
                             lastName: lastName,
                             name: firstName + " " + lastName,
-                            userName : userName,
+                            userName: userName,
                             id: res.user.uid,
                             sex: "",
                             country: "",

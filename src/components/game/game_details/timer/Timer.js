@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
-//import { GameContext } from '../../../../contexts/GameContext'
+import React, { useState, useEffect, useRef } from 'react'
 import {  withRouter } from 'react-router-dom'
-import { GameContext } from '../../../../contexts/GameContext'
 
 
 const Timer = ({ history, redirectTo }) => {
     const [dashArray, setDashArray] = useState(null)
     const [timer, setTimer] = useState(180)
-    const { endGamePlay } = useContext(GameContext)
 
     const gameTime = 120
     const warningTime = 10
@@ -44,7 +41,7 @@ const Timer = ({ history, redirectTo }) => {
 
         }
         return () => clearInterval(timeInterval);
-    }, [timer, setTimer,  history ]);
+    }, [timer, setTimer,  history, redirectTo ]);
 
    
     

@@ -9,8 +9,8 @@ import LeagueCountDown from './count-down/CountDown'
 
 const LeagueTable = () => {
     const [usersData, setUsersData] = useState()
-    const [fetching, setFetching ] = useState(true)
-    const [loading, setLoading ] = useState(true)
+    //const [fetching, setFetching ] = useState(true)
+    //const [loading, setLoading ] = useState(true)
     const { themeClass } = useContext(AppContext)
 
     const getUsersData = () => {
@@ -20,10 +20,10 @@ const LeagueTable = () => {
                 users.push(doc.data())
             })
             setUsersData(users)
-           setFetching(false)
-           setTimeout(() => {
-               setLoading(false)
-           }, 1000);
+        //    setFetching(false)
+        //    setTimeout(() => {
+        //        setLoading(false)
+        //    }, 1000);
         })
     }
 
