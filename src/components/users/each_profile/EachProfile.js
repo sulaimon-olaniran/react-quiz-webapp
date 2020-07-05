@@ -1,19 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar'
+import ScrollAnimation from 'react-animate-on-scroll'
 
 
 const EachProfile = ({ details }) => {
     return (
-            <div className="each-user-container" >
-                <Link to={`/user/${details.id}`} >
+        <ScrollAnimation animateIn='bounceInUp' className="each-user-container" duration={1.3} >
+            <Link to={`/user/${details.id}`} >
                 <div className="user-image-container" >
-                    <Avatar src={ details.displayImage} alt="DP" />
+                    <Avatar src={details.displayImage} alt="DP" />
                 </div>
                 <p>{details.userName}</p>
-                </Link>
-            </div>
-     
+            </Link>
+        </ScrollAnimation>
     )
 }
 

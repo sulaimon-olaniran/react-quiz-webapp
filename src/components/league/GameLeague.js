@@ -28,6 +28,7 @@ const GameLeague = () => {
         getGameQuestions()
         handleCurrentTime()
         setCoins(profile && profile.coins)
+        
         return () => {
             clearInterval(timingRef.current)
         }

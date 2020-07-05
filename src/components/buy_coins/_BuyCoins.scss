@@ -1,8 +1,11 @@
-.coins-container{
+.payment-coins-container{
     width: 100%;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
     background: url('./assets/coins_background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,5 +21,32 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
+    }
+
+    .payment-button{
+        button{
+            width: 8rem;
+            height: 3rem;
+            background-color: rgb(128, 35, 25);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+
+            span{
+                padding-right: 4px;
+            }
+        }
+
+        button:hover{
+            background-color: rgb(46, 6, 1);
+        }
+        button:disabled{
+            background-color: darkgray;
+           // color: white;
+        }
     }
 }

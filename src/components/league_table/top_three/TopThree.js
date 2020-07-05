@@ -3,6 +3,7 @@ import gold from './assets/gold.png'
 import silver from './assets/silver.png'
 import bronze from './assets/bronze.png'
 import Avatar from '@material-ui/core/Avatar'
+import GradeIcon from '@material-ui/icons/Grade'
 import { Link } from 'react-router-dom'
 
 
@@ -28,7 +29,7 @@ const TopThree = ({ firstThree }) => {
 
                 <div className="top-three-details" >
                     <p>{second && second.userName}</p>
-                    <h3>{second && second.leaguePoints}</h3>
+                    <h3>{second && second.leaguePoints}<GradeIcon fontSize="small" /></h3>
                 </div>
 
 
@@ -44,7 +45,7 @@ const TopThree = ({ firstThree }) => {
                 </div>
                 <div className="top-three-details" >
                     <p>{first && first.userName}</p>
-                    <h3>{first && first.leaguePoints}</h3>
+                    <h3>{first && first.leaguePoints}<GradeIcon fontSize="small" /></h3>
                 </div>
 
                 <div className="medal-image">
@@ -58,7 +59,7 @@ const TopThree = ({ firstThree }) => {
                 </div>
                 <div className="top-three-details" >
                     <p>{third && third.userName}</p>
-                    <h3>{third && third.leaguePoints}</h3>
+                    <h3>{third && third.leaguePoints}<GradeIcon fontSize="small" /></h3>
                 </div>
 
                 <div className="medal-image">

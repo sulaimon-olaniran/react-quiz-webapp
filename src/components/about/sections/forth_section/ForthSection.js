@@ -1,7 +1,6 @@
 import React from 'react'
-//import Button from '@material-ui/core/Button'
-//import post_utme from './assets/post_utme.jpeg'
-import cash_reward from './assets/cash_reward.png'
+//import cash_reward from './assets/cash_reward.png'
+import reward from './assets/reward.png'
 import ScrollAnimation from 'react-animate-on-scroll'
 
 const ForthSection = () => (
@@ -13,13 +12,15 @@ const ForthSection = () => (
         >
 
             <div className="about-section-container">
-                <h1>Win A Cash Price</h1>
+                <h1>Get Rewarded</h1>
                 <div className="forth-section-image">
-                    <img src={cash_reward} alt="JAMB" />
+                    <img src={reward} alt="JAMB" />
                 </div>
                 <p>
                     Make it to the top three(3) and 
-                    a cash price will be rewarded to you
+                    a cash price will be rewarded to you.
+                    Make the top ten(10) and you'd receive
+                    free coins to access lifelines.
                 </p>
                 
             </div>

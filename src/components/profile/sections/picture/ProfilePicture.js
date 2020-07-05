@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
     }
-}));
+}))
 
 const ProfilePicture = ({ details }) => {
     const classes = useStyles()

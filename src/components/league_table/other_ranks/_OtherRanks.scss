@@ -8,14 +8,25 @@
     .each-rank-container{
         height: 4rem;
         width: 95%;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
         border: 1px solid;
         border-color: inherit;
         border-radius: 15px;
         margin: 10px 0;
         box-shadow: 3px 8px #888888;
+        
+        .MuiSvgIcon-fontSizeSmall{
+            color: gold;
+            font-size: 1.3rem;
+        }
+
+        a{
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          text-transform: capitalize;
+        }
 
         .MuiAvatar-root{
           width: 30px;

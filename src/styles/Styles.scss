@@ -20,13 +20,47 @@
     margin-top: 10vh;
     min-height: 90vh;
     width: 100%;
-
 }
 
-body { 
+body {  
+    .payment-modal-container{
+        margin-top: 3rem;
+        width: 80%;
+        min-height: 80vh;
+        background-color: rgb(53, 52, 52);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: salmon;
+        border-radius: 25px;
+        outline: none;
+
+        .transaction-details-container{
+            height: 15rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 25px;
+        }
+
+        .coins-status-container{
+            height: 5rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+    }
+
+
     .view-image-container{
         max-width: 90%;
         max-height: 80vh;
+        outline: none;
         //border: 2px solid saddlebrown;
         img{
             width: 100%;

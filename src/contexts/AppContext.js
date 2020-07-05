@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect, useRef } from 'react'
 import { auth, db } from '../firebase/Firebase'
 
 export const AppContext = createContext()
@@ -9,9 +9,11 @@ const AppContextProvider = ({ children }) => {
     const [menuLink, setMenuLink] = useState(false)
     const [loggedIn, setLoggedIn] = useState()
     const [isAuth, setIsAuth] = useState(true)
+    const mountedRef = useRef(true)
 
     const getAppUsers = () => {
         db.collection("users").onSnapshot(docs => {
+            if (!mountedRef.current) return null
             const users = []
             docs.forEach(doc => {
                 users.push(doc.data())
@@ -23,12 +25,17 @@ const AppContextProvider = ({ children }) => {
     useEffect(() => {
         getAppUsers()
         authUser().then((user) => {
+            if (!mountedRef.current) return null
             setIsAuth(false)
 
         }, (error) => {
             setIsAuth(false)
             console.log(error);
         });
+
+        return () => {
+            mountedRef.current = false
+        }
     }, [])
 
     const authUser = () => {

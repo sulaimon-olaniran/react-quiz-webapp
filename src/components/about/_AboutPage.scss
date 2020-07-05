@@ -1,7 +1,7 @@
 .about-page-container{
     width: 100%;
     min-height: 90vh;
-    padding-bottom: 20px;
+    padding-bottom: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,11 +16,11 @@
 
 .each-section-container{
     width: 95%;
-    height: 25rem;
+    height: 20rem;
     margin: 10px;
 
     .animated{
-        height: 25rem;
+        height: 20rem;
         .about-section-container{
             min-height: 100%;
             width: 100%;

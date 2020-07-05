@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useRef, useEffect } from 'react'
 import { db } from '../firebase/Firebase'
 
 export const QuestionContext = createContext()
@@ -8,9 +8,16 @@ const QuestionContextProvider = (props) => {
     const [questionNumber, setQuestionNumber] = useState(0)
     const [loading, setLoading] = useState(true)
     const [fetching, setFetching] = useState(true)
+    const mountedRef = useRef(true)
+
+    useEffect(() =>{
+        return () => {
+            mountedRef.current = false
+        }
+    }, [])
 
     const getGameQuestions = () => {
-
+        if (!mountedRef.current) return null
         db.collection('questions')
             .get()
             .then(snapshot => {
