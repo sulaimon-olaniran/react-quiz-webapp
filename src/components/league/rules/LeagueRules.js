@@ -18,12 +18,16 @@ const LeagueRules = () => {
             </div>
             
             <ul>
-                <li>Each session consists of 25 questions</li>
+                <li>First 3 gets free 300 coins at end of league</li>
+                <li>4th to 10th get 200 coins each</li>
+                <li>League ends after countdown is completed</li>
+                <li>Each game session consists of 20 questions</li>
                 <li>You have 3 mins for each game session</li>
                 <li>The game starts once you click on continue</li>
                 <li>Game is interupted if network connection is lost</li>
                 <li>You can play as many times as you want to accumulate points</li>
                 <li>Your points are not recorded if game is not completed</li>
+                <li>Goodluck<span role="img" aria-label="tongouee" className="wave-icon" >👋</span></li>
             </ul>
 
             <div className="rules-buttons-container" >

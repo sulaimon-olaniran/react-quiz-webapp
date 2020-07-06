@@ -25,11 +25,13 @@ const UserProfile = ({ match }) => {
                 setFetching(false)
             }, 1000)
         })
+
         return () => {
             mountedRef.current = false
         }
 
     })
+    
     const message = "Fetching Profile"
 
     if (auth.currentUser === null) return <Redirect  to="/signin" />

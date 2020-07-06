@@ -7,7 +7,7 @@ import { SignInYupValidation } from '../assets/Validation'
 import TextField from '@material-ui/core/TextField'
 import MyPasswordField from '../assets/MyPassword'
 import Button from '@material-ui/core/Button'
-import { auth } from '../../../firebase/Firebase'
+import { auth, analytics } from '../../../firebase/Firebase'
 import Loader from '../../loader/Loader'
 
 const SignInPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, status }) => {
@@ -69,6 +69,7 @@ const FormikSignInPage = withFormik({
 
         auth.signInWithEmailAndPassword(email, password)
             .then(() => {
+                analytics.logEvent('login')
                 setSubmitting(false)
                 setTimeout(() => {
                     props.history.push('/profile')

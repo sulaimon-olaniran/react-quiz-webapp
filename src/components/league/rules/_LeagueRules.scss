@@ -16,10 +16,13 @@
     }
     ul{
         width: 90%;
-        height: 12rem;
+        height: 20rem;
         display: flex;
         flex-direction: column;
-        padding-left: 20px;
+        justify-content: space-around;
+        align-items: flex-start;
+        padding-left: 10px;
+        margin-top: 10px;
     }
 
     .rules-buttons-container{
@@ -58,13 +61,22 @@
     }
  }
 
- @media(min-width : 960px){
+ @media(min-width : 1200px){
      .league-rules-container{
-         .rules-image-container{
-             height: 15rem;
-             width: 10rem;
-         }
-     }
+        .rules-image-container{
+            height: 15rem;
+            width: 10rem;
+        }
+
+        .rules-buttons-container{
+            margin-top: 25px;
+            width: 40%;
+        }
+
+        ul{
+            align-items: flex-start;
+        }
+    }
  }
 
  

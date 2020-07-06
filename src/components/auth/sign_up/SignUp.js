@@ -7,7 +7,7 @@ import albert_einstein from './assets/albert_einstein.png'
 import TextField from '@material-ui/core/TextField'
 import MyPasswordField from '../assets/MyPassword'
 import Button from '@material-ui/core/Button'
-import { auth, db } from '../../../firebase/Firebase'
+import { auth, db, analytics } from '../../../firebase/Firebase'
 import Loader from '../../loader/Loader'
 
 
@@ -136,6 +136,7 @@ const FormikSignUpPage = withFormik({
 
                     }).then(() => {
                         setSubmitting(false)
+                        analytics.logEvent('sign_up')
                         setTimeout(() => {
                             setStatus({ loading: false })
                             history.push('/settings')

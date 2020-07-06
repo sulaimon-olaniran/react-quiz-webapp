@@ -21,7 +21,7 @@ const GameContextProvider = (props) => {
 
     const [disableLeague, setDisableLeague] = useState(false)
 
-    const targetDate = "07 06, 2020"
+    const targetDate = "07 10, 2020"
 
     const countDownDate = new Date(`${targetDate} 00:00:00`).getTime()
 

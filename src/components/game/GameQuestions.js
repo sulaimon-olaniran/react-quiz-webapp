@@ -9,6 +9,7 @@ const GameQuestions = ({ currentOptions, currentAnswers, currentQuestions, coins
     const mountedRef = useRef(true)
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         return () => {
             mountedRef.current = false
         }

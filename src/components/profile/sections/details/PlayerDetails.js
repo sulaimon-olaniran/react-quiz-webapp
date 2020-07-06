@@ -22,7 +22,7 @@ const PlayerDetails = ({ details }) => {
             const sortedUsers = users.sort(function (a, b) { return b.leaguePoints - a.leaguePoints })
 
             const leaguePosition = sortedUsers.findIndex(checkIndex)
-            console.log(leaguePosition)
+            //console.log(leaguePosition)
 
             return db.collection("users").doc(id).update({
                 leaguePosition : leaguePosition + 1

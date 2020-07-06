@@ -11,7 +11,7 @@ const ProfileContextProvider = ({ children }) => {
 
     const getUserProfile = () => {
         const userId = auth.currentUser && auth.currentUser.uid
-        db.collection("userss").doc(userId).onSnapshot(snapshot => {
+        db.collection("users").doc(userId).onSnapshot(snapshot => {
             if (!mountedRef.current) return null
             setProfile(snapshot.data())
             setLoading(false)
