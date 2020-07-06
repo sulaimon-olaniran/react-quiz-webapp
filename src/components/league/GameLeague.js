@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useCallback, useRef } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import { Redirect } from 'react-router-dom'
 import { QuestionContext } from '../../contexts/QuestionsContext'
 import GameQuestions from '../game/GameQuestions'
@@ -9,30 +9,26 @@ import { ProfileContext } from '../../contexts/ProfileContext'
 
 
 const GameLeague = () => {
-    const { getGameQuestions, fetching, loading, shuffledQuestions } = useContext(QuestionContext)
+    const { fetching, loading, shuffledQuestions } = useContext(QuestionContext)
     const { profile } = useContext(ProfileContext)
     const { countDownDate, setCoins } = useContext(GameContext)
     const [currentTime, setCurrentTime] = useState(new Date().getTime())
     const [questionNumber, setQuestionNumber] = useState(0)
     const timingRef = useRef(0)
 
-    const handleCurrentTime = useCallback (() => {
-        timingRef.current = setInterval(() => {
-            setCurrentTime(new Date().getTime())
-            //console.log(new)
-        }, 1000000)
-    }, [])
-
+    
 
     useEffect(() => {
-        getGameQuestions()
-        handleCurrentTime()
+        timingRef.current = setInterval(() =>{
+            setCurrentTime(new Date().getTime())
+        }, [])
+
         setCoins(profile && profile.coins)
         
         return () => {
             clearInterval(timingRef.current)
         }
-    }, [getGameQuestions, profile, setCoins, handleCurrentTime ])
+    }, [profile, setCoins])
 
     const currentQuestions = shuffledQuestions.length > 0 ? shuffledQuestions[questionNumber].questions :null
     const currentOptions = shuffledQuestions.length > 0 ? shuffledQuestions[questionNumber].options :null

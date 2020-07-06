@@ -11,6 +11,7 @@ const QuestionContextProvider = (props) => {
     const mountedRef = useRef(true)
 
     useEffect(() =>{
+        getGameQuestions()
         return () => {
             mountedRef.current = false
         }

@@ -3,7 +3,6 @@ import { shuffledQuestions } from './DemoQuestions'
 import GameQuestions from '../game/GameQuestions'
 import { GameContext } from '../../contexts/GameContext'
 
-
 const Demo = () => {
     const [questionNumber, setQuestionNumber] = useState(0)
     const { setCoins } = useContext(GameContext)
