@@ -9,6 +9,7 @@ import { auth } from './firebase/Firebase'
 import Loader from './components/loader/Loader'
 import { Offline, Online } from "react-detect-offline"
 import Components from './components/Components'
+import ErrorBoundary from './ErrorHandler'
 
 function App() {
   const [isAuth, setIsAuth] = useState(true)
@@ -51,6 +52,7 @@ function App() {
   else {
     return (
       <React.Fragment>
+        <ErrorBoundary>
         <Online>
           <Router>
             <AppContextProvider>
@@ -73,6 +75,7 @@ function App() {
         <Offline>
           <h1>Connect to Internet</h1>
         </Offline>
+        </ErrorBoundary>
       </React.Fragment>
     )
   }

@@ -12,7 +12,8 @@ const EndLeague = () =>{
         usersData && usersData.forEach(user => {
                     if (user.leaguePosition === 1) {
                         return db.collection("users").doc(user.id).update({
-                           gold : firebase.firestore.FieldValue.increment(1)
+                           gold : firebase.firestore.FieldValue.increment(1),
+                           coins : firebase.firestore.FieldValue.increment(300)
         
                         }).then(() =>{
                             alert("done done done")
@@ -21,13 +22,21 @@ const EndLeague = () =>{
                     }
                     else if ( user.leaguePosition === 2) {
                         return db.collection("users").doc(user.id).update({
-                           silver : firebase.firestore.FieldValue.increment(1)
+                           silver : firebase.firestore.FieldValue.increment(1),
+                           coins : firebase.firestore.FieldValue.increment(300)
                         })
                     }
                     else if ( user.leaguePosition === 3) {
                         return db.collection("users").doc(user.id).update({
-                           bronze : firebase.firestore.FieldValue.increment(1)
+                           bronze : firebase.firestore.FieldValue.increment(1),
+                           coins : firebase.firestore.FieldValue.increment(300)
                         })
+                    }
+
+                    else if ( user.leaguePosition > 3 && user.leaguePosition <= 10 ){
+                        return db.collection("users").doc(user.id).update({
+                            coins : firebase.firestore.FieldValue.increment(200)
+                         })
                     }
                 })
 
