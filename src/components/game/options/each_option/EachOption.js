@@ -36,6 +36,7 @@ const EachOption = ({ option, answer, questionNumber, setQuestionNumber, totalQu
             setAnsweredWrong(prev => prev + 1) 
             setAttempts(prev => prev + 1)
             wrongAnswer.current.play()
+            window.navigator.vibrate(200)
         }
 
 

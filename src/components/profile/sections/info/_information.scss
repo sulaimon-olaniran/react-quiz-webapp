@@ -37,24 +37,20 @@
     }
 
     .profile-contact-container{
-        width: 100%;
+        width: 90%;
         min-height: 3rem;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-around;
+        margin-top: 10px;
 
-        div{
-          width: 15rem;
-          height: 2.5rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid sandybrown;
-          margin: 5px;
-          p{
-              margin-left: 10px;
-          }
+        a{
+            border: 1px solid saddlebrown;
+            height: 2rem;
+            width: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 
@@ -100,7 +96,12 @@
         .achievements-container{
             width: 70%;
         }
+
+        .profile-contact-container{
+            width: 50%;
+        }
     }
+
 }
 
 @media(min-width : 960px) and (orientation: portrait){
@@ -134,6 +135,11 @@
                    height: 8rem;
                }
             }
+        }
+
+        .profile-contact-container{
+            width: 40%;
+            margin-top: 20px;
         }
     }
 }

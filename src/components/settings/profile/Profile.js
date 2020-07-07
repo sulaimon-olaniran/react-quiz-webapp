@@ -7,9 +7,9 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 import { db, auth } from '../../../firebase/Firebase'
 import CircularProgress from '@material-ui/core/CircularProgress'
-//import { ProfileContext } from '../../../contexts/ProfileContext'
+import * as yup from 'yup'
 
-const ProfileSettings = ({ isSubmitting, status }) => {
+const ProfileSettings = ({ isSubmitting, status, errors, touched }) => {
     const displayed = isSubmitting ? <CircularProgress color="primary" /> : <h3 style={{ color: 'green' }}>Updated</h3>
 
     return (
@@ -17,10 +17,17 @@ const ProfileSettings = ({ isSubmitting, status }) => {
             <h3>Profile Details</h3>
             <Form className="profile-settings-form"  >
 
-                <Field as={TextField} type="text" name="firstName" label="First Name" color="primary" />
-                <Field as={TextField} type="text" name="lastName" label="Last Name" />
-                <Field as={TextField} type="text" name="userName" label="Last Name" />
-                { status && status.error && <small>{status.error}</small>}
+                <Field as={TextField} type="text" name="firstName" label="First Name" color="primary"
+                    error={touched.firstName && errors.firstName ? true : false}
+                    helperText={touched.firstName && errors.firstName}
+                />
+
+                <Field as={TextField} type="text" name="lastName" label="Last Name"
+                    error={touched.lastName && errors.lastName ? true : false}
+                    helperText={touched.lastName && errors.lastName}
+                />
+
+                <Field as={TextField} type="text" name="userName" label="Username" />
 
                 <RadioGroup>
                     <FormLabel>
@@ -35,18 +42,24 @@ const ProfileSettings = ({ isSubmitting, status }) => {
                 </RadioGroup>
 
 
-                <Field as={TextField} type="number" name="phoneNumber" label="Phone number" />
                 <Field as={TextField} type="text" name="country" label="Country" />
                 <Field as={TextField} type="text" name="state" label="State" />
+                <Field as={TextField} type="number" name="phoneNumber" label="WhatsApp" />
                 <Field as={TextField} type="text" name="instagram" label="Instagram" />
                 <Field as={TextField} type="text" name="twitter" label="Twitter" />
                 <Field as={TextField} type="text" name="facebook" label="Facebook" />
-
-
                 <Field as={TextField} type="text" name="about" label="About You" />
 
-                <Field type="submit" as={Button} variant="contained" color="primary" disabled={status} >Update Details</Field>
+                <h1>For payment</h1>
+                 <p>Account details will not be visible to other users</p>
+                 <p>Make sure Account is same as your profile names</p>
+                <Field as={TextField} type="number" name="accountNumber" label="Account Number" />
+                <Field as={TextField} type="text" name="bankName" label="Bank Name" />
+
+                <Field type="submit" as={Button} variant="contained" color="primary" disabled={isSubmitting} >Update Details</Field>
+
                 {status && status.loading && displayed}
+                {status && status.error && <small style={{color : "red"}}>{status.error}</small>}
             </Form>
         </div>
     )
@@ -71,19 +84,34 @@ const FormikProfileSettings = withFormik({
         }
     },
 
+    validationSchema: yup.object().shape({
+        firstName: yup.string()
+            .required('Enter Firstname')
+            .min(2, 'min of 2 letters'),
+
+        lastName: yup.string()
+            .required('Enter Lastname')
+            .min(2, 'min of 2 letters'),
+
+        userName: yup.string()
+            .required('Enter Username')
+            .min(2, 'min of 2 letters')
+    }),
+
     handleSubmit(values, { setStatus, setSubmitting, props }) {
+        console.log("handle submit is working fine")
         const { sex, country, firstName, lastName, phoneNumber, instagram, twitter, about, facebook, state, userName } = values
-        const { users } = props
+        const { users, details } = props
         const userId = auth.currentUser.uid
         setSubmitting(true)
-        setStatus({loading : true})
-        
+        setStatus({ loading: true })
+
         const usersNameArray = []
         users.forEach((user) => {
             const names = user.userName.toLowerCase()
             usersNameArray.push(names)
 
-            if (usersNameArray.includes(userName.toLowerCase())) {
+            if (usersNameArray.includes(userName.toLowerCase()) && details.userName.toLowerCase() !== userName.toLowerCase()) {
                 setSubmitting(false)
                 setStatus({ loading: false })
                 setStatus({ error: "Username already Exists." })
@@ -108,7 +136,7 @@ const FormikProfileSettings = withFormik({
                 }, { merge: true }).then(() => {
                     setSubmitting(false)
                     setTimeout(() => {
-                        setStatus({loading : false})
+                        setStatus({ loading: false })
                     }, 1000)
                     // console.log("Profile Updated")
                 })

@@ -40,7 +40,7 @@ const QuestionContextProvider = (props) => {
 
     const shuffledQuestions = []
 
-        while (questions !== null && shuffledQuestions.length <= 29) {
+        while (questions !== null && shuffledQuestions.length <= 19) {
             const random = questions[Math.floor(Math.random() * questions.length)]
             if (!shuffledQuestions.includes(random)) {
                 shuffledQuestions.push(random)

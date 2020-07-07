@@ -29,12 +29,14 @@ const Instructions = () => {
                         animateOut='bounceOutLeft'
                         offset={150}
                     >
-                        <li>- Each game has a duration of (3) three minutes.</li>
-                        <li>- Game ends once the time is up</li>
-                        <li>- Each Game consists of (30) thirty Questions.</li>
-                        <li>- Every Question consists of four(4) options.</li>
-                        <li>- Options contain 1 right answer and 3 wrong ones</li>
-                        <li>- Select your option of choice by clicking on it.</li>
+                        <li>Each game has a duration of (3) three minutes.</li>
+                        <li>Game ends once the time is up.</li>
+                        <li>Each game consists of (20) twenty questions.</li>
+                        <li>Every question consists of four(4) options.</li>
+                        <li>Options contain 1 right answer and 3 wrong ones</li>
+                        <li>Select your option of choice by clicking on it.</li>
+                        <li>Next question loads after you've picked an option.</li>
+                        <li>You're a genius so no corrections, you'd figure it out next time.</li>
                     </ScrollAnimation>
                 </ul>
 
@@ -54,7 +56,7 @@ const Instructions = () => {
                         animateOut='bounceOutLeft'
                         offset={150}
                     >
-                        <li>- You're alerted if you wrong or right.</li>
+                        <li>You're alerted if you wrong or right.</li>
                         <div className="alert-details">
                             <h3>Right alert</h3>
                             <div>
@@ -76,8 +78,9 @@ const Instructions = () => {
                         animateOut='bounceOutRight'
                         offset={150}
                     >
-                        <li>- Coins gives you access to lifelines</li>
-                        <li>- You can't use lifelines with zero coins</li>
+                        <li>Coins gives you access to lifelines</li>
+                        <li>You can't use lifelines with zero coins</li>
+                        <li>Visit <NavLink style={{color : "gold"}} to="/coins">Coins</NavLink> page to get coins</li>
                         <img src={coins_image} alt="coins" />
 
                     </ScrollAnimation>
@@ -90,8 +93,8 @@ const Instructions = () => {
                             animateOut='bounceOutLeft'
                             offset={150}
                         >
-                            <li>- 50-50 takes away two wrong options</li>
-                            <li>- 50-50 can be used once per question</li>
+                            <li>50-50 takes away two wrong options</li>
+                            <li>50-50 can be used once per question</li>
                             <img src={fifty_image} alt="50-50" />
                         </ScrollAnimation>
                     </ul>
@@ -102,8 +105,8 @@ const Instructions = () => {
                             animateOut='bounceOutRight'
                             offset={150}
                         >
-                            <li>- Hints takes away one wrong option</li>
-                            <li>- Hints can be used 3 times per question</li>
+                            <li>Hints takes away one wrong option</li>
+                            <li>Hints can be used at most thrice per question</li>
                             <img src={hints_image} alt="hints" />
                         </ScrollAnimation>
                     </ul>
@@ -113,9 +116,6 @@ const Instructions = () => {
                     <NavLink exact to="/demo"><Button color="secondary" variant="contained" >Game Demo</Button></NavLink>    
                      <NavLink exact to="league/rules"><Button color="primary" variant="contained" >Game League</Button></NavLink>   
                 </div>
-
-
-
 
             </div>
 
