@@ -56,9 +56,9 @@ const PlayerDetails = ({ details }) => {
         <div className="game-details-container">
 
             <div><p><span className="title" >Total Points</span> <span className="subject">{totalPoints} </span></p></div>
-            <div><p><span className="title" >League Points</span> <span className="subject">{leaguePoints} </span></p></div>
-            <div><p><span className="title" >League Position</span> <span className="subject">{leaguePosition}{suffix}</span></p></div>
-            <div><p><span className="title" >Attempts</span> <span className="subject">{attempts}</span></p></div>
+            <div><p><span className="title" >Current Points</span> <span className="subject">{leaguePoints} </span></p></div>
+            <div><p><span className="title" >Current Position</span> <span className="subject">{leaguePosition}{suffix}</span></p></div>
+            <div><p><span className="title" >Total Attempts</span> <span className="subject">{attempts}</span></p></div>
             <div><p><span className="title" >Right Answers</span> <span className="subject">{rightAnswers}</span></p></div>
             <div><p><span className="title" >Wrong Answers</span> <span className="subject">{wrongAnswers}</span></p></div>
             <div><p><span className="title" >50/50 Used</span> <span className="subject">{fiftyUsed}</span></p></div>

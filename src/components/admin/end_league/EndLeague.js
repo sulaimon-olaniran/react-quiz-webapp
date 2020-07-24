@@ -16,7 +16,7 @@ const EndLeague = () =>{
                            coins : firebase.firestore.FieldValue.increment(300)
         
                         }).then(() =>{
-                            alert("done done done")
+                            console.log("first position awards received")
                         })
                     
                     }
@@ -24,19 +24,25 @@ const EndLeague = () =>{
                         return db.collection("users").doc(user.id).update({
                            silver : firebase.firestore.FieldValue.increment(1),
                            coins : firebase.firestore.FieldValue.increment(300)
+                        }).then(() =>{
+                            console.log("second position awards received")
                         })
                     }
                     else if ( user.leaguePosition === 3) {
                         return db.collection("users").doc(user.id).update({
                            bronze : firebase.firestore.FieldValue.increment(1),
                            coins : firebase.firestore.FieldValue.increment(300)
+                        }).then(() =>{
+                            console.log("third position awards received")
                         })
                     }
 
                     else if ( user.leaguePosition > 3 && user.leaguePosition <= 10 ){
                         return db.collection("users").doc(user.id).update({
                             coins : firebase.firestore.FieldValue.increment(200)
-                         })
+                         }).then(() =>{
+                            console.log("other positions awards received")
+                        })
                     }
                 })
 
