@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { db } from '../../../../firebase/Firebase'
+import { db, auth } from '../../../../firebase/Firebase'
 
 const PlayerDetails = ({ details }) => {
     const [ position, setPosition ] = useState()
     const { totalPoints, leaguePosition, attempts, rightAnswers, wrongAnswers,
         fiftyUsed, hintsUsed, coinsSpent,  id, leaguePoints
-    } = details && details
+    } = details 
 
 
     const checkIndex = useCallback ((index) => {
@@ -24,14 +24,14 @@ const PlayerDetails = ({ details }) => {
             const leaguePosition = sortedUsers.findIndex(checkIndex)
             //console.log(leaguePosition)
 
-            return db.collection("users").doc(id).update({
+            return db.collection("users").doc(auth.currentUser.uid).update({
                 leaguePosition : leaguePosition + 1
             }).then(() =>{
                 setPosition(leaguePosition + 1)
             })
            
         })
-    }, [checkIndex, id])
+    }, [checkIndex])
 
     let suffix = ""
     if(position === 1){

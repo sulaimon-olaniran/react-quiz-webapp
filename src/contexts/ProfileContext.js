@@ -40,7 +40,8 @@ const ProfileContextProvider = ({ children }) => {
 
     return (
         <ProfileContext.Provider value={{
-            profile, getUserProfile, loading, fetching
+            profile, getUserProfile, loading, fetching,
+            setFetching, setLoading
         }}>
             {children}
         </ProfileContext.Provider>

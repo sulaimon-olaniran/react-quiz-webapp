@@ -81,7 +81,7 @@ const NavBar = () => {
 
                         :
                         <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleClickOnline} >
-                            <Avatar alt={profile.userName && profile.userName} src={profile.displayImage && profile.displayImage} size="small" />
+                            <Avatar src={profile && profile.displayImage} size="small" />
                         </IconButton>
                 }
 

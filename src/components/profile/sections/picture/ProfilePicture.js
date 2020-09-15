@@ -32,7 +32,7 @@ const ProfilePicture = ({ details }) => {
         setOpenCover(false)
     }
 
-    const coverImage = details.coverImage === "" ? cover_photo : details.coverImage
+    const coverImage = details && details.coverImage === "" ? cover_photo : details && details.coverImage
 
 
     const color = darkTheme ? "rgb(26, 25, 25)" : "rgb(226, 226, 226)"
@@ -46,7 +46,7 @@ const ProfilePicture = ({ details }) => {
             </div>
 
             <div className="photo-container" style={{ color: color }} >
-                <Avatar src={details.displayImage} alt="DP" onClick={viewDisplayImage} />
+                <Avatar src={details && details.displayImage} alt="DP" onClick={viewDisplayImage} />
             </div>
 
             <Modal
@@ -63,7 +63,7 @@ const ProfilePicture = ({ details }) => {
             >
                 <Zoom in={openDp} >
                     <div className="view-image-container" >
-                        <img src={details.displayImage} alt="DP" />
+                        <img src={details && details.displayImage} alt="DP" />
                     </div>
                 </Zoom>
 

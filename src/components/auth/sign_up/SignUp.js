@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { SignUpYupValidation } from '../assets/Validation'
 import { withFormik, Field, Form } from 'formik'
 import { AppContext } from '../../../contexts/AppContext'
@@ -14,7 +14,8 @@ import Loader from '../../loader/Loader'
 const SignUpPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, status }) => {
     const { themeClass } = useContext(AppContext)
     const message = "Signing User Up"
-
+    
+    if (auth.currentUser !== null) return <Redirect to='/profile' />
     if (status && status.loading) return <Loader loading={isSubmitting} message={message} />
     else {
         return (
@@ -79,7 +80,7 @@ const FormikSignUpPage = withFormik({
 
     validationSchema: SignUpYupValidation,
 
-    handleSubmit(values, { props, setSubmitting, setStatus }) {
+    handleSubmit(values, { props, setSubmitting, setStatus, resetForm }) {
         const { email, password, firstName, lastName, userName } = values
         const { users, history } = props
 
@@ -139,11 +140,11 @@ const FormikSignUpPage = withFormik({
                         analytics.logEvent('sign_up')
                         setTimeout(() => {
                             setStatus({ loading: false })
-                            history.push('/settings')
+                            history.push('/profile')
+                            resetForm({})
                         }, 1000)
                     }).catch((error) => {
-                        // alert(error)
-                        console.log(error)
+                        console.log(`there was an ${error} here`)
                         setSubmitting(false)
                         setStatus({ loading: false })
                         setStatus({ error: error.message })
