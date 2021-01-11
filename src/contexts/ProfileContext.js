@@ -10,6 +10,7 @@ const ProfileContextProvider = ({ children }) => {
     const mountedRef = useRef(true)
 
     const getUserProfile = () => {
+        //console.log(auth)
         const userId = auth.currentUser && auth.currentUser.uid
         db.collection("users").doc(userId).onSnapshot(snapshot => {
             if (!mountedRef.current) return null

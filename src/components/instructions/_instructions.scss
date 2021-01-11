@@ -41,7 +41,7 @@
      
         .question-info-container{
             width: 95%;
-            height: 15rem;
+            min-height: 15rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -53,7 +53,7 @@
         
         .question-image-container{
          width: 90%;
-         height: 12rem;
+         min-height: 12rem;
          margin-bottom: 2rem;
      
             img{
@@ -64,7 +64,7 @@
         }
 
         .alert-info-container{
-            height: 16rem;
+            min-height: 16rem;
             width: 95%;
             display: flex;
             flex-direction: column;
@@ -73,7 +73,7 @@
 
             .alert-details{
               width: 100%;
-              height: 15rem;
+              min-height: 15rem;
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -85,7 +85,7 @@
         }
 
         .coins-info-container{
-            height: 8rem;
+            min-height: 8rem;
             width: 95%;
             display: flex;
             flex-direction: column;
@@ -98,7 +98,7 @@
 
         .lifelines-info-container{
             width: 100%;
-            height: 20rem;
+            min-height: 20rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -132,10 +132,10 @@
        
         .instructions-info-container{
             width: 80%;
-            height: 85rem;
+            min-height: 60rem;
 
             .question-image-container{
-                height: 22rem;
+                min-height: 22rem;
             }
 
         }
@@ -147,10 +147,10 @@
     .instructions-container{
         .instructions-info-container{
             width: 80%;
-            height: 85rem;
+            //min-height: 85rem;
 
             .question-image-container{
-                height: 22rem;
+                min-height: 22rem;
             }
 
             .question-info-container{
@@ -166,10 +166,10 @@
     .instructions-container{
         .instructions-info-container{
             width: 75%;
-            height: 95rem;
+            //min-height: 95rem;
 
             .question-image-container{
-                height: 28rem;
+                min-height: 28rem;
             }
             .instructions-buttons-container{
                 width: 80%;
@@ -184,10 +184,10 @@
     .instructions-container{
         .instructions-info-container{
             width: 70%;
-            height: 100rem;
+            //min-height: 100rem;
 
             .question-image-container{
-                height: 33rem;
+                min-height: 33rem;
             }
         }
         

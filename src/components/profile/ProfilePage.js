@@ -11,14 +11,14 @@ import Loader from '../loader/Loader'
 
 const ProfilePage = () => {
     const { themeClass } = useContext(AppContext)
-    const [details, setDetails] = useState([])
+    const [details, setDetails] = useState(null)
     const [loading, setLoading] = useState(true)
     const [fetching, setFetching] = useState(true)
 
     const mountedRef = useRef(true)
 
     //const { profile, loading, fetching, getUserProfile, setFetching } = useContext(ProfileContext)
-    
+
     const getUserProfile = () => {
         const userId = auth.currentUser && auth.currentUser.uid
         db.collection("users").doc(userId).onSnapshot(snapshot => {
@@ -29,7 +29,7 @@ const ProfilePage = () => {
 
             setTimeout(() => {
                 setFetching(false)
-            }, 1000)
+            }, 500)
         })
     }
 
@@ -53,15 +53,14 @@ const ProfilePage = () => {
     if (auth.currentUser === null) return <Redirect to="/signin" />
 
     if (fetching) return <Loader message={message} loading={loading} />
-    else {
-        return (
-            <div className={`profile-page-container ${themeClass}`}>
-                <ProfilePicture details={details && details} />
-                <Information details={details && details} />
-                <PlayerDetails details={details && details} />
-            </div>
-        )
-    }
+    return (
+        <div className={`profile-page-container ${themeClass}`}>
+            <ProfilePicture details={details && details} />
+            <Information details={details && details} />
+            <PlayerDetails details={details && details} />
+        </div>
+    )
+
 }
 
 export default ProfilePage

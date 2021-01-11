@@ -14,57 +14,58 @@ import Loader from '../../loader/Loader'
 const SignUpPage = ({ setFieldValue, handleBlur, touched, errors, isSubmitting, status }) => {
     const { themeClass } = useContext(AppContext)
     const message = "Signing User Up"
-    
+
     if (auth.currentUser !== null) return <Redirect to='/profile' />
     if (status && status.loading) return <Loader loading={isSubmitting} message={message} />
-    else {
-        return (
-            <div className={`sign-up-container ${themeClass}`} >
-                <div className="form-container" >
-                    <h3>Become a Genius</h3>
+    return (
+        <div className={`sign-up-container ${themeClass}`} >
+            <div className="form-container" >
+                <h3>Become a Genius</h3>
 
-                    <div className="signup-image-container"  >
-                        <img src={albert_einstein} alt="Albert" />
+                <div className="signup-image-container"  >
+                    <img src={albert_einstein} alt="Albert" />
 
-                    </div>
-
-                    <Form autoComplete="off" >
-                        <Field as={TextField} type="Text" name="firstName" label="First Name"
-                            error={touched.firstName && errors.firstName ? true : false}
-                            helperText={touched.firstName ? errors.firstName : null}
-                        />
-
-                        <Field as={TextField} type="Text" name="lastName" label="Last Name"
-                            error={touched.lastName && errors.lastName ? true : false}
-                            helperText={touched.lastName ? errors.lastName : null}
-                        />
-
-                        <Field as={TextField} type="Text" name="userName" label="Username"
-                            error={touched.userName && errors.userName ? true : false}
-                            helperText={touched.userName ? errors.userName : null}
-                        />
-
-                        <Field as={TextField} type="email" name="email" label="Email"
-                            error={touched.email && errors.email ? true : false}
-                            helperText={touched.email ? errors.email : null}
-                        />
-
-                        <MyPasswordField
-                            setFieldValue={setFieldValue} handleBlur={handleBlur}
-                            error={touched.password && errors.password ? true : false}
-                            errorMessage={errors.password}
-                        />
-
-                        <Field type="submit" as={Button} variant="contained" color="secondary" id="button" disabled={isSubmitting}>Join Now</Field>
-                        {status && status.error && <small style={{ color: "red" }}>{status && status.error}</small>}
-                    </Form>
-                    <p>Already a Genius ? <NavLink to="/signin"><Button color="primary" size="small">Log In</Button></NavLink></p>
                 </div>
 
+                <Form autoComplete="off" >
+                    <Field as={TextField} type="Text" name="firstName" label="First Name"
+                        error={touched.firstName && errors.firstName ? true : false}
+                        helperText={touched.firstName ? errors.firstName : null}
+                    />
 
+                    <Field as={TextField} type="Text" name="lastName" label="Last Name"
+                        error={touched.lastName && errors.lastName ? true : false}
+                        helperText={touched.lastName ? errors.lastName : null}
+                    />
+
+                    <Field as={TextField} type="Text" name="userName" label="Username"
+                        error={touched.userName && errors.userName ? true : false}
+                        helperText={touched.userName ? errors.userName : null}
+                    />
+
+                    <Field as={TextField} type="email" name="email" label="Email"
+                        error={touched.email && errors.email ? true : false}
+                        helperText={touched.email ? errors.email : null}
+                    />
+
+                    <MyPasswordField
+                        setFieldValue={setFieldValue} handleBlur={handleBlur}
+                        error={touched.password && errors.password ? true : false}
+                        errorMessage={errors.password}
+                    />
+
+                    <Field type="submit" as={Button} variant="contained" color="secondary" id="button" disabled={isSubmitting}>
+                        Join Now
+                        </Field>
+                    {status && status.error && <small style={{ color: "red" }}>{status && status.error}</small>}
+                </Form>
+                <p>Already a Genius ? <NavLink to="/signin"><Button color="primary" size="small">Log In</Button></NavLink></p>
             </div>
-        )
-    }
+
+
+        </div>
+    )
+
 }
 
 const FormikSignUpPage = withFormik({
@@ -82,7 +83,7 @@ const FormikSignUpPage = withFormik({
 
     handleSubmit(values, { props, setSubmitting, setStatus, resetForm }) {
         const { email, password, firstName, lastName, userName } = values
-        const { users, history } = props
+        const { users } = props
 
         setSubmitting(true)
         setStatus({ loading: true })
@@ -140,7 +141,7 @@ const FormikSignUpPage = withFormik({
                         analytics.logEvent('sign_up')
                         setTimeout(() => {
                             setStatus({ loading: false })
-                            history.push('/profile')
+                            //history.push('/profile')
                             resetForm({})
                         }, 1000)
                     }).catch((error) => {

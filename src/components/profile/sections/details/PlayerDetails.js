@@ -2,9 +2,9 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { db, auth } from '../../../../firebase/Firebase'
 
 const PlayerDetails = ({ details }) => {
-    const [ position, setPosition ] = useState()
-    const { totalPoints, leaguePosition, attempts, rightAnswers, wrongAnswers,
-        fiftyUsed, hintsUsed, coinsSpent,  id, leaguePoints
+    const [ position, setPosition ] = useState(null)
+    const { totalPoints, attempts, rightAnswers, wrongAnswers,
+        fiftyUsed, hintsUsed, coinsSpent, id, leaguePoints
     } = details 
 
 
@@ -57,7 +57,7 @@ const PlayerDetails = ({ details }) => {
 
             <div><p><span className="title" >Total Points</span> <span className="subject">{totalPoints} </span></p></div>
             <div><p><span className="title" >Current Points</span> <span className="subject">{leaguePoints} </span></p></div>
-            <div><p><span className="title" >Current Position</span> <span className="subject">{leaguePosition}{suffix}</span></p></div>
+            <div><p><span className="title" >Current Position</span> <span className="subject">{position}{suffix}</span></p></div>
             <div><p><span className="title" >Total Attempts</span> <span className="subject">{attempts}</span></p></div>
             <div><p><span className="title" >Right Answers</span> <span className="subject">{rightAnswers}</span></p></div>
             <div><p><span className="title" >Wrong Answers</span> <span className="subject">{wrongAnswers}</span></p></div>

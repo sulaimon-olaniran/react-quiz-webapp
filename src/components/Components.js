@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom'
 import NavContent from './navbar/NavContent'
 import NavBar from './navbar/NavBar'
 import HomePage from './homepage/Homepage'
-import Footer from './footer/Footer'
 import GameStats from './/game/game_stats/GameStats'
 import Instructions from './instructions/Instructions'
 import ProfilePage from './profile/ProfilePage'
@@ -31,37 +30,35 @@ const Components = () => {
 
 
     if (fetching) return <Loader message={message} loading={loading} />
-    else {
-        return (
-            <React.Fragment>
-                <NavContent />
-                <NavBar />
-                <div className="page-section">
+    return (
+        <React.Fragment>
+            <NavContent />
+            <NavBar />
+            <div className="page-section">
 
-                    <Switch>
-                        <Route exact path="/" component={HomePage} />
-                        <Route exact path="/demo" component={Demo} />
-                        <Route exact path="/league/game" component={GameLeague} />
-                        <Route exact path="/league/rules" component={LeagueRules} />
-                        <Route exact path="/game/instructions" component={Instructions} />
-                        <Route exact path="/league/ranking" component={LeagueTable} />
-                        <Route exact path="/about" component={AboutPage} />
-                        <Route exact path="/game/stats" component={GameStats} />
-                        <Route exact path="/profile" component={ProfilePage} />
-                        <Route exact path="/signup" component={ () => <FormikSignUpPage users ={usersData}/>} />
-                        <Route exact path="/signin" component={FormikSignInPage} />
-                        <Route exact path="/settings" component={SettingsPage} />
-                        <Route exact path="/users" component={UsersPage} />
-                        <Route exact path="/user/:id" component={UserProfile} />
-                        <Route exact path="/admin" component={Admin} />
-                        <Route exact path="/coins" component={BuyCoins} />
-                    </Switch>
-                </div>
-                <Footer />
+                <Switch>
+                    <Route exact path="/" component={HomePage} />
+                    <Route exact path="/demo" component={Demo} />
+                    <Route exact path="/league/game" component={GameLeague} />
+                    <Route exact path="/league/rules" component={LeagueRules} />
+                    <Route exact path="/game/instructions" component={Instructions} />
+                    <Route exact path="/league/ranking" component={LeagueTable} />
+                    <Route exact path="/about" component={AboutPage} />
+                    <Route exact path="/game/stats" component={GameStats} />
+                    <Route exact path="/profile" component={ProfilePage} />
+                    <Route exact path="/signup" component={() => <FormikSignUpPage users={usersData} />} />
+                    <Route exact path="/signin" component={FormikSignInPage} />
+                    <Route exact path="/settings" component={SettingsPage} />
+                    <Route exact path="/users" component={UsersPage} />
+                    <Route exact path="/user/:id" component={UserProfile} />
+                    <Route exact path="/admin" component={Admin} />
+                    <Route exact path="/coins" component={BuyCoins} />
+                </Switch>
+            </div>
 
-            </React.Fragment>
-        )
-    }
+        </React.Fragment>
+    )
+
 }
 
 export default Components

@@ -9,8 +9,6 @@ import LeagueCountDown from './count-down/CountDown'
 
 const LeagueTable = () => {
     const [usersData, setUsersData] = useState()
-    //const [fetching, setFetching ] = useState(true)
-    //const [loading, setLoading ] = useState(true)
     const { themeClass } = useContext(AppContext)
     const mountedRef = useRef(true)
 
@@ -22,10 +20,6 @@ const LeagueTable = () => {
                 users.push(doc.data())
             })
             setUsersData(users)
-            //    setFetching(false)
-            //    setTimeout(() => {
-            //        setLoading(false)
-            //    }, 1000);
         })
     }
 
@@ -49,7 +43,7 @@ const LeagueTable = () => {
     return (
         <div className={`league-table-container ${themeClass}`} >
             <h1>League Table and Duration</h1>
-            <LeagueCountDown targetDate="06 26, 2020" targetTime="00:00:00" />
+            <LeagueCountDown  />
             <TopThree firstThree={firstThree} />
             <OtherRanks ranks={sortedArray} />
 

@@ -121,6 +121,7 @@ const DisplayImageUpload = ({ photo }) => {
                         color="primary"
                         className={buttonClassname}
                         onClick={handleSubmit}
+                        disabled={ image === null || loading }
                     >
                         {success ? <CheckIcon /> : <SaveIcon />}
                     </Fab>

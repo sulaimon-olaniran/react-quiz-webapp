@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../../contexts/AppContext'
 import { NavLink } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import Footer from '../footer/Footer'
 
 const HomePage = () => {
     const { themeClass } = useContext(AppContext)
@@ -17,6 +18,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
 
         </div>
 
