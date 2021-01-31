@@ -39,13 +39,13 @@ const BuyCoins = () => {
     const { profile } = useContext(ProfileContext)
     const [coinAmount, setCoinAmount] = useState('')
     const classes = useStyles()
-    const userId = profile.id
+    const userId = profile && profile.id
 
 
     const handleCloseModal = () => {
         setPaymentSuccessModal(false)
     }
-
+    console.log(auth)
     const templatedId = "template_deSwDH1V"
     const serviceId = "default_service"
     const emailUserId = "user_RNUbsYPhfJlJuOMNRqX44"
@@ -59,7 +59,7 @@ const BuyCoins = () => {
             transaction: response && response.transaction,
             reference: response && response.reference
         }
-        console.log(buyerDetails)
+        
         setPaymentSuccessModal(true)
         setPaymentDetails(response)
         setUpdatingCoins(true)
@@ -88,7 +88,7 @@ const BuyCoins = () => {
 
     const config = {
         reference: (new Date()).getTime(),
-        email: auth.currentUser.email,
+        email: auth.currentUser && auth.currentUser.email,
         amount: coinAmount * 100,
         publicKey: key,
         onSuccess: handleCallBack,
@@ -99,6 +99,8 @@ const BuyCoins = () => {
     const handleChange = (event) => {
         setCoinAmount(event.target.value);
     }
+
+    
 
     if (auth.currentUser === null) return <Redirect to="/signin" />
     return (

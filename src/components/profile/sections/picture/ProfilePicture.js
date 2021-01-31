@@ -38,7 +38,7 @@ const ProfilePicture = ({ details }) => {
     const color = darkTheme ? "rgb(26, 25, 25)" : "rgb(226, 226, 226)"
 
     return (
-        <div className="profile-picture-container" >
+        <div className="user-profile-picture-container" >
 
             <div className="cover-photo-container" onClick={viewCoverImage} >
                 <img src={coverImage} alt="Cover" />

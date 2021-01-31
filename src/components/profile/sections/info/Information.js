@@ -17,18 +17,18 @@ const Information = ({ details }) => {
                 <div><h3>{details && details.name}</h3></div>
                 <div><h3>{details && details.userName}</h3></div>
 
-                {details && <div><p>Sex - {details.sex}</p></div>}
-                { details && <div className="about-container" ><p>{details.about}</p></div>}
-                { details && <div><p>Country - {details.country}</p></div> }
-                { details && <div><p>State - {details.state}</p></div> }
+                {details && details.sex && <div><p>Sex - {details.sex}</p></div>}
+                { details && details.about && <div className="about-container" ><p>{details.about}</p></div>}
+                { details && details.country && <div><p>Country - {details.country}</p></div> }
+                { details && details.state && <div><p>State - {details.state}</p></div> }
     
             </div>
 
             <div className="profile-contact-container" >
-                {details &&  <a href={`https://wa.me/234${details.phoneNumber}`} target="_blank" rel="noopener noreferrer"><WhatsAppIcon color="primary" size="large" /></a>}
-                {details && <a href={`https://facebook.com/${details.facebook}`} target="_blanak" rel="noopener noreferrer" ><FacebookIcon color="primary" size="large" /></a>}
-                {details && <a href={`https://instagram.com/${details.instagram}`} target="_blanak" rel="noopener noreferrer" ><InstagramIcon color="primary" size="large" /></a>}
-                {details && <a href={`https://twitter.com/${details.twitter}`} target="_blanak" rel="noopener noreferrer" ><TwitterIcon color="primary" size="large" /></a>}
+                {details && details.phoneNumber &&  <a href={`https://wa.me/234${details.phoneNumber}`} target="_blank" rel="noopener noreferrer"><WhatsAppIcon color="primary" size="large" /></a>}
+                {details && details.facebook && <a href={`https://facebook.com/${details.facebook}`} target="_blanak" rel="noopener noreferrer" ><FacebookIcon color="primary" size="large" /></a>}
+                {details && details.instagram && <a href={`https://instagram.com/${details.instagram}`} target="_blanak" rel="noopener noreferrer" ><InstagramIcon color="primary" size="large" /></a>}
+                {details && details.twitter && <a href={`https://twitter.com/${details.twitter}`} target="_blanak" rel="noopener noreferrer" ><TwitterIcon color="primary" size="large" /></a>}
             </div>
 
             <div className="achievements-container" >

@@ -50,9 +50,9 @@ const ProfilePage = () => {
 
     const message = "Fetching User Data"
 
-    if (auth.currentUser === null) return <Redirect to="/signin" />
+    if (fetching || !auth) return <Loader message={message} loading={loading} />
 
-    if (fetching) return <Loader message={message} loading={loading} />
+    if (auth.currentUser === null) return <Redirect to="/signin" />
     return (
         <div className={`profile-page-container ${themeClass}`}>
             <ProfilePicture details={details && details} />

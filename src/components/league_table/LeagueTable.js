@@ -13,8 +13,8 @@ const LeagueTable = () => {
     const mountedRef = useRef(true)
 
     const getUsersData = () => {
-        if (!mountedRef.current) return null
         db.collection("users").onSnapshot(docs => {
+            if (!mountedRef.current) return null
             const users = []
             docs.forEach(doc => {
                 users.push(doc.data())

@@ -141,7 +141,6 @@ const FormikSignUpPage = withFormik({
                         analytics.logEvent('sign_up')
                         setTimeout(() => {
                             setStatus({ loading: false })
-                            //history.push('/profile')
                             resetForm({})
                         }, 1000)
                     }).catch((error) => {
