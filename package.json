@@ -14,7 +14,7 @@
     "emailjs-com": "^2.4.1",
     "firebase": "^7.14.2",
     "formik": "^2.1.4",
-    "highcharts": "^8.1.1",
+    "highcharts": "^9.0.0",
     "highcharts-react-official": "^3.0.0",
     "install": "^0.13.0",
     "material-ui-password-field": "^1.5.0",
